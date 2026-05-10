@@ -10,10 +10,11 @@ function PortfolioPage() {
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
         <a href="#architecture">Architecture</a>
+        <a href="#resume">Personal Info</a>
         <a href="#contact">Contact</a>
       </nav>
 
-      <header className="hero">
+      <header className="hero" onClick={() => window.location.hash = "#resume"} style={{ cursor: 'pointer' }}>
         <div>
           <p className="eyebrow">Senior Power Apps Developer</p>
           <h1>Christian Errol A. Sinag</h1>
@@ -240,8 +241,8 @@ function PortfolioPage() {
 
         <section className="section low-tech card-group">
           <div className="section-header">
-            <h2>Low Tech friendly (free)</h2>
-            <p>Practical alternatives that keep costs low while delivering value.</p>
+            <h2>Start Up Company? No problem!</h2>
+            <p>I offer low tech solutions using free and practical alternatives that still scalable and flexible in future developments.</p>
           </div>
           <article className="card">
             <ul>
@@ -258,12 +259,12 @@ function PortfolioPage() {
               <p className="eyebrow">Ready to start?</p>
               <h2>Let's build your next Power App or data pipeline.</h2>
               <p>
-                I offer freelance services for Microsoft Power Platform, data
+                I offer in-depth system development for Microsoft Power Platform, data
                 engineering, automation, and low-code dashboard solutions.
               </p>
             </div>
             <div className="contact-actions">
-              <a href="mailto:hello@example.com" className="button primary">Email me</a>
+              <a href="mailto:christianerrolapolinariosinag@example.com" className="button primary">Email me</a>
               <a href="#" className="button secondary">Download resume</a>
             </div>
           </div>
@@ -271,9 +272,9 @@ function PortfolioPage() {
 
         <section className="section cta">
           <div className="card cta-card">
-            <h2>Freelance projects welcome</h2>
+            <h2>Project based opportunities are welcome!</h2>
             <p>
-              I am available for freelance work and ready to turn your business
+              I am available for project-based work and ready to turn your business
               process challenges into efficient low-code and data-driven solutions.
             </p>
             <a href="mailto:hello@example.com" className="button primary">Contact me</a>

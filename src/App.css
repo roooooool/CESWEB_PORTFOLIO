@@ -283,11 +283,18 @@
 /* Container for the items */
 .skill-grid {
   display: grid;
-  gap: 1.25rem;
-  margin-top: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(180px, auto);
+  gap: 15px;
 }
 
+/* Make the first and fourth items span two columns */
+.skill-item:nth-child(1),
+.skill-item:nth-child(4) {
+  grid-column: span 2;
+  background: linear-gradient(135deg, var(--color-navy), var(--color-primary-blue)); /* Navy + Red gradient as per your preference */
+  color: white;
+}
 /* The individual skill card */
 .skill-item {
   position: relative;

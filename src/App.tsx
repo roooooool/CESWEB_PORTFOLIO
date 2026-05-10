@@ -9,6 +9,7 @@ import MicrosoftGraphApiDemo from './pages/demos/MicrosoftGraphApi'
 import SharePointRestApiDemo from './pages/demos/SharePointRestApi'
 import PowerAutomateDemo from './pages/demos/PowerAutomate'
 import MicrosoftLakehouseDemo from './pages/demos/MicrosoftLakehouse'
+import PersonalInfoPage from './pages/PersonalInfo';
 
 const routeMap: Record<string, ReactNode> = {
   portfolio: <PortfolioPage />,
@@ -20,9 +21,10 @@ const routeMap: Record<string, ReactNode> = {
   'demo/sharepoint-rest-api': <SharePointRestApiDemo />,
   'demo/power-automate': <PowerAutomateDemo />,
   'demo/microsoft-lakehouse': <MicrosoftLakehouseDemo />,
+  'resume': <PersonalInfoPage />
 }
 
-const internalAnchors = new Set(['portfolio', 'projects', 'skills', 'architecture', 'contact'])
+const internalAnchors = new Set(['portfolio', 'projects', 'skills', 'architecture', 'contact', 'resume'])
 
 function getCurrentRoute(): string {
   const route = window.location.hash.replace('#', '')
