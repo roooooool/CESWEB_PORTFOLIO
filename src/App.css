@@ -176,6 +176,7 @@
 }
 
 .demo-card {
+  position: relative;
   display: flex;
   align-items: stretch;
   justify-content: space-between;
@@ -189,6 +190,31 @@
   text-decoration: none;
   box-shadow: 0 24px 60px rgba(15, 23, 42, 0.18);
   transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+  overflow: hidden;
+}
+
+.demo-bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.demo-bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.demo-card > div:not(.demo-bg-image):not(.demo-bg-overlay),
+.demo-card > span {
+  position: relative;
+  z-index: 3;
 }
 
 .demo-card:hover {

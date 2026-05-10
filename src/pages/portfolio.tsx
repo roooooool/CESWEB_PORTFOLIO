@@ -1,3 +1,7 @@
+import tripDispatchImg from '../assets/TripDispatch-demo-thumbnail.png';
+import dashboardImg from '../assets/Dashboard-demo-thumbnail.png';
+import liveGpsImg from '../assets/LiveGPS-demo-thumbnail.png';
+
 function PortfolioPage() {
   return (
     <div className="portfolio-page">
@@ -35,6 +39,8 @@ function PortfolioPage() {
             <h3>Power Apps</h3>
             <div className="demo-grid">
               <a href="#demo/trip-dispatch" className="demo-card">
+                <div className="demo-bg-image" style={{ backgroundImage: `url(${tripDispatchImg})`, backgroundSize: 'cover', backgroundPosition: 'center', filter: 'blur(1px)' }}></div>
+                <div className="demo-bg-overlay" style={{ background: 'linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 100%)' }}></div>
                 <div>
                   <p className="demo-tag">Try demo</p>
                   <h4>Trip Dispatch</h4>
@@ -42,6 +48,8 @@ function PortfolioPage() {
                 <span className="chevron">›</span>
               </a>
               <a href="#demo/sales-forecast-dashboard" className="demo-card">
+                <div className="demo-bg-image" style={{ backgroundImage: `url(${dashboardImg})`, backgroundSize: 'cover', backgroundPosition: 'center', filter: 'blur(1px)' }}></div>
+                <div className="demo-bg-overlay" style={{ background: 'linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 100%)' }}></div>
                 <div>
                   <p className="demo-tag">Try demo</p>
                   <h4>Sales Forecast &amp; Dashboard</h4>
@@ -49,6 +57,8 @@ function PortfolioPage() {
                 <span className="chevron">›</span>
               </a>
               <a href="#demo/live-gps-monitoring" className="demo-card">
+                <div className="demo-bg-image" style={{ backgroundImage: `url(${liveGpsImg})`, backgroundSize: 'cover', backgroundPosition: 'center', filter: 'blur(1px)' }}></div>
+                <div className="demo-bg-overlay" style={{ background: 'linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 100%)' }}></div>
                 <div>
                   <p className="demo-tag">Try demo</p>
                   <h4>Live GPS Monitoring</h4>
