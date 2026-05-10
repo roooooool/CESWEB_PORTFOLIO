@@ -95,6 +95,17 @@ function PortfolioPage() {
               </div>
               <div className="skill-item">
                 <div className="skill-icon-box">
+                  <Database size={32} />
+                </div>
+                <h4>Microsoft Dataverse</h4>
+                <p>
+                    Unified enterprise data across applications using a scalable cloud service, 
+                    automating complex business logic and ensuring consistency through a centralized 
+                    API-first infrastructure
+                </p>
+              </div>
+              <div className="skill-item">
+                <div className="skill-icon-box">
                   <Zap size={32} />
                 </div>
                 <h4>Power Automate</h4>
@@ -126,11 +137,35 @@ function PortfolioPage() {
           </div>
 
           <div className="skill-card">
-            <h3>React js</h3>
+            <h3>REST Api</h3>
+            <div className="skill-meter">
+              <span className="meter-fill fill-100" />
+            </div>
+            <p>10/10</p>
+          </div>
+
+          <div className="skill-card">
+            <h3>React</h3>
             <div className="skill-meter">
               <span className="meter-fill fill-80" />
             </div>
             <p>8/10</p>
+          </div>
+
+          <div className="skill-card">
+            <h3>Node JS</h3>
+            <div className="skill-meter">
+              <span className="meter-fill fill-80" />
+            </div>
+            <p>8/10</p>
+          </div>
+
+          <div className="skill-card">
+            <h3>Arduino</h3>
+            <div className="skill-meter">
+              <span className="meter-fill fill-80" />
+            </div>
+            <p>5/10</p>
           </div>
 
           <div className="skill-card">
@@ -140,6 +175,16 @@ function PortfolioPage() {
             </div>
             <p>5/10</p>
           </div>
+
+          <div className="skill-card">
+            <h3>.NET SDK</h3>
+            <div className="skill-meter">
+              <span className="meter-fill fill-50" />
+            </div>
+            <p>5/10</p>
+          </div>
+
+
         </section>
 
         <section id="architecture" className="section architecture">
