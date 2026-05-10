@@ -1,6 +1,7 @@
 import tripDispatchImg from '../assets/TripDispatch-demo-thumbnail.png';
 import dashboardImg from '../assets/Dashboard-demo-thumbnail.png';
 import liveGpsImg from '../assets/LiveGPS-demo-thumbnail.png';
+import { Globe, Network, Database, Zap, Warehouse } from 'lucide-react';
 
 function PortfolioPage() {
   return (
@@ -70,42 +71,42 @@ function PortfolioPage() {
 
           <article className="card">
             <h3>Data Pipeline &amp; Ingestions</h3>
-            <div className="demo-grid">
-              <a href="#demo/web-scraping" className="demo-card">
-                <div>
-                  <p className="demo-tag">Try demo</p>
-                  <h4>Web Scraping</h4>
+            <div className="skill-grid">
+              <div className="skill-item">
+                <div className="skill-icon-box">
+                  <Globe size={32} />
                 </div>
-                <span className="chevron">›</span>
-              </a>
-              <a href="#demo/microsoft-graph-api" className="demo-card">
-                <div>
-                  <p className="demo-tag">Try demo</p>
-                  <h4>Microsoft Graph API</h4>
+                <h4>Web Scraping</h4>
+                <p>Extract and transform web data into actionable insights using Python and Selenium.</p>
+              </div>
+              <div className="skill-item">
+                <div className="skill-icon-box">
+                  <Network size={32} />
                 </div>
-                <span className="chevron">›</span>
-              </a>
-              <a href="#demo/sharepoint-rest-api" className="demo-card">
-                <div>
-                  <p className="demo-tag">Try demo</p>
-                  <h4>SharePoint REST API</h4>
+                <h4>Microsoft Graph API</h4>
+                <p>Integrate Microsoft 365 services to build connected applications and dashboards.</p>
+              </div>
+              <div className="skill-item">
+                <div className="skill-icon-box">
+                  <Database size={32} />
                 </div>
-                <span className="chevron">›</span>
-              </a>
-              <a href="#demo/power-automate" className="demo-card">
-                <div>
-                  <p className="demo-tag">Try demo</p>
-                  <h4>Power Automate</h4>
+                <h4>SharePoint REST API</h4>
+                <p>Connect to SharePoint data sources and sync information across enterprise systems.</p>
+              </div>
+              <div className="skill-item">
+                <div className="skill-icon-box">
+                  <Zap size={32} />
                 </div>
-                <span className="chevron">›</span>
-              </a>
-              <a href="#demo/microsoft-lakehouse" className="demo-card">
-                <div>
-                  <p className="demo-tag">Try demo</p>
-                  <h4>Microsoft Lakehouse</h4>
+                <h4>Power Automate</h4>
+                <p>Build intelligent workflows that automate business processes end-to-end.</p>
+              </div>
+              <div className="skill-item">
+                <div className="skill-icon-box">
+                  <Warehouse size={32} />
                 </div>
-                <span className="chevron">›</span>
-              </a>
+                <h4>Microsoft Lakehouse</h4>
+                <p>Design scalable data architectures combining analytics with data lake capabilities.</p>
+              </div>
             </div>
           </article>
         </section>

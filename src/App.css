@@ -280,6 +280,74 @@
   margin-bottom: 0.9rem;
 }
 
+/* Container for the items */
+.skill-grid {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/* The individual skill card */
+.skill-item {
+  position: relative;
+  display: flex;
+  flex-direction: column; /* Stack vertically for a cleaner look */
+  gap: 1.25rem;
+  padding: 1.75rem;
+  border-radius: 20px; /* Gentle rounded corners */
+  background: var(--card-bg);
+  transition: transform 250ms ease, box-shadow 250ms ease;
+  z-index: 1;
+}
+
+/* Gradient Outline Implementation */
+.skill-item::before {
+  content: '';
+  position: absolute;
+  top: -1px; left: -1px; right: -1px; bottom: -1px;
+  background: linear-gradient(135deg, #071624, #002aff); /* Navy to Red gradient */
+  border-radius: 21px;
+  z-index: -1;
+  opacity: 0.3; /* Subtle outline by default */
+  transition: opacity 250ms ease;
+}
+
+.skill-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.15);
+}
+
+.skill-item:hover::before {
+  opacity: 1; /* Brighten gradient on hover */
+}
+
+/* Icon Box Styling */
+.skill-icon-box {
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(58, 78, 252, 0.1), rgba(255, 0, 0, 0.05));
+  color: #3a4efc; /* Your primary navy blue */
+  margin-bottom: 0.5rem;
+}
+
+.skill-item h4 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-heading);
+}
+
+.skill-item p {
+  margin: 0;
+  color: var(--text-muted);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
 .skill-meter {
   position: relative;
   height: 0.9rem;
