@@ -173,6 +173,7 @@
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 1rem;
   margin: 1rem 0 0;
+  height: 30vh;
 }
 
 .demo-card {
