@@ -86,8 +86,8 @@ function PortfolioPage() {
         <a href="#contact">Contact</a>
       </nav>
 
-      <header className="hero" style={{ position: 'relative' }}>
-        <div>
+      <header className="hero" style={{ display: 'flex', flexDirection: 'row', gap: '2rem', alignItems: 'flex-start', flexWrap: 'wrap', padding: '2rem' }}>
+        <div style={{ flex: 1, minWidth: '300px' }}>
           <p className="eyebrow">Senior Power Apps Developer</p>
           <h1>Christian Errol A. Sinag</h1>
           <p className="hero-copy">
@@ -95,15 +95,15 @@ function PortfolioPage() {
             and low-tech-friendly solutions that help teams move faster and build
             dashboards with modern Microsoft and open-source tools.
           </p>
-          <div className="hero-actions" style={{ marginBottom: '6rem' }}>
+          <div className="hero-actions" style={{ marginTop: '2rem', marginBottom: '2rem' }}>
             <a href="#projects" className="button primary">View projects</a>
             <a href="#contact" className="button secondary">Contact me</a>
           </div>
         </div>
-        <div style={{ position: 'absolute', top: '1.75rem', right: '1.75rem', width: '200px', height: '200px', borderRadius: '16px', backgroundImage: 'repeating-linear-gradient(45deg, #071624, #071624 10px, #0a1f2e 10px, #0a1f2e 20px)', overflow: 'hidden' }}>
+        <div style={{ width: '200px', height: '200px', borderRadius: '16px', backgroundImage: 'repeating-linear-gradient(45deg, #071624, #071624 10px, #0a1f2e 10px, #0a1f2e 20px)', overflow: 'hidden', flexShrink: 0 }}>
           <img src={christianImg} alt="Christian Errol A. Sinag" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
         </div>
-        <div style={{ position: 'absolute', bottom: '1.75rem', left: 0, right: 0, display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingLeft: '1.75rem', paddingRight: '1.75rem', color: '#fff', textDecoration: 'none', fontWeight: '600', cursor: 'pointer' }}>
+        <div style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem', flexWrap: 'wrap', marginTop: '1rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
             {['Microsoft Power Apps', 'SICM (Education)', 'TESDA NC2', 'RCMDE (Capstone)', 'AWS EC2', 'Github Contributor'].map((badge) => (
               <span key={badge} style={{ display: 'inline-block', padding: '0.4rem 0.8rem', backgroundColor: 'rgba(58, 78, 252, 0.2)', border: '1px solid rgba(58, 78, 252, 0.5)', borderRadius: '20px', fontSize: '0.75rem', fontWeight: '600', color: '#fff', whiteSpace: 'nowrap' }}>
@@ -111,7 +111,7 @@ function PortfolioPage() {
               </span>
             ))}
           </div>
-          <a href="#resume" className="hero-about-me" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#fff', textDecoration: 'none', fontWeight: '600', cursor: 'pointer', transition: 'transform 180ms ease' }}>
+          <a href="#resume" className="hero-about-me" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#fff', textDecoration: 'none', fontWeight: '600', cursor: 'pointer', transition: 'transform 180ms ease', whiteSpace: 'nowrap' }}>
             Learn More About Me
             <ChevronRight size={20} />
           </a>
