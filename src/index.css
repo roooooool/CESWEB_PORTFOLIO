@@ -43,9 +43,12 @@
   --architecture-border: rgba(15, 23, 42, 0.08);
   --architecture-shadow: 0 20px 50px rgba(15, 23, 42, 0.06);
 
-  --skill-card-bg: #eff6ff;
+  --skill-card-bg: #031228;
   --meter-from: #0ea5e9;
   --meter-to: #2563eb;
+  
+  --data-card-bg: linear-gradient(135deg, rgba(15, 23, 42, 0.12), rgba(30, 58, 138, 0.15));
+  --data-card-border: rgba(15, 23, 42, 0.15);
 
   --surface-radius: 36px;
   --section-gap: 2rem;
@@ -57,8 +60,8 @@
   --secondary-border: rgba(255, 255, 255, 0.14);
   --demo-text: #ffffff;
   --demo-text-muted: rgba(255, 255, 255, 0.85);
-  --skill-gradient-from: #071624;
-  --skill-gradient-to: #002aff;
+  --skill-gradient-from: #030936;
+  --skill-gradient-to: #0923a5;
   --skill-icon-bg: linear-gradient(135deg, rgba(58, 78, 252, 0.1), rgba(255, 0, 0, 0.05));
   --skill-icon-color: #3a4efc;
   --architecture-icon-bg: linear-gradient(135deg, rgba(56, 189, 248, 0.18), rgba(96, 165, 250, 0.12));
@@ -110,9 +113,12 @@
   --architecture-border: rgba(148, 163, 184, 0.18);
   --architecture-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
 
-  --skill-card-bg: rgba(30, 41, 59, 0.75);
+  --skill-card-bg: #061163;
   --meter-from: #60a5fa;
   --meter-to: #3b82f6;
+  
+  --data-card-bg: linear-gradient(135deg, rgba(15, 23, 42, 0.5), rgba(30, 58, 138, 0.35));
+  --data-card-border: rgba(96, 165, 250, 0.2);
 
   --text-heading: #eef2ff;
   --text-body: #cbd5e1;
@@ -121,8 +127,8 @@
   --secondary-border: rgba(255, 255, 255, 0.08);
   --demo-text: #ffffff;
   --demo-text-muted: rgba(255, 255, 255, 0.85);
-  --skill-gradient-from: #1e293b;
-  --skill-gradient-to: #3b82f6;
+  --skill-gradient-from: #07162d;
+  --skill-gradient-to: #050256;
   --skill-icon-bg: linear-gradient(135deg, rgba(96, 165, 250, 0.15), rgba(239, 68, 68, 0.08));
   --skill-icon-color: #60a5fa;
   --architecture-icon-bg: linear-gradient(135deg, rgba(96, 165, 250, 0.18), rgba(147, 197, 253, 0.12));
