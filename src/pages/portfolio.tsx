@@ -1,9 +1,62 @@
 import tripDispatchImg from '../assets/TripDispatch-demo-thumbnail.png';
 import dashboardImg from '../assets/Dashboard-demo-thumbnail.png';
 import liveGpsImg from '../assets/LiveGPS-demo-thumbnail.png';
-import { Globe, Network, Database, Zap, Warehouse } from 'lucide-react';
+import { Globe, Network, Database, Zap, Warehouse, Server, ChevronRight, ChevronLeft } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
 
 function PortfolioPage() {
+
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollRef.current) {
+      const scrollAmount = 600; 
+      // If we reach the end, wrap back to the beginning
+      const isEnd = scrollRef.current.scrollLeft + scrollRef.current.offsetWidth >= scrollRef.current.scrollWidth;
+      
+      if (direction === 'right' && isEnd) {
+        scrollRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        scrollRef.current.scrollBy({
+          left: direction === 'left' ? -scrollAmount : scrollAmount,
+          behavior: 'smooth'
+        });
+      }
+    }
+  };
+
+  const handleScroll = () => {
+    if (scrollRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+      const totalScrollable = scrollWidth - clientWidth;
+      const progress = (scrollLeft / totalScrollable) * 100;
+      setScrollProgress(progress);
+    }
+  };
+
+  useEffect(() => {
+    if (isPaused) return;
+
+    const interval = setInterval(() => {
+      scroll('right');
+    }, 5000); // Scrolls every 5 seconds
+
+    return () => clearInterval(interval);
+  }, [isPaused]);
+
+  useEffect(() => {
+    const node = scrollRef.current;
+    if (node) {
+      node.addEventListener('scroll', handleScroll);
+      return () => node.removeEventListener('scroll', handleScroll);
+    }
+  }, []);
+
+
+
+
   return (
     <div className="portfolio-page">
       <nav className="top-nav">
@@ -14,7 +67,7 @@ function PortfolioPage() {
         <a href="#contact">Contact</a>
       </nav>
 
-      <header className="hero" onClick={() => window.location.hash = "#resume"} style={{ cursor: 'pointer' }}>
+      <header className="hero" style={{ position: 'relative' }}>
         <div>
           <p className="eyebrow">Senior Power Apps Developer</p>
           <h1>Christian Errol A. Sinag</h1>
@@ -28,47 +81,149 @@ function PortfolioPage() {
             <a href="#contact" className="button secondary">Contact me</a>
           </div>
         </div>
+        <a href="#resume" className="hero-about-me" style={{ position: 'absolute', bottom: '1.75rem', right: '1.75rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#fff', textDecoration: 'none', fontWeight: '600', cursor: 'pointer', transition: 'transform 180ms ease' }}>
+          Learn More About Me
+          <ChevronRight size={20} />
+        </a>
       </header>
+
+      <section 
+        id="projects" 
+        className="showcase-carousel-container"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
+        <div className="carousel-header-wrapper">
+          <div className="section-header">
+            <h2>Projects I have created</h2>
+            <div className="header-description">
+              <p>
+                Over the course of my career, I have specialized in bridging the gap between 
+                complex industrial operations and digital efficiency. My work focuses on 
+                <strong> Efficient logistics, real-time fleet management, and enterprise data modeling</strong>. 
+                I'm availabe for <strong> Project-Based development </strong> and offers free & low tech alternative for startups and small businesses.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div 
+          className="carousel-track" 
+          ref={scrollRef}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          {/* Project 1: Trip Dispatch */}
+          <a href="#demo/trip-dispatch" className="showcase-card">
+            <div className="showcase-bg" style={{ backgroundImage: `url(${tripDispatchImg})` }}></div>
+            <div className="showcase-content">
+              <p className="demo-tag">Featured Project</p>
+              <h4>Trip Dispatch System</h4>
+              <p className="showcase-desc">
+                A real-time logistics hub managing driver assignments, fuel requests, and attendance logs. 
+                Built to handle complex fleet operations with automated validation logic.
+              </p>
+              <div className="showcase-footer">
+                <span className="button primary">View Demo ›</span>
+              </div>
+            </div>
+          </a>
+
+          {/* Project 2: Sales Forecast */}
+          <a href="#demo/sales-forecast-dashboard" className="showcase-card">
+            <div className="showcase-bg" style={{ backgroundImage: `url(${dashboardImg})` }}></div>
+            <div className="showcase-content">
+              <p className="demo-tag">Analytics Hub</p>
+              <h4>Sales Forecast & Dashboard</h4>
+              <p className="showcase-desc">
+                Interactive data visualization platform converting raw sales data into actionable trends 
+                using advanced Power BI integration and automated data refresh cycles.
+              </p>
+              <div className="showcase-footer">
+                <span className="button primary">View Demo ›</span>
+              </div>
+            </div>
+          </a>
+
+          {/* Project 3: Live GPS */}
+          <a href="#demo/live-gps-monitoring" className="showcase-card">
+            <div className="showcase-bg" style={{ backgroundImage: `url(${liveGpsImg})` }}></div>
+            <div className="showcase-content">
+              <p className="demo-tag">Fleet Monitoring</p>
+              <h4>Live Fleet GPS Tracking</h4>
+              <p className="showcase-desc">
+                High-performance monitoring tool utilizing React-based map overlays and SQL-optimized 
+                location data to provide real-time visibility across the entire fleet.
+              </p>
+              <div className="showcase-footer">
+                <span className="button primary">View Demo ›</span>
+              </div>
+            </div>
+          </a>
+
+          {/* Project 4: Dummy / Future Project A */}
+          <a href="#" className="showcase-card">
+            <div className="showcase-bg" style={{ backgroundColor: '#1a1a1a', backgroundImage: 'linear-gradient(45deg, #071624, #3a4efc)' }}></div>
+            <div className="showcase-content">
+              <p className="demo-tag">Upcoming</p>
+              <h4>Inventory Management Pro</h4>
+              <p className="showcase-desc">
+                Automated stock tracking system featuring barcode integration and low-stock 
+                predictive alerts using custom Dataverse logic and Power Automate.
+              </p>
+              <div className="showcase-footer">
+                <span className="button primary">Coming Soon ›</span>
+              </div>
+            </div>
+          </a>
+
+          {/* Project 5: Dummy / Future Project B */}
+          <a href="#" className="showcase-card">
+            <div className="showcase-bg" style={{ backgroundColor: '#1a1a1a', backgroundImage: 'linear-gradient(45deg, #071624, #ff0000)' }}></div>
+            <div className="showcase-content">
+              <p className="demo-tag">System Architecture</p>
+              <h4>Enterprise Data Bridge</h4>
+              <p className="showcase-desc">
+                High-speed data ingestion pipeline bridging on-premise SQL databases with 
+                Azure Lakehouse via secure gateways and custom REST API endpoints.
+              </p>
+              <div className="showcase-footer">
+                <span className="button primary">Under Development ›</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div className="custom-scrollbar-container">
+          <div 
+            className="custom-scrollbar-fill" 
+            style={{ 
+              width: `${Math.max(scrollProgress, 10)}%` 
+            }}
+          ></div>
+        </div>
+        <div className="carousel-controls">
+            <button onClick={() => scroll('left')} className="nav-btn left" aria-label="Scroll Left">
+              <ChevronLeft size={24} />
+            </button>
+            <button onClick={() => scroll('right')} className="nav-btn right" aria-label="Scroll Right">
+              <ChevronRight size={24} />
+            </button>
+        </div>
+
+
+      </section>
+
+
+
+
 
       <main>
         <section id="projects" className="section card-group">
           <div className="section-header">
-            <h2>Projects I have created</h2>
+            <h2>Tools &amp; Tech I utilize</h2>
             <p>Hands-on experience building Power Apps and scalable data solutions.</p>
           </div>
-
-          <article className="card">
-            <h3>Power Apps</h3>
-            <div className="demo-grid">
-              <a href="#demo/trip-dispatch" className="demo-card">
-                <div className="demo-bg-image" style={{ backgroundImage: `url(${tripDispatchImg})`, backgroundSize: 'cover', backgroundPosition: 'center', filter: 'blur(1px)' }}></div>
-                <div className="demo-bg-overlay" style={{ background: 'linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 100%)' }}></div>
-                <div>
-                  <p className="demo-tag">Try demo</p>
-                  <h4>Trip Dispatch</h4>
-                </div>
-                <span className="chevron">›</span>
-              </a>
-              <a href="#demo/sales-forecast-dashboard" className="demo-card">
-                <div className="demo-bg-image" style={{ backgroundImage: `url(${dashboardImg})`, backgroundSize: 'cover', backgroundPosition: 'center', filter: 'blur(1px)' }}></div>
-                <div className="demo-bg-overlay" style={{ background: 'linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 100%)' }}></div>
-                <div>
-                  <p className="demo-tag">Try demo</p>
-                  <h4>Sales Forecast &amp; Dashboard</h4>
-                </div>
-                <span className="chevron">›</span>
-              </a>
-              <a href="#demo/live-gps-monitoring" className="demo-card">
-                <div className="demo-bg-image" style={{ backgroundImage: `url(${liveGpsImg})`, backgroundSize: 'cover', backgroundPosition: 'center', filter: 'blur(1px)' }}></div>
-                <div className="demo-bg-overlay" style={{ background: 'linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 100%)' }}></div>
-                <div>
-                  <p className="demo-tag">Try demo</p>
-                  <h4>Live GPS Monitoring</h4>
-                </div>
-                <span className="chevron">›</span>
-              </a>
-            </div>
-          </article>
 
           <article className="card">
             <h3>Data Pipeline &amp; Ingestions</h3>
@@ -119,13 +274,20 @@ function PortfolioPage() {
                 <h4>Microsoft Lakehouse</h4>
                 <p>Design scalable data architectures combining analytics with data lake capabilities.</p>
               </div>
+              <div className="skill-item">
+                <div className="skill-icon-box">
+                  <Server size={32} />
+                </div>
+                <h4>On Premise Data Gateway</h4>
+                <p>Securely connect on-premise systems to cloud services with enterprise-grade data bridges and hybrid integration.</p>
+              </div>
             </div>
           </article>
         </section>
 
         <section id="skills" className="section stats-grid">
           <div className="section-header">
-            <h2>Tools &amp; languages I use</h2>
+            <h2>Languages I use</h2>
             <p>A blend of Microsoft platforms, modern web, and data engineering skills.</p>
           </div>
 

@@ -28,7 +28,7 @@
 }
 
 .theme-toggle:hover {
-  background: rgba(56, 189, 248, 0.12);
+  background: var(--theme-toggle-hover);
   transform: translateY(-1px);
 }
 
@@ -123,7 +123,7 @@
 .secondary {
   background: var(--secondary-bg);
   color: var(--secondary-foreground);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid var(--secondary-border);
 }
 
 .main {
@@ -173,7 +173,7 @@
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 1rem;
   margin: 1rem 0 0;
-  height: 30vh;
+  min-height: 30vh;
 }
 
 .demo-card {
@@ -187,7 +187,7 @@
   border-radius: var(--card-radius);
   background: linear-gradient(135deg, var(--demo-gradient-from) 0%, var(--demo-gradient-to) 100%);
   border: 1px solid var(--demo-border);
-  color: #fff;
+  color: var(--demo-text);
   text-decoration: none;
   box-shadow: 0 24px 60px rgba(15, 23, 42, 0.18);
   transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
@@ -235,7 +235,7 @@
   text-transform: uppercase;
   letter-spacing: 0.18em;
   opacity: 0.9;
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--demo-text-muted);
 }
 
 .demo-card h4 {
@@ -248,7 +248,7 @@
 .chevron {
   font-size: 2.4rem;
   line-height: 1;
-  color: #fff;
+  color: var(--demo-text);
 }
 
 .card ul {
@@ -275,6 +275,11 @@
   background: var(--skill-card-bg);
   border-radius: var(--card-radius);
   padding: 1.5rem;
+  color: var(--demo-text);
+}
+
+.skill-card p {
+  color: var(--demo-text) !important;
 }
 
 .skill-card h3 {
@@ -293,7 +298,7 @@
 .skill-item:nth-child(1),
 .skill-item:nth-child(4) {
   grid-column: span 2;
-  background: linear-gradient(135deg, var(--color-navy), var(--color-primary-blue)); /* Navy + Red gradient as per your preference */
+  background: linear-gradient(135deg, var(--skill-gradient-from), var(--skill-gradient-to));
   color: white;
 }
 /* The individual skill card */
@@ -314,7 +319,7 @@
   content: '';
   position: absolute;
   top: -1px; left: -1px; right: -1px; bottom: -1px;
-  background: linear-gradient(135deg, #071624, #002aff); /* Navy to Red gradient */
+  background: linear-gradient(135deg, var(--skill-gradient-from), var(--skill-gradient-to));
   border-radius: 21px;
   z-index: -1;
   opacity: 0.3; /* Subtle outline by default */
@@ -337,8 +342,8 @@
   display: grid;
   place-items: center;
   border-radius: 14px;
-  background: linear-gradient(135deg, rgba(58, 78, 252, 0.1), rgba(255, 0, 0, 0.05));
-  color: #3a4efc; /* Your primary navy blue */
+  background: var(--skill-icon-bg);
+  color: var(--skill-icon-color);
   margin-bottom: 0.5rem;
 }
 
@@ -359,7 +364,7 @@
 .skill-meter {
   position: relative;
   height: 0.9rem;
-  background: var(--oxygen-meter-bg, #e2e8f0);
+  background: var(--oxygen-meter-bg);
   border-radius: 999px;
   overflow: hidden;
   margin-bottom: 1rem;
@@ -407,7 +412,7 @@
   display: grid;
   place-items: center;
   border-radius: 18px;
-  background: linear-gradient(135deg, rgba(56, 189, 248, 0.18), rgba(96, 165, 250, 0.12));
+  background: var(--architecture-icon-bg);
   color: var(--text-heading);
 }
 
@@ -453,7 +458,7 @@
 }
 
 .cta-card p {
-  color: #475569;
+  color: var(--cta-text);
   margin-bottom: 1.5rem;
   line-height: 1.8;
 }
@@ -474,3 +479,224 @@
     padding: 2rem;
   }
 }
+
+
+/* Carousel Logic */
+.showcase-carousel-container {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  margin-bottom: 2rem;
+  padding: 4rem 0;
+  background: var(--showcase-bg);
+  
+  /* Ensure the container doesn't trap or block pointer events */
+  overflow: visible !important; 
+  pointer-events: auto; 
+}
+
+.carousel-track {
+  display: flex;
+  gap: 2rem;
+  overflow-x: auto;
+  padding: 1rem 1.5rem 0rem; /* Keep some padding so cards don't touch the edge initially */
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.carousel-track::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome/Safari */
+}
+
+/* The Large Showcase Card */
+.showcase-card {
+  flex: 0 0 600px; /* Card width */
+  height: 400px;   /* Fixed height for the stack */
+  position: relative;
+  display: flex;
+  align-items: flex-end; /* Pushes content to the bottom */
+  border-radius: 30px;
+  overflow: hidden;
+  text-decoration: none;
+  scroll-snap-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease;
+} 
+
+.showcase-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+  transition: transform 0.5s ease;
+}
+
+.showcase-card:hover .showcase-bg {
+  transform: scale(1.1); /* Subtle zoom effect on hover */
+}
+
+.showcase-visual {
+  background-size: cover;
+  background-position: center;
+  min-height: 350px;
+}
+
+.showcase-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+  
+  /* Glassmorphism Effect */
+  background: var(--showcase-content-bg);
+  backdrop-filter: blur(2px);      /* The blur effect */
+  -webkit-backdrop-filter: blur(2px);
+  
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.showcase-card h4 {
+  color: var(--demo-text);
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+/* Ensure the button stays gentle and fits the theme */
+.showcase-content .button.primary {
+  align-self: flex-start;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.85rem;
+  border-radius: 12px; /* Gentle rounded corners */
+}
+
+
+.showcase-desc {
+  color: var(--demo-text-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+/* App.css additions */
+
+.carousel-controls {
+  position: relative;
+  right: 1.5rem;
+  bottom: 0;
+  display: flex;
+  gap: 0.75rem;
+  z-index: 10;
+
+  justify-content: center;
+}
+
+
+
+.nav-btn {
+  background: var(--card-bg); /* */
+  border: 1px solid var(--page-border); /* */
+  color: var(--text); /* */
+  width: 45px;
+  height: 45px;
+  border-radius: 50%; /* Gentle rounded corners/circles */
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.nav-btn:hover {
+  background: var(--nav-btn-hover);
+  color: white;
+  transform: translateY(-2px);
+  border-color: transparent;
+}
+
+/* Ensure the carousel track still allows scrolling but hide the bar if you want */
+.carousel-track {
+  display: flex;
+  gap: 2rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  /* Keep scrollbar hidden to focus on the buttons */
+  scrollbar-width: none; 
+  -ms-overflow-style: none;
+}
+
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-header-wrapper {
+  /* This keeps the text aligned with your Hero and other sections */
+  max-width: var(--container-max); 
+  margin: 0 auto;
+  
+  /* This provides the side padding you're looking for */
+  padding: 0 0.1rem; 
+  
+  /* Ensures the buttons we added stay relative to this header */
+  position: relative; 
+  margin-bottom: 2rem;
+}
+
+
+/* App.css */
+
+.custom-scrollbar-container {
+  width: 100%;
+  /*max-width: 400px; /* Adjust size as needed */
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  margin-top: 1.5rem;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 3rem; /* Keep some padding so cards don't touch the edge initially */
+}
+
+.custom-scrollbar-fill {
+  height: 100%;
+  background: var(--scrollbar-gradient);
+  border-radius: 10px;
+  transition: width 0.2s ease-out; /* Smooth movement */
+  box-shadow: 0 0 10px rgba(58, 78, 252, 0.5);
+}
+
+/* Ensure the header wrapper centers the bar if you want */
+.carousel-header-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Or center if preferred */
+}
+
+.header-description {
+  max-width: 240rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.header-description p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.header-description strong {
+  color: var(--text); /* Highlights your specialties in white/bright color */
+  font-weight: 600;
+}
+
