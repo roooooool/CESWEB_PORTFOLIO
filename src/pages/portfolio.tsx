@@ -362,7 +362,7 @@ function PortfolioPage() {
           </div>
 
           <div className="skill-card">
-            <h3>React</h3>
+            <h3>React.js</h3>
             <div className="skill-meter">
               <span className="meter-fill fill-80" />
             </div>
@@ -370,7 +370,7 @@ function PortfolioPage() {
           </div>
 
           <div className="skill-card">
-            <h3>Node JS</h3>
+            <h3>Node.js</h3>
             <div className="skill-meter">
               <span className="meter-fill fill-80" />
             </div>
@@ -480,7 +480,7 @@ function PortfolioPage() {
               </p>
             </div>
             <div className="contact-actions">
-              <a href="mailto:christianerrolapolinariosinag@example.com" className="button primary">Email me</a>
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=christianerrolapolinariosinag@example.com&su=Let%27s%20work%20together&body=Hi%20Christian%2C%0A%0AI%27m%20interested%20in%20your%20Power%20Apps%20and%20data%20pipeline%20expertise.%20I%27d%20like%20to%20discuss%20how%20you%20can%20help%20transform%20our%20business%20with%20innovative%20solutions." className="button primary" target="_blank" rel="noopener noreferrer">Email me</a>
               <a href="#" className="button secondary">Download resume</a>
             </div>
           </div>
@@ -493,7 +493,7 @@ function PortfolioPage() {
               I am available for project-based work and ready to turn your business
               process challenges into efficient low-code and data-driven solutions.
             </p>
-            <a href="mailto:hello@example.com" className="button primary">Contact me</a>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=christianerrolapolinariosinag@example.com&su=Project%20Opportunity%20-%20Let%27s%20Collaborate&body=Hi%20Christian%2C%0A%0AI%20have%20an%20exciting%20project-based%20opportunity%20that%20aligns%20perfectly%20with%20your%20expertise.%20I%27d%20love%20to%20discuss%20the%20details%20and%20explore%20how%20we%20can%20turn%20our%20business%20challenges%20into%20efficient%20solutions." className="button primary" target="_blank" rel="noopener noreferrer">Consult pricing</a>
           </div>
         </section>
       </main>
