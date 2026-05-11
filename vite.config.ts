@@ -8,4 +8,5 @@ export default defineConfig({
     port: 6767,
   },
   plugins: [react(), /*powerApps()*/],
+  base: '/CESWEB_PORTFOLIO/',
 });
