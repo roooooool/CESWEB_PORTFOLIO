@@ -9,6 +9,8 @@ function PortfolioPage() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalCards = 5;
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
@@ -33,6 +35,10 @@ function PortfolioPage() {
       const totalScrollable = scrollWidth - clientWidth;
       const progress = (scrollLeft / totalScrollable) * 100;
       setScrollProgress(progress);
+      
+      // Calculate current page based on scroll progress
+      const page = Math.max(1, Math.ceil((progress / 100) * totalCards));
+      setCurrentPage(page);
     }
   };
 
@@ -101,7 +107,7 @@ function PortfolioPage() {
                 Over the course of my career, I have specialized in bridging the gap between 
                 complex industrial operations and digital efficiency. My work focuses on 
                 <strong> Efficient logistics, real-time fleet management, and enterprise data modeling</strong>. 
-                I'm availabe for <strong> Project-Based development </strong> and offers free & low tech alternative for startups and small businesses.
+                I'm also availabe for <strong> Project-Based development </strong> and offers free & low tech alternative for startups and small businesses.
               </p>
             </div>
           </div>
@@ -202,10 +208,12 @@ function PortfolioPage() {
             }}
           ></div>
         </div>
+
         <div className="carousel-controls">
             <button onClick={() => scroll('left')} className="nav-btn left" aria-label="Scroll Left">
               <ChevronLeft size={24} />
             </button>
+            <span className="carousel-page-indicator">{currentPage}/{totalCards}</span>
             <button onClick={() => scroll('right')} className="nav-btn right" aria-label="Scroll Right">
               <ChevronRight size={24} />
             </button>

@@ -470,6 +470,17 @@
   }
 }
 
+@media (max-width: 1024px) {
+  .skill-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .skill-item:nth-child(1),
+  .skill-item:nth-child(4) {
+    grid-column: span 1;
+  }
+}
+
 @media (max-width: 720px) {
   .portfolio-page {
     padding: 2rem 1rem;
@@ -477,6 +488,51 @@
 
   .hero {
     padding: 2rem;
+  }
+  
+  .skill-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .skill-item:nth-child(1),
+  .skill-item:nth-child(4) {
+    grid-column: span 1;
+  }
+  
+  .skill-item {
+    padding: 1.25rem;
+    gap: 0.9rem;
+  }
+  
+  .showcase-carousel-container {
+    padding: 2rem 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .carousel-header-wrapper {
+    padding: 0;
+    margin-bottom: 1.5rem;
+  }
+  
+  .carousel-track {
+    padding: 0.75rem 0 0rem;
+    gap: 1.5rem;
+  }
+  
+  .carousel-page-indicator {
+    font-size: 0.85rem;
+  }
+  
+  .showcase-content {
+    padding: 1.5rem;
+  }
+  
+  .showcase-card h4 {
+    font-size: 1.1rem;
+  }
+  
+  .header-description p {
+    font-size: 0.95rem;
   }
 }
 
@@ -490,12 +546,10 @@
   margin-left: -50vw;
   margin-right: -50vw;
   margin-bottom: 2rem;
-  padding: 4rem 0;
+  padding: 4rem 1.5rem;
   background: var(--showcase-bg);
-  
-  /* Ensure the container doesn't trap or block pointer events */
-  overflow: visible !important; 
-  pointer-events: auto; 
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 .carousel-track {
@@ -513,8 +567,8 @@
 
 /* The Large Showcase Card */
 .showcase-card {
-  flex: 0 0 600px; /* Card width */
-  height: 400px;   /* Fixed height for the stack */
+  flex: 0 0 clamp(280px, 60vw, 600px);
+  height: clamp(280px, 50vw, 400px);
   position: relative;
   display: flex;
   align-items: flex-end; /* Pushes content to the bottom */
@@ -596,9 +650,17 @@
   bottom: 0;
   display: flex;
   gap: 0.75rem;
+  align-items: center;
   z-index: 10;
-
   justify-content: center;
+}
+
+.carousel-page-indicator {
+  font-weight: 600;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  min-width: 3rem;
+  text-align: center;
 }
 
 
@@ -630,7 +692,7 @@
   gap: 2rem;
   overflow-x: auto;
   scroll-behavior: smooth;
-  /* Keep scrollbar hidden to focus on the buttons */
+  padding: 1rem 0 0rem;
   scrollbar-width: none; 
   -ms-overflow-style: none;
 }
@@ -645,7 +707,7 @@
   margin: 0 auto;
   
   /* This provides the side padding you're looking for */
-  padding: 0 0.1rem; 
+  padding: 0 1.5rem; 
   
   /* Ensures the buttons we added stay relative to this header */
   position: relative; 
