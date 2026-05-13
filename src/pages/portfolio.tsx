@@ -111,7 +111,7 @@ function PortfolioPage() {
               </span>
             ))}
           </div>
-          <a href="#resume" className="hero-about-me" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#fff', textDecoration: 'none', fontWeight: '600', cursor: 'pointer', transition: 'transform 180ms ease', whiteSpace: 'nowrap' }}>
+          <a href="/resume" className="hero-about-me" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#fff', textDecoration: 'none', fontWeight: '600', cursor: 'pointer', transition: 'transform 180ms ease', whiteSpace: 'nowrap' }}>
             Learn More About Me
             <ChevronRight size={20} />
           </a>

@@ -2,6 +2,10 @@ import { useEffect, useMemo, useState, type ReactNode } from 'react'
 import './App.css'
 import PortfolioPage from './pages/portfolio'
 import TripDispatchDemo from './pages/demos/TripDispatch'
+import { BrowserRouter } from 'react-router-dom'
+import { NotificationProvider } from './utils/NotificationContext'
+import { TaskWorkerProvider } from './utils/TaskWorkerContext'
+import type { Notification } from './components/NotificationBell'
 import SalesForecastDashboardDemo from './pages/demos/SalesForecastDashboard'
 import LiveGpsMonitoringDemo from './pages/demos/LiveGpsMonitoring'
 import WebScrapingDemo from './pages/demos/WebScraping'
@@ -21,7 +25,7 @@ const routeMap: Record<string, ReactNode> = {
   'demo/sharepoint-rest-api': <SharePointRestApiDemo />,
   'demo/power-automate': <PowerAutomateDemo />,
   'demo/microsoft-lakehouse': <MicrosoftLakehouseDemo />,
-  'resume': <PersonalInfoPage />
+  'resume': <PersonalInfoPage />,
 }
 
 const internalAnchors = new Set(['portfolio', 'projects', 'skills', 'architecture', 'contact', 'resume'])
@@ -36,6 +40,7 @@ function App() {
   const [theme, setTheme] = useState(() => {
     return window.localStorage.getItem('theme') ?? 'dark'
   })
+  const [_notifications, setNotifications] = useState<Notification[]>([])
 
   useEffect(() => {
     const onHashChange = () => setRoute(getCurrentRoute())
@@ -70,22 +75,28 @@ function App() {
   }, [route])
 
   return (
-    <div className="app-shell">
-      <header className="app-header">
-        <nav className="app-nav">
-          <a href="#portfolio">Portfolio</a>
-          <a href="#portfolio">Projects / Demos</a>
-        </nav>
-        <button
-          type="button"
-          className="theme-toggle"
-          onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-        >
-          {theme === 'light' ? 'Dark mode' : 'Light mode'}
-        </button>
-      </header>
-      <main>{page}</main>
-    </div>
+    <BrowserRouter>
+      <NotificationProvider>
+        <TaskWorkerProvider setNotifications={setNotifications}>
+          <div className="app-shell">
+            <header className="app-header">
+              <nav className="app-nav">
+                <a href="#portfolio">Portfolio</a>
+                <a href="#portfolio">Projects / Demos</a>
+              </nav>
+              <button
+                type="button"
+                className="theme-toggle"
+                onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+              >
+                {theme === 'light' ? 'Dark mode' : 'Light mode'}
+              </button>
+            </header>
+            <main>{page}</main>
+          </div>
+        </TaskWorkerProvider>
+      </NotificationProvider>
+    </BrowserRouter>
   )
 }
 
