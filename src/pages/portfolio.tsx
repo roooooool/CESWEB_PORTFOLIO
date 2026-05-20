@@ -24,42 +24,26 @@ import { Network, Database, Warehouse, Server, ChevronRight, ChevronLeft } from 
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
 
 const CODE_PATTERN_TOKENS = [
-  'DEVELOPMENT',
-  'API',
-  './ENV',
-  '[()=>()]',
-  'RETURN',
-  'HOST',
-  'LOCAL',
-  'SERVER',
-  'REACT',
-  'NODE',
-  'SQL',
-  'JSON',
-  'FETCH()',
-  'COMMIT',
-  'MERGE',
-  'DEPLOY',
-  'PIPELINE',
-  'STACK',
-  'ASYNC',
-  'PROMISE',
-  'HOOK',
-  'COMPONENT',
-  'CLOUD',
-  'BUILD',
-  'DEBUG',
-  'SCRIPT',
-  'ENDPOINT',
-  'CACHE',
-  'GIT',
-  'TYPES',
-  ';',
+  // --- Code Keywords ---
+  'DEVELOPMENT', 'API', './ENV', 'RETURN', 'HOST', 'LOCAL', 'SERVER', 
+  'REACT', 'NODE', 'SQL', 'JSON', 'FETCH()', 'COMMIT', 'MERGE', 
+  'DEPLOY', 'PIPELINE', 'STACK', 'ASYNC', 'PROMISE', 'HOOK', 
+  'COMPONENT', 'CLOUD', 'BUILD', 'DEBUG', 'SCRIPT', 'ENDPOINT', 
+  'CACHE', 'GIT', 'TYPES',
+];
+
+const EXTENDED_CODE_PATTERN_TOKENS =  [
+  // --- Structural Syntax (The "Mimicry" glue) ---
+  '=>', '{', '}', '=> {', '();', '[]', '<>', '</>', '===', 'const', 
+  'export', 'import', 'async', 'await', '??', '&&', '||', '?.', 
+  'interface', 'type', '.map(() =>', 'private', 'readonly', 'static',
+  ': string', ': number', 'as', 'from', '...props', '0x1A4F', '0o755' ,
 ];
 
 const buildHeroCodePattern = (count: number) =>
-  Array.from({ length: count }, () => {
-    const token = CODE_PATTERN_TOKENS[Math.floor(Math.random() * CODE_PATTERN_TOKENS.length)];
+  Array.from({ length: count }, (_, index) => {
+    const source = index % 2 === 0 ? CODE_PATTERN_TOKENS : EXTENDED_CODE_PATTERN_TOKENS;
+    const token = source[Math.floor(Math.random() * source.length)];
     return token;
   }).join(' ');
 
@@ -100,13 +84,17 @@ function PortfolioPage() {
   const arduinoIconRef = useRef<AnimatedIconHandle | null>(null);
   const cppIconRef = useRef<AnimatedIconHandle | null>(null);
   const dotnetIconRef = useRef<AnimatedIconHandle | null>(null);
+  const [patternSeed, setPatternSeed] = useState(0);
   const [heroPatternCounts, setHeroPatternCounts] = useState(() =>
     getHeroPatternTokenCounts(window.innerWidth, window.innerHeight)
   );
-  const heroCodeBuffer = useMemo(() => buildHeroCodePattern(heroPatternCounts.buffer), [heroPatternCounts.buffer]);
+  const heroCodeBuffer = useMemo(
+    () => buildHeroCodePattern(heroPatternCounts.buffer),
+    [heroPatternCounts.buffer, patternSeed]
+  );
   const fullHeroCodePattern = useMemo(
     () => `${heroCodeBuffer} ${buildHeroCodePattern(heroPatternCounts.main)}`,
-    [heroCodeBuffer, heroPatternCounts.main]
+    [heroCodeBuffer, heroPatternCounts.main, patternSeed]
   );
   const [heroCodePattern, setHeroCodePattern] = useState(heroCodeBuffer);
   const totalCards = 5;
@@ -243,6 +231,7 @@ function PortfolioPage() {
 
       if (isDeleting && charIndex <= minVisibleChars) {
         isDeleting = false;
+        setPatternSeed((seed) => seed + 1);
       }
     }, 24);
 
