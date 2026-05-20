@@ -1,77 +1,84 @@
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Mono:wght@400;700&display=swap");
 
 :root {
-  --font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --font-family: "Space Mono", "Courier New", monospace;
+  --font-family-heading: "Press Start 2P", "Space Mono", "Courier New", monospace;
   --font-size: 16px;
-  --line-height: 1.6;
+  --line-height: 1.7;
+  --line-height-heading: 1.45;
 
-  --text: #0f172a;
-  --text-muted: #475569;
-  --bg: #f8fafc;
-  --body-gradient-1: rgba(56, 189, 248, 0.12);
-  --body-gradient-2: rgba(59, 130, 246, 0.14);
+  --text: #f8fafc;
+  --text-muted: #cbd5e1;
+  --bg: #020617;
+  --body-gradient-1: rgba(42, 63, 229, 0.18);
+  --body-gradient-2: rgba(244, 185, 176, 0.12);
 
-  --page-surface: rgba(255, 255, 255, 0.32);
-  --page-surface-soft: rgba(255, 255, 255, 0.12);
-  --page-border: rgba(255, 255, 255, 0.45);
+  --page-surface: rgba(2, 6, 23, 0.9);
+  --page-surface-soft: rgba(15, 23, 42, 0.8);
+  --page-border: rgba(248, 250, 252, 0.2);
 
-  --hero-gradient-from: #0f172a;
-  --hero-gradient-to: #1d4ed8;
-  --hero-text: #ffffff;
-  --hero-shadow: 0 30px 80px rgba(15, 23, 42, 0.25);
+  --hero-gradient-from: #111827;
+  --hero-gradient-to: #2a3fe5;
+  --hero-text: #f8fafc;
+  --hero-shadow: 0 24px 0 rgba(42, 63, 229, 0.25);
 
-  --primary: #38bdf8;
-  --primary-foreground: #0f172a;
-  --secondary-bg: rgba(255, 255, 255, 0.14);
-  --secondary-foreground: #ffffff;
+  --primary: #2a3fe5;
+  --primary-foreground: #f8fafc;
+  --secondary-bg: rgba(244, 185, 176, 0.2);
+  --secondary-foreground: #f8fafc;
   --button-radius: 999px;
   --button-padding: 0.95rem 1.6rem;
-  --button-shadow: 0 18px 30px rgba(56, 189, 248, 0.18);
+  --button-shadow: 0 0 0 2px rgba(42, 63, 229, 0.35), 0 12px 24px rgba(42, 63, 229, 0.2);
 
-  --nav-link: #334155;
-  --link-hover: #0ea5e9;
+  --nav-link: #cbd5e1;
+  --link-hover: #f4b9b0;
 
-  --card-bg: #ffffff;
-  --card-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
-  --card-radius: 22px;
+  --card-bg: rgba(15, 23, 42, 0.9);
+  --card-shadow: 0 0 0 2px rgba(248, 250, 252, 0.08), 0 18px 40px rgba(0, 0, 0, 0.35);
+  --card-radius: 14px;
 
-  --demo-gradient-from: #5d81a0;
-  --demo-gradient-to: #4f6a7d;
-  --demo-border: rgba(255, 255, 255, 0.15);
+  --demo-gradient-from: #111827;
+  --demo-gradient-to: #2a3fe5;
+  --demo-border: rgba(244, 185, 176, 0.35);
 
-  --architecture-bg: rgba(15, 23, 42, 0.04);
-  --architecture-border: rgba(15, 23, 42, 0.08);
-  --architecture-shadow: 0 20px 50px rgba(15, 23, 42, 0.06);
+  --architecture-bg: rgba(2, 6, 23, 0.86);
+  --architecture-border: rgba(248, 250, 252, 0.16);
+  --architecture-shadow: 0 0 0 2px rgba(42, 63, 229, 0.2), 0 20px 50px rgba(0, 0, 0, 0.4);
 
-  --skill-card-bg: #031228;
-  --meter-from: #0ea5e9;
-  --meter-to: #2563eb;
+  --skill-card-bg: #0f172a;
+  --meter-from: #f4b9b0;
+  --meter-to: #2a3fe5;
   
-  --data-card-bg: linear-gradient(135deg, rgba(15, 23, 42, 0.12), rgba(30, 58, 138, 0.15));
-  --data-card-border: rgba(15, 23, 42, 0.15);
+  --data-card-bg: linear-gradient(135deg, rgba(2, 6, 23, 0.9), rgba(30, 41, 59, 0.9));
+  --data-card-border: rgba(248, 250, 252, 0.2);
 
   --surface-radius: 36px;
   --section-gap: 2rem;
   --container-max: 1200px;
-  --text-heading: #0f172a;
-  --text-body: #334155;
+  --text-heading: #f8fafc;
+  --text-body: #cbd5e1;
 
-  --theme-toggle-hover: rgba(56, 189, 248, 0.12);
-  --secondary-border: rgba(255, 255, 255, 0.14);
+  --theme-toggle-hover: rgba(42, 63, 229, 0.25);
+  --secondary-border: rgba(248, 250, 252, 0.2);
   --demo-text: #ffffff;
-  --demo-text-muted: rgba(255, 255, 255, 0.85);
-  --skill-gradient-from: #030936;
-  --skill-gradient-to: #0923a5;
-  --skill-icon-bg: linear-gradient(135deg, rgba(58, 78, 252, 0.1), rgba(255, 0, 0, 0.05));
-  --skill-icon-color: #3a4efc;
-  --architecture-icon-bg: linear-gradient(135deg, rgba(56, 189, 248, 0.18), rgba(96, 165, 250, 0.12));
-  --cta-text: #475569;
-  --showcase-bg: rgb(196, 207, 230);
-  --showcase-content-bg: rgba(55, 60, 65, 0.7);
-  --nav-btn-hover: linear-gradient(135deg, #071624, #ff0000);
-  --scrollbar-gradient: linear-gradient(to right, #8792f4, #f47171);
+  --demo-text-muted: rgba(248, 250, 252, 0.86);
+  --skill-gradient-from: #111827;
+  --skill-gradient-to: #2a3fe5;
+  --skill-icon-bg: linear-gradient(135deg, rgba(42, 63, 229, 0.28), rgba(244, 185, 176, 0.18));
+  --skill-icon-color: #f4b9b0;
+  --architecture-icon-bg: linear-gradient(135deg, rgba(42, 63, 229, 0.35), rgba(244, 185, 176, 0.2));
+  --cta-text: #cbd5e1;
+  --showcase-bg: #020617;
+  --showcase-content-bg: rgba(15, 23, 42, 0.85);
+  --nav-btn-hover: linear-gradient(135deg, #2a3fe5, #f4b9b0);
+  --scrollbar-gradient: linear-gradient(to right, #2a3fe5, #f4b9b0);
+  --dot-border-size: 4px;
+  --dot-border-neon: #22d3ee;
+  --dot-border-neon-alt: #f4b9b0;
+  --dot-border-soft: rgba(248, 250, 252, 0.45);
+  --dot-border-glow: 0 0 0 1px rgba(34, 211, 238, 0.25), 0 0 18px rgba(34, 211, 238, 0.22);
 
-  --oxygen-meter-bg: #e2e8f0;
+  --oxygen-meter-bg: #334155;
 
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -79,66 +86,71 @@
 }
 
 [data-theme="dark"] {
-  --text: #e2e8f0;
+  --text: #f8fafc;
   --text-muted: #94a3b8;
-  --bg: #050816;
-  --body-gradient-1: rgba(56, 189, 248, 0.12);
-  --body-gradient-2: rgba(96, 165, 250, 0.12);
+  --bg: #000000;
+  --body-gradient-1: rgba(42, 63, 229, 0.2);
+  --body-gradient-2: rgba(244, 185, 176, 0.12);
 
-  --page-surface: rgba(15, 23, 42, 0.70);
-  --page-surface-soft: rgba(15, 23, 42, 0.45);
-  --page-border: rgba(255, 255, 255, 0.10);
+  --page-surface: rgba(0, 0, 0, 0.9);
+  --page-surface-soft: rgba(2, 6, 23, 0.86);
+  --page-border: rgba(248, 250, 252, 0.16);
 
-  --hero-gradient-from: #020617;
-  --hero-gradient-to: #1e3a8a;
-  --hero-text: #eef2ff;
-  --hero-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+  --hero-gradient-from: #000000;
+  --hero-gradient-to: #2a3fe5;
+  --hero-text: #f8fafc;
+  --hero-shadow: 0 22px 0 rgba(42, 63, 229, 0.24);
 
-  --primary: #60a5fa;
-  --primary-foreground: #0f172a;
-  --secondary-bg: rgba(255, 255, 255, 0.08);
+  --primary: #2a3fe5;
+  --primary-foreground: #f8fafc;
+  --secondary-bg: rgba(244, 185, 176, 0.2);
   --secondary-foreground: #ffffff;
 
-  --nav-link: #cbd5e1;
-  --link-hover: #7dd3fc;
+  --nav-link: #e2e8f0;
+  --link-hover: #f4b9b0;
 
-  --card-bg: rgba(15, 23, 42, 0.72);
-  --card-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+  --card-bg: rgba(2, 6, 23, 0.92);
+  --card-shadow: 0 0 0 2px rgba(248, 250, 252, 0.1), 0 18px 40px rgba(0, 0, 0, 0.45);
 
-  --demo-gradient-from: #334155;
-  --demo-gradient-to: #5f7d92;
-  --demo-border: rgba(255, 255, 255, 0.12);
+  --demo-gradient-from: #000000;
+  --demo-gradient-to: #2a3fe5;
+  --demo-border: rgba(244, 185, 176, 0.3);
 
-  --architecture-bg: rgba(255, 255, 255, 0.05);
-  --architecture-border: rgba(148, 163, 184, 0.18);
-  --architecture-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+  --architecture-bg: rgba(2, 6, 23, 0.9);
+  --architecture-border: rgba(248, 250, 252, 0.16);
+  --architecture-shadow: 0 0 0 2px rgba(42, 63, 229, 0.2), 0 20px 50px rgba(0, 0, 0, 0.42);
 
-  --skill-card-bg: #061163;
-  --meter-from: #60a5fa;
-  --meter-to: #3b82f6;
+  --skill-card-bg: #0f172a;
+  --meter-from: #f4b9b0;
+  --meter-to: #2a3fe5;
   
-  --data-card-bg: linear-gradient(135deg, rgba(15, 23, 42, 0.5), rgba(30, 58, 138, 0.35));
-  --data-card-border: rgba(96, 165, 250, 0.2);
+  --data-card-bg: linear-gradient(135deg, rgba(2, 6, 23, 0.9), rgba(30, 41, 59, 0.86));
+  --data-card-border: rgba(248, 250, 252, 0.16);
 
-  --text-heading: #eef2ff;
-  --text-body: #cbd5e1;
+  --text-heading: #f8fafc;
+  --text-body: #e2e8f0;
 
-  --theme-toggle-hover: rgba(96, 165, 250, 0.12);
-  --secondary-border: rgba(255, 255, 255, 0.08);
+  --theme-toggle-hover: rgba(42, 63, 229, 0.28);
+  --secondary-border: rgba(248, 250, 252, 0.18);
   --demo-text: #ffffff;
-  --demo-text-muted: rgba(255, 255, 255, 0.85);
-  --skill-gradient-from: #07162d;
-  --skill-gradient-to: #050256;
-  --skill-icon-bg: linear-gradient(135deg, rgba(96, 165, 250, 0.15), rgba(239, 68, 68, 0.08));
-  --skill-icon-color: #60a5fa;
-  --architecture-icon-bg: linear-gradient(135deg, rgba(96, 165, 250, 0.18), rgba(147, 197, 253, 0.12));
-  --cta-text: #94a3b8;
-  --showcase-bg: rgb(15, 23, 42);
-  --showcase-content-bg: rgba(30, 41, 59, 0.8);
-  --nav-btn-hover: linear-gradient(135deg, #1e293b, #ef4444);
-  --scrollbar-gradient: linear-gradient(to right, #3a4efc, #ff0000);
+  --demo-text-muted: rgba(248, 250, 252, 0.85);
+  --skill-gradient-from: #000000;
+  --skill-gradient-to: #2a3fe5;
+  --skill-icon-bg: linear-gradient(135deg, rgba(42, 63, 229, 0.3), rgba(244, 185, 176, 0.16));
+  --skill-icon-color: #f4b9b0;
+  --architecture-icon-bg: linear-gradient(135deg, rgba(42, 63, 229, 0.35), rgba(244, 185, 176, 0.2));
+  --cta-text: #cbd5e1;
+  --showcase-bg: #000000;
+  --showcase-content-bg: rgba(15, 23, 42, 0.86);
+  --nav-btn-hover: linear-gradient(135deg, #2a3fe5, #f4b9b0);
+  --scrollbar-gradient: linear-gradient(to right, #2a3fe5, #f4b9b0);
+  --dot-border-size: 4px;
+  --dot-border-neon: #67e8f9;
+  --dot-border-neon-alt: #fda4af;
+  --dot-border-soft: rgba(248, 250, 252, 0.5);
+  --dot-border-glow: 0 0 0 1px rgba(103, 232, 249, 0.3), 0 0 22px rgba(103, 232, 249, 0.25);
 
-  --oxygen-meter-bg: #374151;
+  --oxygen-meter-bg: #1f2937;
 }
 
 a {
@@ -162,10 +174,42 @@ body,
 
 body {
   margin: 0;
+  font-family: var(--font-family);
+  line-height: var(--line-height);
   color: var(--text);
   background: radial-gradient(circle at top left, var(--body-gradient-1), transparent 25%),
     radial-gradient(circle at bottom right, var(--body-gradient-2), transparent 20%),
     var(--bg);
+  image-rendering: pixelated;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-family-heading);
+  line-height: var(--line-height-heading);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 
 body,

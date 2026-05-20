@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Lato:wght@400;700&display=swap'); /* Import Lato and Inter for a clean, non-sharp look */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Mono:wght@400;700&display=swap');
 
 
 
@@ -10,7 +10,7 @@
   body {
     /*@apply bg-slate-50 text-slate-900;*/
     margin: 0;
-    font-family: "Segoe UI", sans-serif;
+    font-family: "Space Mono", "Courier New", monospace;
   }
 }
 
@@ -19,24 +19,24 @@
    ROOT VARIABLES (THEME)
 ========================= */
 :root {
-  --color-primary: rgba(9, 33, 98, 1); /* Navy Blue */
+  --color-primary: #2A3FE5;
   --color-primary-hover: color-mix(in srgb, var(--color-primary) 80%, black 20%);
-  --color-primary-2: #3a4efc;
-  --color-primary-3: #2600ff; /* lighter blue for accents */
-  --color-primary-light: #c7d2fe; /* Light Navy for backgrounds */
-  --color-accent: #da1613;
-  --color-accent-dark: #a30906;    
-  --color-accent-light: #ff0400;         /* Red */
-  --color-bg: #ffffff;   
-  --color-bg-dark: #1c1c22;                /* Dark background */
-  --color-bg-blue: #f8fafc;
-  --color-text: #1a1a1a;
-  --color-text-2: #ffffff;
-  --color-muted: #666;
-  --color-border: #e0e0e0;
+  --color-primary-2: #4f66ff;
+  --color-primary-3: #8493ff;
+  --color-primary-light: #c7d2fe;
+  --color-accent: #F4B9B0;
+  --color-accent-dark: #e99b90;
+  --color-accent-light: #fbd6d0;
+  --color-bg: #000000;
+  --color-bg-dark: #020617;
+  --color-bg-blue: #0f172a;
+  --color-text: #f8fafc;
+  --color-text-2: #111827;
+  --color-muted: #cbd5e1;
+  --color-border: #334155;
 
-  --color-bg-hover:#f1f5f9; /* Light grey for hover states */
-  --color-mix-hover:#000000;
+  --color-bg-hover:#1f2937;
+  --color-mix-hover:#f8fafc;
 
   --color-orange: #ff8000;
   --color-yellow: #ebb52a;
@@ -44,7 +44,7 @@
   --color-red: rgb(235, 54, 30);
   --color-darkslategray: #334155;
 
-  --radius: 10px;
+  --radius: 12px;
   --transition: 0.2s ease-in-out;
 
   --bg-gradient-main: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary) 25%, var(--color-accent) 100%);
@@ -87,8 +87,8 @@
 
 
     /* TYPOGRAPHY */
-    --font-family-primary: 'Inter', sans-serif;
-    --font-family-secondary: 'Lato', sans-serif;
+    --font-family-primary: 'Space Mono', monospace;
+      --font-family-secondary: 'Press Start 2P', monospace;
 
     --font-size-base: 0.875rem;   /* 14px */
     --font-size-sm: 0.75rem;      /* 12px */
@@ -102,24 +102,24 @@
 }
 
 [data-theme="dark-wew"] {
-  --color-primary: #38599f; /* A lighter, softer blue for dark mode */
+  --color-primary: #2A3FE5;
   --color-primary-hover: color-mix(in srgb, var(--color-primary) 80%, white 20%);
-  --color-primary-2: #6b8eef;
-  --color-primary-3: #8fa8ff;
+  --color-primary-2: #4f66ff;
+  --color-primary-3: #8493ff;
   --color-primary-light: #2c3a5e;
-  --color-accent: #ff5252; /* A brighter red for visibility */
-  --color-accent-dark: #ff1744;
-  --color-accent-light: rgb(254, 190, 188); /* Red */
-  --color-bg: #1c1c22; /* Off-black for the main background */
-  --color-bg-dark: #eff0ff;  
-  --color-bg-blue: #1a1a2e; /* A dark blue-ish background */
-  --color-text: rgb(155, 179, 245); /* Light gray for primary text */
-  --color-text-2: rgb(5, 16, 41); 
-  --color-muted: #a0a0a0; /* A slightly darker gray for muted text */
-  --color-border: #444; /* Darker border color */
+  --color-accent: #F4B9B0;
+  --color-accent-dark: #e99b90;
+  --color-accent-light: #fbd6d0;
+  --color-bg: #000000;
+  --color-bg-dark: #020617;
+  --color-bg-blue: #0f172a;
+  --color-text: #f8fafc;
+  --color-text-2: #111827;
+  --color-muted: #cbd5e1;
+  --color-border: #334155;
 
-  --color-bg-hover: #2a2a2a; /* Slightly lighter than the dark background for hover */
-  --color-mix-hover:#ffffff;
+  --color-bg-hover: #1f2937;
+  --color-mix-hover:#f8fafc;
 
   --color-orange: #ffab40;
   --color-green: #69f0ae;
@@ -157,22 +157,6 @@
 
   --color-input-disabled-bg: #0a0a35;
 
-
-  /* TYPOGRAPHY */
-  --font-family-primary: 'Lato', sans-serif;
-  --font-family-secondary: 'Inter', sans-serif;
-
-  --font-size-base: 0.875rem;   /* 14px */
-  --font-size-vsm: 0.55rem;      
-  --font-size-sm: 0.75rem;      /* 12px */
-  --font-size-lg: 1rem;         /* 16px */
-  --font-size-vlg: 1.25rem;     /* 20px */
-  --font-size-title: 2.1rem;
-  --font-size-subtitle: 1.3rem;
-  --font-size-label: 1rem;
-  --font-size-span: 0.97rem;
-  --font-size-caption: 0.85rem;
-  font-size: var(--font-size-base);
 }
 
 /*html, 

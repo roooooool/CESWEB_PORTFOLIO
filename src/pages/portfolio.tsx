@@ -86,32 +86,36 @@ function PortfolioPage() {
         <a href="#contact">Contact</a>
       </nav>
 
-      <header className="hero" style={{ display: 'flex', flexDirection: 'row', gap: '2rem', alignItems: 'flex-start', flexWrap: 'wrap', padding: '2rem' }}>
-        <div style={{ flex: 1, minWidth: '300px' }}>
+      <header className="hero hero-layout glass-panel neon-shadow reveal reveal-up">
+        <div className="hero-main reveal reveal-up animation-delay-200">
           <p className="eyebrow">Senior Power Apps Developer</p>
-          <h1>Christian Errol A. Sinag</h1>
+          <h1 className="text-gradient">Christian Errol A. Sinag</h1>
           <p className="hero-copy">
             I design cloud-first business applications, intelligent data pipelines,
             and low-tech-friendly solutions that help teams move faster and build
             dashboards with modern Microsoft and open-source tools.
           </p>
-          <div className="hero-actions" style={{ marginTop: '2rem', marginBottom: '2rem' }}>
+          <div className="hero-actions">
             <a href="#projects" className="button primary">View projects</a>
             <a href="#contact" className="button secondary">Contact me</a>
           </div>
         </div>
-        <div style={{ width: '200px', height: '200px', borderRadius: '16px', backgroundImage: 'repeating-linear-gradient(45deg, #071624, #071624 10px, #0a1f2e 10px, #0a1f2e 20px)', overflow: 'hidden', flexShrink: 0 }}>
-          <img src={christianImg} alt="Christian Errol A. Sinag" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        <div className="hero-avatar-shell glass-panel reveal reveal-up animation-delay-400">
+          <img className="hero-avatar" src={christianImg} alt="Christian Errol A. Sinag" />
         </div>
-        <div style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem', flexWrap: 'wrap', marginTop: '1rem' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
-            {['Microsoft Power Apps', 'SICM (Education)', 'TESDA NC2', 'RCMDE (Capstone)', 'AWS EC2', 'Github Contributor'].map((badge) => (
-              <span key={badge} style={{ display: 'inline-block', padding: '0.4rem 0.8rem', backgroundColor: 'rgba(58, 78, 252, 0.2)', border: '1px solid rgba(58, 78, 252, 0.5)', borderRadius: '20px', fontSize: '0.75rem', fontWeight: '600', color: '#fff', whiteSpace: 'nowrap' }}>
+        <div className="hero-meta-row reveal reveal-fade animation-delay-600">
+          <div className="hero-badges">
+            {['Microsoft Power Apps', 'SICM (Education)', 'TESDA NC2', 'RCMDE (Capstone)', 'AWS EC2', 'Github Contributor'].map((badge, index) => (
+              <span
+                key={badge}
+                className="hero-badge glass-panel reveal reveal-fade"
+                style={{ animationDelay: `${300 + (index * 80)}ms` }}
+              >
                 {badge}
               </span>
             ))}
           </div>
-          <a href="/resume" className="hero-about-me" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#fff', textDecoration: 'none', fontWeight: '600', cursor: 'pointer', transition: 'transform 180ms ease', whiteSpace: 'nowrap' }}>
+          <a href="#resume" className="hero-about-me glass-panel">
             Learn More About Me
             <ChevronRight size={20} />
           </a>
@@ -132,7 +136,7 @@ function PortfolioPage() {
                 Over the course of my career, I have specialized in bridging the gap between 
                 complex industrial operations and digital efficiency. My work focuses on 
                 <strong> Efficient logistics, real-time fleet management, and enterprise data modeling</strong>. 
-                I'm also availabe for <strong> Project-Based development </strong> and offers free & low tech alternative for startups and small businesses.
+                I'm also available for <strong> project-based development </strong> and offer free and low-tech alternatives for startups and small businesses.
               </p>
             </div>
           </div>
@@ -145,7 +149,7 @@ function PortfolioPage() {
           onMouseLeave={() => setIsPaused(false)}
         >
           {/* Project 1: Trip Dispatch */}
-          <a href="#demo/trip-dispatch" className="showcase-card">
+          <a href="#demo/trip-dispatch" className="showcase-card reveal reveal-up animation-delay-200">
             <div className="showcase-bg" style={{ backgroundImage: `url(${tripDispatchImg})` }}></div>
             <div className="showcase-content">
               <p className="demo-tag">Featured Project</p>
@@ -161,11 +165,11 @@ function PortfolioPage() {
           </a>
 
           {/* Project 2: Sales Forecast */}
-          <a href="#demo/sales-forecast-dashboard" className="showcase-card">
+          <a href="#demo/sales-forecast-dashboard" className="showcase-card reveal reveal-up animation-delay-400">
             <div className="showcase-bg" style={{ backgroundImage: `url(${dashboardImg})` }}></div>
             <div className="showcase-content">
               <p className="demo-tag">Analytics Hub</p>
-              <h4>Sales Analyticss & Dashboard</h4>
+              <h4>Sales Analytics & Dashboard</h4>
               <p className="showcase-desc">
                 Interactive data visualization platform converting raw sales data into actionable trends 
                 using advanced Power BI integration and automated data refresh cycles.
@@ -177,7 +181,7 @@ function PortfolioPage() {
           </a>
 
           {/* Project 3: Live GPS */}
-          <a href="#demo/live-gps-monitoring" className="showcase-card">
+          <a href="#demo/live-gps-monitoring" className="showcase-card reveal reveal-up animation-delay-600">
             <div className="showcase-bg" style={{ backgroundImage: `url(${liveGpsImg})` }}></div>
             <div className="showcase-content">
               <p className="demo-tag">Fleet Monitoring</p>
@@ -193,7 +197,7 @@ function PortfolioPage() {
           </a>
 
           {/* Project 4: Dummy / Future Project A */}
-          <a href="#" className="showcase-card">
+          <a href="#" className="showcase-card reveal reveal-up animation-delay-2000">
             <div className="showcase-bg" style={{ backgroundColor: '#1a1a1a', backgroundImage: 'linear-gradient(45deg, #071624, #3a4efc)' }}></div>
             <div className="showcase-content">
               <p className="demo-tag">Upcoming</p>
@@ -209,7 +213,7 @@ function PortfolioPage() {
           </a>
 
           {/* Project 5: Dummy / Future Project B */}
-          <a href="#" className="showcase-card">
+          <a href="#" className="showcase-card reveal reveal-up animation-delay-4000">
             <div className="showcase-bg" style={{ backgroundColor: '#1a1a1a', backgroundImage: 'linear-gradient(45deg, #071624, #ff0000)' }}></div>
             <div className="showcase-content">
               <p className="demo-tag">System Architecture</p>
@@ -252,7 +256,7 @@ function PortfolioPage() {
 
 
       <main>
-        <section id="projects" className="section card-group">
+        <section id="tech-stack" className="section card-group">
           <div className="section-header">
             <h2>Tools &amp; Tech I utilize</h2>
             <p>Hands-on experience building Power Apps and scalable data solutions.</p>

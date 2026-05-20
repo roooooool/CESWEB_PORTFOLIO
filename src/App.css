@@ -17,12 +17,14 @@
 }
 
 .theme-toggle {
-  border: 1px solid var(--primary);
-  background: transparent;
+  border: 1.5px solid var(--dot-border-neon);
+  background: rgba(2, 6, 23, 0.72);
   color: var(--text);
   border-radius: var(--button-radius);
   padding: 0.75rem 1.2rem;
   font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   cursor: pointer;
   transition: background-color 180ms ease, transform 180ms ease, border-color 180ms ease;
 }
@@ -37,11 +39,90 @@
   margin: 0 auto;
   padding: 3rem 1.5rem;
   color: var(--text);
-  background: linear-gradient(180deg, var(--page-surface), var(--page-surface-soft));
-  border: 1px solid var(--page-border);
+  background: radial-gradient(circle at top right, rgba(34, 211, 238, 0.08), transparent 80%),
+    radial-gradient(circle at bottom left, rgba(236, 72, 153, 0.08), transparent 80%),
+    linear-gradient(180deg, var(--page-surface), var(--page-surface-soft));
+  border: var(--dot-border-size) dashed var(--dot-border-neon);
   border-radius: var(--surface-radius);
-  backdrop-filter: blur(24px);
-  box-shadow: 0 40px 120px rgba(15, 23, 42, 0.12);
+  backdrop-filter: blur(4px);
+  box-shadow: var(--dot-border-glow), 0 0 0 2px rgba(42, 63, 229, 0.18), 0 40px 120px rgba(0, 0, 0, 0.22);
+}
+
+.glass-panel {
+  background: rgba(30, 41, 59, 0.68);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: var(--dot-border-size) dotted var(--dot-border-soft);
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #22d3ee 0%, #a855f7 55%, #ec4899 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.neon-shadow {
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.15), var(--hero-shadow);
+}
+
+.neon-shadow:hover {
+  box-shadow: 0 0 30px rgba(6, 182, 212, 0.35), var(--hero-shadow);
+}
+
+@keyframes revealUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes revealFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.reveal {
+  opacity: 0;
+  animation-fill-mode: forwards;
+  animation-duration: 700ms;
+  animation-timing-function: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.reveal-up {
+  animation-name: revealUp;
+}
+
+.reveal-fade {
+  animation-name: revealFade;
+}
+
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animation-delay-400 {
+  animation-delay: 400ms;
+}
+
+.animation-delay-600 {
+  animation-delay: 600ms;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2000ms;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4000ms;
 }
 
 .top-nav {
@@ -55,6 +136,8 @@
 .top-nav a {
   color: var(--nav-link);
   font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
   transition: color 180ms ease;
 }
 
@@ -65,15 +148,29 @@
 .hero {
   background: linear-gradient(135deg, var(--hero-gradient-from) 0%, var(--hero-gradient-to) 100%);
   color: var(--hero-text);
-  border-radius: 28px;
-  padding: 3rem;
+  border-radius: 18px;
+  padding: 2.2rem;
   box-shadow: var(--hero-shadow);
+  border: 3px solid var(--dot-border-neon-alt);
   margin-bottom: 2.5rem;
+}
+
+.hero-layout {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.hero-main {
+  flex: 1;
+  min-width: 300px;
 }
 
 .hero .eyebrow {
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
   opacity: 0.85;
   margin-bottom: 1rem;
 }
@@ -81,7 +178,7 @@
 .hero h1 {
   margin: 0;
   font-size: clamp(2.6rem, 4vw, 4rem);
-  line-height: 1.05;
+  line-height: 1.3;
 }
 
 .hero-copy {
@@ -96,7 +193,72 @@
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  margin-top: 2rem;
+  margin: 2rem 0;
+}
+
+.hero-avatar-shell {
+  width: 220px;
+  height: 220px;
+  border-radius: 22px;
+  overflow: hidden;
+  flex-shrink: 0;
+  padding: 0.35rem;
+  border: 3px solid var(--dot-border-neon-alt);
+}
+
+.hero-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 18px;
+  background-image: repeating-linear-gradient(45deg, #071624, #071624 10px, #0a1f2e 10px, #0a1f2e 20px);
+}
+
+.hero-meta-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.hero-badges {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.hero-badge {
+  display: inline-block;
+  padding: 0.42rem 0.82rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  white-space: nowrap;
+  border: 1.5px solid var(--dot-border-neon);
+}
+
+.hero-about-me {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #f8fafc;
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 180ms ease, border-color 180ms ease;
+  white-space: nowrap;
+  padding: 0.62rem 0.95rem;
+  border-radius: 12px;
+}
+
+.hero-about-me:hover {
+  transform: translateY(-2px);
+  border-color: rgba(236, 72, 153, 0.48);
 }
 
 .button {
@@ -104,8 +266,11 @@
   align-items: center;
   justify-content: center;
   padding: var(--button-padding);
-  border-radius: var(--button-radius);
+  border-radius: 12px;
+  border: 1.5px solid var(--dot-border-neon-alt);
   font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   text-decoration: none;
   transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
 }
@@ -123,7 +288,7 @@
 .secondary {
   background: var(--secondary-bg);
   color: var(--secondary-foreground);
-  border: 1px solid var(--secondary-border);
+  border: 1.5px solid var(--dot-border-neon-alt);
 }
 
 .main {
@@ -159,11 +324,12 @@
   border-radius: var(--card-radius);
   padding: 1.75rem;
   box-shadow: var(--card-shadow);
+  border: 3px solid var(--dot-border-neon);
 }
 
 .card:has(.skill-grid) {
   background: var(--data-card-bg);
-  border: 1px solid var(--data-card-border);
+  border: 0px solid var(--dot-border-neon);
   backdrop-filter: blur(8px);
 }
 
@@ -247,7 +413,7 @@
 .demo-card h4 {
   margin: 0;
   font-size: 1.3rem;
-  line-height: 1.1;
+  line-height: 1.35;
   font-weight: 700;
 }
 
@@ -320,10 +486,11 @@
   flex-direction: column; /* Stack vertically for a cleaner look */
   gap: 1.25rem;
   padding: 1.75rem;
-  border-radius: 20px; /* Gentle rounded corners */
+  border-radius: 14px; /* Gentle rounded corners */
   background: var(--skill-card-bg);
   transition: transform 250ms ease, box-shadow 250ms ease;
   z-index: 1;
+  border: 2px solid var(--dot-border-neon);
 }
 
 /* Gradient Outline Implementation */
@@ -471,7 +638,7 @@
 
 .cta-card p {
   color: var(--cta-text);
-  margin-bottom: 1.5rem;
+  border: 3px solid var(--dot-border-neon-alt);
   line-height: 1.8;
 }
 
@@ -500,6 +667,15 @@
 
   .hero {
     padding: 2rem;
+  }
+
+  .hero-avatar-shell {
+    width: 170px;
+    height: 170px;
+  }
+
+  .hero-main {
+    min-width: 100%;
   }
   
   .skill-grid {
@@ -584,11 +760,11 @@
   position: relative;
   display: flex;
   align-items: flex-end; /* Pushes content to the bottom */
-  border-radius: 30px;
+  border-radius: 16px;
   overflow: hidden;
   text-decoration: none;
   scroll-snap-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 3px solid var(--dot-border-neon-alt);
   transition: transform 0.3s ease;
 } 
 
@@ -622,9 +798,9 @@
   padding: 2rem;
   
   /* Glassmorphism Effect */
-  background: var(--showcase-content-bg);
-  backdrop-filter: blur(2px);      /* The blur effect */
-  -webkit-backdrop-filter: blur(2px);
+  background: linear-gradient(180deg, rgba(2, 6, 23, 0.15), rgba(15, 23, 42, 0.7));
+  backdrop-filter: blur(6px);      /* The blur effect */
+  -webkit-backdrop-filter: blur(6px);
   
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
@@ -636,6 +812,7 @@
   color: var(--demo-text);
   margin: 0;
   font-size: 1.4rem;
+  letter-spacing: -0.01em;
 }
 
 /* Ensure the button stays gentle and fits the theme */
@@ -679,7 +856,7 @@
 
 .nav-btn {
   background: var(--card-bg); /* */
-  border: 1px solid var(--page-border); /* */
+  border: var(--dot-border-size) dotted var(--dot-border-neon); /* */
   color: var(--text); /* */
   width: 45px;
   height: 45px;
@@ -772,5 +949,24 @@
 .header-description strong {
   color: var(--text); /* Highlights your specialties in white/bright color */
   font-weight: 600;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-up,
+  .reveal-fade {
+    opacity: 1;
+    animation: none;
+    transform: none;
+  }
+
+  .showcase-card,
+  .showcase-bg {
+    transition: none;
+  }
+
+  .showcase-card:hover .showcase-bg {
+    transform: none;
+  }
 }
 
