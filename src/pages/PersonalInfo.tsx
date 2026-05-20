@@ -1,9 +1,12 @@
 /* src/pages/PersonalInfo.tsx */
 //import React from 'react';
 import './css/PersonalInfo.css'; 
+import AsciiBackground from '../components/AsciiBackground';
 
 const PersonalInfoPage = () => {
   return (
+    <>
+    <AsciiBackground />
     <div className="resume-page">
       <section className="section resume-container">
         <div className="section-header">
@@ -92,6 +95,7 @@ const PersonalInfoPage = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 
