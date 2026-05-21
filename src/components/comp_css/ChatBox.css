@@ -73,7 +73,9 @@
   .chatbox-sidebar-header h3 {
     margin: 0;
     font-size: 1rem;
-    color: var(--color-text-secondary);
+    color: var(--color-text);
+    font-family: var(--font-family-primary);
+    font-weight: 700;
   }
 
   .chatbox-channels {
@@ -86,7 +88,7 @@
   .channel-item {
     padding: 0.75rem 1rem;
     cursor: pointer;
-    color: var(--color-text-secondary);
+    color: var(--color-text);
     font-weight: 500;
     transition: background-color 0.2s;
     display: flex;
@@ -133,7 +135,9 @@
   .chatbox-header h2 {
     margin: 0;
     font-size: 1.2rem;
-    color: var(--color-text);
+    color: var(--color-primary);
+    font-family: var(--font-family-primary);
+    font-weight: 700;
   }
 
   .chatbox-controls {

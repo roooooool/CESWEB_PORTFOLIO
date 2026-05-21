@@ -40,6 +40,9 @@ const CHANNELS = [
 ];
 
 const ChatBox = forwardRef<ChatBoxHandle, ChatBoxProps>(({ isOpen, onClose, onOpen, user }, ref) => {
+const [omTheme, _setOmTheme] = useState<'dark' | 'light'>(
+        () => (localStorage.getItem('om_theme') as 'dark' | 'light') ?? 'light'
+    );
   const [isMinimized, setIsMinimized] = useState(false);
   const [activeChannel, setActiveChannel] = useState('Dispatch');
   const [channelMessages, setChannelMessages] = useState<Record<string, MessageWithStatus[]>>({});
@@ -454,6 +457,7 @@ const ChatBox = forwardRef<ChatBoxHandle, ChatBoxProps>(({ isOpen, onClose, onOp
 
   if (isOpen) {
         return ReactDOM.createPortal(
+            <div data-om-theme={omTheme === 'light' ? 'light' : undefined} style={{ display: 'contents' }}>
             <div className={isMaximized ? "chatbox-maximized-wrapper" : ""} style={{background: 'var(--color-bg)'}}>{/** Extra wrapper to handle z-index and centering when maximized */}
             <Draggable handle=".chatbox-header" nodeRef={nodeRef} disabled={isMaximized}>
             <div 
@@ -544,7 +548,7 @@ const ChatBox = forwardRef<ChatBoxHandle, ChatBoxProps>(({ isOpen, onClose, onOp
                     </div>
                 </div>
             </div>
-            </Draggable></div>,
+            </Draggable></div></div>,
             document.body
         );
     }

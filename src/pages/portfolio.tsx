@@ -20,7 +20,7 @@ import CpuIcon from '../components/ui/cpu-icon';
 import LinkIcon from '../components/ui/link-icon';
 import type { AnimatedIconHandle } from '../components/ui/types';
 
-import { Network, Database, Warehouse, Server, ChevronRight, ChevronLeft } from 'lucide-react';
+import { Network, Database, Warehouse, Server, ChevronRight, ChevronLeft, Plus, Minus, ThumbsUp } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
 
 const CODE_PATTERN_TOKENS = [
@@ -304,6 +304,8 @@ function PortfolioPage() {
           </div>
 
           <div className="hero-mobile-photo-spacer" aria-hidden="true" />
+
+          <div className="hero-back-pattern" aria-hidden="true" />
 
         </header>
       </section>
@@ -676,7 +678,11 @@ function PortfolioPage() {
             </p>
           </div>
           <div className="architecture-list">
-            <article className="architecture-card">
+            <article className="architecture-card architecture-card--featured">
+              <span className="architecture-recommended-badge">
+                <ThumbsUp size={18} aria-hidden="true" className="architecture-recommended-icon" />
+                <span className="architecture-recommended-text">PROFICIENT!</span>
+              </span>
               <div className="architecture-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="3" y="3" width="7" height="7" rx="1.5" />
@@ -685,9 +691,27 @@ function PortfolioPage() {
                   <rect x="14" y="14" width="7" height="7" rx="1.5" />
                 </svg>
               </div>
-              <div>
+              <div className="architecture-content">
                 <h4>Power App Code Apps + React + Vite</h4>
                 <p>Combine Power Platform with modern React tooling for polished, hybrid enterprise apps.</p>
+                <div className="architecture-detail-grid">
+                  <div className="architecture-panel">
+                    <h5>Strengths</h5>
+                    <ul>
+                      <li className="architecture-bullet-item architecture-bullet-item--strength"><Plus size={14} aria-hidden="true" />Fast delivery through reusable Power Platform components and custom React modules.</li>
+                      <li className="architecture-bullet-item architecture-bullet-item--strength"><Plus size={14} aria-hidden="true" />Clean UI layer with Vite build speed and modern TypeScript developer experience.</li>
+                      <li className="architecture-bullet-item architecture-bullet-item--strength"><Plus size={14} aria-hidden="true" />Great for internal business apps needing both low-code agility and advanced UX.</li>
+                    </ul>
+                  </div>
+                  <div className="architecture-panel architecture-panel--caution">
+                    <h5>Tradeoffs</h5>
+                    <ul>
+                      <li className="architecture-bullet-item architecture-bullet-item--tradeoff"><Minus size={14} aria-hidden="true" />Governance is needed to avoid logic split between low-code and frontend codebases.</li>
+                      <li className="architecture-bullet-item architecture-bullet-item--tradeoff"><Minus size={14} aria-hidden="true" />Requires clear deployment flow for environment variables, connectors, and app bundles.</li>
+                    </ul>
+                  </div>
+                </div>
+                <p className="architecture-note"><strong>Best fit:</strong> Enterprise teams that need quick iteration without sacrificing maintainable frontend quality.</p>
               </div>
             </article>
             <article className="architecture-card">
@@ -698,9 +722,27 @@ function PortfolioPage() {
                   <path d="M4 12c0 1.657 3.582 3 8 3s8-1.343 8-3" />
                 </svg>
               </div>
-              <div>
+              <div className="architecture-content">
                 <h4>T-SQL + Microsoft On-premise Gateway</h4>
                 <p>Design data pipelines and gateways that keep enterprise systems connected and secure.</p>
+                <div className="architecture-detail-grid">
+                  <div className="architecture-panel">
+                    <h5>Strengths</h5>
+                    <ul>
+                      <li className="architecture-bullet-item architecture-bullet-item--strength"><Plus size={14} aria-hidden="true" />Reliable bridge for legacy SQL Server workloads that cannot move fully to cloud yet.</li>
+                      <li className="architecture-bullet-item architecture-bullet-item--strength"><Plus size={14} aria-hidden="true" />Fine-grained query control with T-SQL optimization for speed and reporting stability.</li>
+                      <li className="architecture-bullet-item architecture-bullet-item--strength"><Plus size={14} aria-hidden="true" />Supports secure hybrid architecture across cloud dashboards and on-prem infrastructure.</li>
+                    </ul>
+                  </div>
+                  <div className="architecture-panel architecture-panel--caution">
+                    <h5>Tradeoffs</h5>
+                    <ul>
+                      <li className="architecture-bullet-item architecture-bullet-item--tradeoff"><Minus size={14} aria-hidden="true" />Gateway uptime, patching, and firewall rules must be actively maintained.</li>
+                      <li className="architecture-bullet-item architecture-bullet-item--tradeoff"><Minus size={14} aria-hidden="true" />Heavy workloads need query tuning and indexing discipline to avoid bottlenecks.</li>
+                    </ul>
+                  </div>
+                </div>
+                <p className="architecture-note"><strong>Best fit:</strong> Organizations running critical on-prem databases that still need modern cloud reporting and automation.</p>
               </div>
             </article>
             <article className="architecture-card">
@@ -711,9 +753,27 @@ function PortfolioPage() {
                   <line x1="12" y1="4" x2="12" y2="20" />
                 </svg>
               </div>
-              <div>
+              <div className="architecture-content">
                 <h4>Python + Selenium + PyQT + pyodbc</h4>
                 <p>Automate browser workflows, build desktop UIs, and connect to data sources with Python tooling.</p>
+                <div className="architecture-detail-grid">
+                  <div className="architecture-panel">
+                    <h5>Strengths</h5>
+                    <ul>
+                      <li className="architecture-bullet-item architecture-bullet-item--strength"><Plus size={14} aria-hidden="true" />Powerful for end-to-end automation from web data collection to local processing tools.</li>
+                      <li className="architecture-bullet-item architecture-bullet-item--strength"><Plus size={14} aria-hidden="true" />PyQT desktop layer helps deliver internal operator apps with custom workflow controls.</li>
+                      <li className="architecture-bullet-item architecture-bullet-item--strength"><Plus size={14} aria-hidden="true" />pyodbc integration supports direct data exchange with enterprise SQL environments.</li>
+                    </ul>
+                  </div>
+                  <div className="architecture-panel architecture-panel--caution">
+                    <h5>Tradeoffs</h5>
+                    <ul>
+                      <li className="architecture-bullet-item architecture-bullet-item--tradeoff"><Minus size={14} aria-hidden="true" />UI testing and browser automation can be brittle if target websites change often.</li>
+                      <li className="architecture-bullet-item architecture-bullet-item--tradeoff"><Minus size={14} aria-hidden="true" />Desktop distribution needs packaging strategy for versioning and dependency updates.</li>
+                    </ul>
+                  </div>
+                </div>
+                <p className="architecture-note"><strong>Best fit:</strong> Teams needing practical automation and desktop-assisted operations connected to existing enterprise data.</p>
               </div>
             </article>
           </div>

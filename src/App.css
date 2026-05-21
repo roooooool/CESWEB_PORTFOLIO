@@ -297,13 +297,33 @@
   );
 }
 
+.hero-back-pattern {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(148, 163, 184, 0.18) 1px, transparent 1.3px),
+    linear-gradient(120deg, rgba(56, 189, 248, 0.08) 0%, rgba(34, 211, 238, 0) 42%),
+    repeating-linear-gradient(
+      -35deg,
+      rgba(14, 116, 144, 0.14) 0,
+      rgba(14, 116, 144, 0.14) 1px,
+      transparent 1px,
+      transparent 14px
+    );
+  background-size: 22px 22px, 100% 100%, 100% 100%;
+  background-position: center, center, center;
+  opacity: 0.5;
+}
+
 .hero-code-pattern::after {
   content: '';
   display: inline-block;
   width: 100%;
 }
 
-.hero > *:not(.hero-code-pattern) {
+.hero > *:not(.hero-code-pattern):not(.hero-back-pattern) {
   position: relative;
   z-index: 2;
 }
@@ -630,6 +650,7 @@
   max-width: 100%;
   margin: 0;
   padding: 3rem 1.5rem;
+  gap: 20px;
 }
 
 .demo-content {
@@ -638,6 +659,7 @@
   overflow: auto;
   border-radius: 5px;
   border: var(--dot-border-size) dashed var(--dot-border-neon);
+  margin-top: 20px;
 }
 
 .stats-grid {
@@ -842,18 +864,19 @@
 .fill-50 { width: 50%; }
 
 .architecture-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
   margin-top: 1.5rem;
 }
 
 .architecture-card {
   display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 1rem;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 1.25rem;
   align-items: start;
-  padding: 1.6rem;
+  position: relative;
+  padding: 1.75rem;
   border-radius: var(--card-radius);
   background: var(--architecture-bg);
   border: 1px solid var(--architecture-border);
@@ -864,6 +887,90 @@
 .architecture-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 28px 70px rgba(15, 23, 42, 0.1);
+}
+
+.architecture-card--featured {
+  padding: 2.15rem;
+  border: 3px solid #f6ff00;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 0, 0.55),
+    0 22px 58px rgba(199, 202, 4, 0.32);
+  transition: box-shadow 320ms cubic-bezier(0.22, 0.61, 0.36, 1), transform 320ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.architecture-card--featured:hover {
+  box-shadow:
+    0 0 0 1px rgba(242, 255, 0, 0.75),
+    0 32px 82px rgba(185, 202, 4, 0.4);
+}
+
+.architecture-recommended-badge {
+  position: absolute;
+  top: -0.92rem;
+  right: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.92rem;
+  border-radius: 999px;
+  border: 2px solid rgba(254, 240, 138, 0.95);
+  background: linear-gradient(135deg, rgba(251, 255, 0, 0.97), rgba(255, 251, 0, 0.97));
+  color: #422006;
+  font-size: 0.84rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  box-shadow: 0 12px 26px rgba(202, 138, 4, 0.38);
+}
+
+.architecture-recommended-badge svg {
+  color: #713f12;
+  stroke-width: 2.6;
+}
+
+.architecture-recommended-icon {
+  transform-origin: center;
+  animation: likeTap 1.7s cubic-bezier(0.2, 0.7, 0.2, 1) infinite;
+}
+
+.architecture-recommended-text {
+  display: inline-block;
+  animation: proficientBounce 1.7s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+}
+
+@keyframes likeTap {
+  0%,
+  100% {
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+  18% {
+    transform: translateY(-1px) scale(1.05) rotate(-7deg);
+  }
+  32% {
+    transform: translateY(0) scale(0.88) rotate(9deg);
+  }
+  45% {
+    transform: translateY(-2px) scale(1.16) rotate(-4deg);
+  }
+  58% {
+    transform: translateY(0) scale(1.02) rotate(2deg);
+  }
+}
+
+@keyframes proficientBounce {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  34% {
+    transform: scale(1.14);
+  }
+  52% {
+    transform: scale(0.96);
+  }
+  66% {
+    transform: scale(1.06);
+  }
 }
 
 .architecture-icon {
@@ -891,6 +998,81 @@
   margin: 0.55rem 0 0;
   color: var(--text-muted);
   line-height: 1.7;
+}
+
+.architecture-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.architecture-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.architecture-panel {
+  background: color-mix(in srgb, var(--card-bg) 70%, transparent 30%);
+  border: 1px solid color-mix(in srgb, var(--architecture-border) 75%, transparent 25%);
+  border-radius: 14px;
+  padding: 0.75rem 0.85rem;
+}
+
+.architecture-panel h5 {
+  margin: 0;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-heading);
+}
+
+.architecture-panel ul {
+  margin: 0.55rem 0 0;
+  padding-left: 0;
+  list-style: none;
+  color: var(--text-muted);
+  display: grid;
+  gap: 0.35rem;
+}
+
+.architecture-panel li {
+  line-height: 1.65;
+  font-size: 1.02rem;
+}
+
+.architecture-bullet-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+}
+
+.architecture-bullet-item svg {
+  flex-shrink: 0;
+  margin-top: 0.16rem;
+  stroke-width: 2.4;
+}
+
+.architecture-bullet-item--strength svg {
+  color: #39ff14;
+  filter: drop-shadow(0 0 6px rgba(57, 255, 20, 0.45));
+}
+
+.architecture-bullet-item--tradeoff svg {
+  color: #facc15;
+  filter: drop-shadow(0 0 6px rgba(250, 204, 21, 0.45));
+}
+
+.architecture-panel--caution {
+  border-color: color-mix(in srgb, #f59e0b 40%, var(--architecture-border) 60%);
+  background: color-mix(in srgb, #f59e0b 10%, transparent 90%);
+}
+
+.architecture-note {
+  margin-top: 0;
+  padding-top: 0.55rem;
+  border-top: 1px dashed color-mix(in srgb, var(--architecture-border) 75%, transparent 25%);
+  font-size: 0.95rem;
 }
 
 .low-tech .card {
@@ -933,6 +1115,10 @@
 @media (max-width: 1024px) {
   .skill-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .architecture-detail-grid {
+    grid-template-columns: 1fr;
   }
   
   .skill-item:nth-child(1),
@@ -1068,6 +1254,27 @@
   
   .header-description p {
     font-size: 0.95rem;
+  }
+
+  .architecture-card {
+    grid-template-columns: 1fr;
+    padding: 1.35rem;
+  }
+
+  .architecture-recommended-badge {
+    right: 0.85rem;
+    top: -0.8rem;
+    padding: 0.42rem 0.74rem;
+    font-size: 0.74rem;
+  }
+
+  .architecture-card--featured {
+    padding: 1.6rem;
+  }
+
+  .architecture-icon {
+    width: 2.9rem;
+    height: 2.9rem;
   }
 }
 
