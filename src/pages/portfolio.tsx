@@ -29,7 +29,7 @@ const CODE_PATTERN_TOKENS = [
   'REACT', 'NODE', 'SQL', 'JSON', 'FETCH()', 'COMMIT', 'MERGE', 
   'DEPLOY', 'PIPELINE', 'STACK', 'ASYNC', 'PROMISE', 'HOOK', 
   'COMPONENT', 'CLOUD', 'BUILD', 'DEBUG', 'SCRIPT', 'ENDPOINT', 
-  'CACHE', 'GIT', 'TYPES',
+  'CACHE', 'GIT', 'TYPES', 'INTERFACE', 'CLASS', 'FUNCTION', 'MODULE', 'PACKAGE',
 ];
 
 const EXTENDED_CODE_PATTERN_TOKENS =  [
@@ -37,7 +37,7 @@ const EXTENDED_CODE_PATTERN_TOKENS =  [
   '=>', '{', '}', '=> {', '();', '[]', '<>', '</>', '===', 'const', 
   'export', 'import', 'async', 'await', '??', '&&', '||', '?.', 
   'interface', 'type', '.map(() =>', 'private', 'readonly', 'static',
-  ': string', ': number', 'as', 'from', '...props', '0x1A4F', '0o755' ,
+  ': string', ': number', 'as', 'from', '...props', '0x1A4F', '0o755' , '(count: number) =>', 'function*', 'yield', 'try {', 'catch (error)', 'finally {',
 ];
 
 const buildHeroCodePattern = (count: number) =>
@@ -50,7 +50,7 @@ const buildHeroCodePattern = (count: number) =>
 const getHeroPatternTokenCounts = (width: number, height: number) => {
   const BASE_WIDTH = 1366;
   const BASE_HEIGHT = 768;
-  const BASE_BUFFER = 20;
+  const BASE_BUFFER = 15;
   const BASE_MAIN = 50;
 
   const areaScale = Math.sqrt((width * height) / (BASE_WIDTH * BASE_HEIGHT));
@@ -84,13 +84,14 @@ function PortfolioPage() {
   const arduinoIconRef = useRef<AnimatedIconHandle | null>(null);
   const cppIconRef = useRef<AnimatedIconHandle | null>(null);
   const dotnetIconRef = useRef<AnimatedIconHandle | null>(null);
+  const hasUsedStartupBufferRef = useRef(false);
   const [patternSeed, setPatternSeed] = useState(0);
   const [heroPatternCounts, setHeroPatternCounts] = useState(() =>
     getHeroPatternTokenCounts(window.innerWidth, window.innerHeight)
   );
   const heroCodeBuffer = useMemo(
     () => buildHeroCodePattern(heroPatternCounts.buffer),
-    [heroPatternCounts.buffer, patternSeed]
+    [heroPatternCounts.buffer]
   );
   const fullHeroCodePattern = useMemo(
     () => `${heroCodeBuffer} ${buildHeroCodePattern(heroPatternCounts.main)}`,
@@ -202,7 +203,7 @@ function PortfolioPage() {
   useEffect(() => {
     const hostWindow = window as Window;
     const prefersReducedMotion = hostWindow.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const minVisibleChars = heroCodeBuffer.length;
+    const minVisibleChars = hasUsedStartupBufferRef.current ? 0 : heroCodeBuffer.length;
 
     if (prefersReducedMotion) {
       setHeroCodePattern(fullHeroCodePattern);
@@ -231,9 +232,12 @@ function PortfolioPage() {
 
       if (isDeleting && charIndex <= minVisibleChars) {
         isDeleting = false;
+        if (!hasUsedStartupBufferRef.current) {
+          hasUsedStartupBufferRef.current = true;
+        }
         setPatternSeed((seed) => seed + 1);
       }
-    }, 24);
+    }, 20);
 
     return () => hostWindow.clearInterval(typingInterval);
   }, [fullHeroCodePattern, heroCodeBuffer]);
@@ -280,8 +284,6 @@ function PortfolioPage() {
               <a href="#contact" className="button secondary">Contact me</a>
             </div>
           </div>
-
-          <div className="hero-mobile-photo-spacer" aria-hidden="true" />
           
           <div className="hero-meta-row reveal reveal-fade animation-delay-600">
             <div className="hero-badges">
@@ -300,6 +302,9 @@ function PortfolioPage() {
               <ChevronRight size={20} />
             </a>
           </div>
+
+          <div className="hero-mobile-photo-spacer" aria-hidden="true" />
+
         </header>
       </section>
 

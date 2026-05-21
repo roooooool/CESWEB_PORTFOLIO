@@ -31,7 +31,7 @@
 
   --primary: oklch(0.205 0 0);
   --primary-foreground: oklch(0.985 0 0);
-  --secondary-bg: rgba(244, 185, 176, 0.2);
+  --secondary-bg: rgba(244, 185, 176, 0.5);
   --secondary-foreground: oklch(0.205 0 0);
   --button-radius: 999px;
   --button-padding: 0.95rem 1.6rem;
@@ -141,7 +141,7 @@
 
   --primary: #2a3fe5;
   --primary-foreground: #f8fafc;
-  --secondary-bg: rgba(244, 185, 176, 0.2);
+  --secondary-bg: rgba(244, 185, 176, 0.5);
   --secondary-foreground: #ffffff;
 
   --nav-link: #e2e8f0;

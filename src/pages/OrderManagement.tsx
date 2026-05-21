@@ -43,7 +43,7 @@ import './css/gsdc.theme.css';
 // Custom Components
 import TableView,  { type ColumnConfig, type scrollToConfig, encodeColumnName as enc } from '../components/ewul_TableFlex';
 import DateRangePicker from '../components/ewul_DateRangePicker';
-// import TripGroup_DonutChart from '../components/tripGroup_DonutChart'; 
+import TripGroup_DonutChart from '../components/tripGroup_DonutChart'; 
 import OrderDistributionForm, { type OrderDistributionFormRef, type FormUserInfo } from '../components/OrderDistributionForm';
 import Modal from '../components/ewul_Modal';
 import AutoDismissBanner from '../components/ewul_Banner';
@@ -1385,14 +1385,14 @@ const OrderManagement: React.FC = () => {
                             <div className="mini-dashboard-stack">
                                 <div className="chart-container-card">
                                     <h4 className="chart-title">Trip Distribution</h4>
-                                    ({/*<TripGroup_DonutChart 
+                                    (<TripGroup_DonutChart 
                                         key={selectedRange?.from || 'initial'}
                                         BU={null}
                                         fromStr={selectedRange?.from || ""} 
                                         toStr={selectedRange?.to || ""} 
-                                        onChartClick={handleDonutInteraction}
+                                        // onChartClick={/*handleDonutInteraction*/ null}
                                         orientation='vertical'
-                                    />*/})
+                                    />)
                                 </div>
 
                                 <div className="sidebar-stats-grid">

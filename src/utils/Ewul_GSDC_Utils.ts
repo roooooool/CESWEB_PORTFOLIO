@@ -1,8 +1,11 @@
-/* POWER APPS UTILITY FOR GSDC SHENANIGANS  by ewul*/
-import type { IOperationResult } from '@microsoft/power-apps/data';
+/* Utility helpers for GSDC shenanigans by ewul */
 // import type { IGetAllOptions } from '../generated/models/CommonModels';
 // import { DMS_updatedService } from '../generated/services/DMS_updatedService';
 import { DMS_ATTACHMENTS_ENDPOINT } from '../truth.config';
+
+type OperationResult<T> = {
+  data?: T;
+};
 
 /**
  * Bypasses the standard 2,000-row delegation limit of Power Apps/OData services 
@@ -27,7 +30,7 @@ import { DMS_ATTACHMENTS_ENDPOINT } from '../truth.config';
  * );
  */
 export const ewulFetchAll = async <T>(
-  service: { getAll: (options?: any) => Promise<IOperationResult<T[]>> },
+  service: { getAll: (options?: any) => Promise<OperationResult<T[]>> },
   options: any,
   targetTop: number = 5000,
   keyField?: keyof T // parameter for deduplication

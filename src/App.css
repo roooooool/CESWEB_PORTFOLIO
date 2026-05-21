@@ -269,7 +269,7 @@
   line-height: 1.36;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: rgba(210, 231, 255, 0.05);
+  color: rgba(210, 231, 255, 0.12);
   white-space: normal;
   overflow-wrap: anywhere;
   text-wrap: pretty;
@@ -283,7 +283,7 @@
     to bottom,
     rgba(0, 0, 0, 0) 0%,
     rgba(0, 0, 0, 0.12) 35%,
-    rgba(0, 0, 0, 0.6) 40%,
+    rgba(0, 0, 0, 0.6) 50%,
     rgba(0, 0, 0, 1) 68%,
     rgba(0, 0, 0, 1) 100%
   );
@@ -291,7 +291,7 @@
     to bottom,
     rgba(0, 0, 0, 0) 0%,
     rgba(0, 0, 0, 0.12) 35%,
-    rgba(0, 0, 0, 0.6) 40%,
+    rgba(0, 0, 0, 0.6) 50%,
     rgba(0, 0, 0, 1) 68%,
     rgba(0, 0, 0, 1) 100%
   );
