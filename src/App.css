@@ -965,7 +965,7 @@
   }
 
   .hero::before {
-    background-size: auto 42%;
+    background-size: auto clamp(24%, 42vw, 42%);
     background-position: center calc(100% + 20px);
   }
 
