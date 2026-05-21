@@ -148,10 +148,10 @@ export const loadDemoDonutTotals = async (BU: string | null | undefined, fromStr
       return;
     }
 
-    totals[`Assigned_${row.tripgroup}`] = (totals[`Assigned_${row.tripgroup}`] || 0) + row.assigned;
-    totals[`DispSrc_${row.tripgroup}`] = (totals[`DispSrc_${row.tripgroup}`] || 0) + row.source;
-    totals[`DispDst_${row.tripgroup}`] = (totals[`DispDst_${row.tripgroup}`] || 0) + row.destination;
-    totals[`Done_${row.tripgroup}`] = (totals[`Done_${row.tripgroup}`] || 0) + row.done;
+    totals[`Assigned_${row.tripgroup}`] = (totals[`Assigned_${row.tripgroup}`] || 0) + (row.assigned || 0);
+    totals[`DispSrc_${row.tripgroup}`] = (totals[`DispSrc_${row.tripgroup}`] || 0) + (row.source || 0);
+    totals[`DispDst_${row.tripgroup}`] = (totals[`DispDst_${row.tripgroup}`] || 0) + (row.destination || 0);
+    totals[`Done_${row.tripgroup}`] = (totals[`Done_${row.tripgroup}`] || 0) + (row.done || 0);
   });
 
   return totals;
@@ -166,7 +166,7 @@ export const loadDemoBarTotals = async (BU: string | null | undefined, fromStr: 
       return;
     }
 
-    totals[row.status] = (totals[row.status] || 0) + row.count;
+    totals[row.status] = (totals[row.status] || 0) + (row.count || 0);
   });
 
   return totals;
