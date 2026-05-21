@@ -277,6 +277,8 @@ function PortfolioPage() {
               <a href="#contact" className="button secondary">Contact me</a>
             </div>
           </div>
+
+          <div className="hero-mobile-photo-spacer" aria-hidden="true" />
           
           <div className="hero-meta-row reveal reveal-fade animation-delay-600">
             <div className="hero-badges">
@@ -432,7 +434,7 @@ function PortfolioPage() {
 
 
   <div className="portfolio-page">
-  <main>
+    <main>
         <section id="tech-stack" className="section card-group">
           <div className="section-header">
             <h2>Tools &amp; Tech I utilize</h2>
@@ -751,9 +753,9 @@ function PortfolioPage() {
           </div>
         </section>
       </main>
-      </div>
     </div>
-    </>
+  </div>
+  </>
   )
 }
 

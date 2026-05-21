@@ -8,8 +8,9 @@ import { Menu, X, MessageSquare } from 'lucide-react'; // Import icons for hambu
 import NotificationBell  from './NotificationBell'; // Import the new component
 import ChatBox, { type ChatBoxHandle } from './ChatBox'; // Import the new ChatBox component and its handle
 import TaskTracker from './ewul_TripTaskTracker';
-
+import '../pages/css/gsdc.theme.css';
 import { useUser  } from "../utils/useUser";
+
 
 
 import profile_icon_placeholder from "../../public/icons/pwhite.svg"; // Placeholder profile icon path

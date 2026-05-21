@@ -32,21 +32,26 @@
     border-radius: 12px; /* Maintain your gentle design */
     z-index: 9999;
     transition: all 0.3s ease-in-out;
+
+    background-color: var(--color-bg) !important;
+}
+
+.chatbox-container{
+  background-color: var(--color-bg) !important;
 }
 
 .chatbox-maximized-wrapper {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;    /* Vertical center */
-    justify-content: center; /* Horizontal center */
-    background: rgba(0, 0, 30, 0.4); /* Slightly dark Navy tint */
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    z-index: 9999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;    /* Vertical center */
+  justify-content: center; /* Horizontal center */
+  background: #1c1c22; /* Solid dark background */
+  /* Removed backdrop-filter for solid color */
+  z-index: 9999;
 }
 
 

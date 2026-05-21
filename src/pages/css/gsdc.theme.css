@@ -1,0 +1,262 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Mono:wght@400;700&display=swap');
+
+
+
+/* =========================
+   GLOBAL OVERRIDES
+   ========================= */
+@layer base {
+  body {
+    /*@apply bg-slate-50 text-slate-900;*/
+    margin: 0;
+    font-family: "Space Mono", "Courier New", monospace;
+  }
+}
+
+
+/* =========================
+   ROOT VARIABLES — DARK (DEFAULT)
+   Used exclusively by OrderManagement / DMS pages.
+   Toggle via [data-om-theme="light"] on the page wrapper.
+========================= */
+[data-om-theme="light"]  {
+  --color-primary: rgba(9, 33, 98, 1); /* Navy Blue */
+  --color-primary-hover: color-mix(in srgb, var(--color-primary) 80%, black 20%);
+  --color-primary-2: #3a4efc;
+  --color-primary-3: #2600ff; /* lighter blue for accents */
+  --color-primary-light: #c7d2fe; /* Light Navy for backgrounds */
+  --color-accent: #da1613;
+  --color-accent-dark: #a30906;    
+  --color-accent-light: #ff0400;         /* Red */
+  --color-bg: #ffffff;   
+  --color-bg-dark: #1c1c22;                /* Dark background */
+  --color-bg-blue: #f8fafc;
+  --color-text: #1a1a1a;
+  --color-text-2: #ffffff;
+  --color-muted: #666;
+  --color-border: #e0e0e0;
+
+  --color-bg-hover:#f1f5f9; /* Light grey for hover states */
+  --color-mix-hover:#000000;
+
+  --color-orange: #ff8000;
+  --color-yellow: #ebb52a;
+  --color-green: #28a745;
+  --color-red: rgb(235, 54, 30);
+  --color-darkslategray: #334155;
+
+  --radius: 10px;
+  --transition: 0.2s ease-in-out;
+
+  --bg-gradient-main: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary) 25%, var(--color-accent) 100%);
+  --bg-gradient-main-eq: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  --bg-gradient-light: linear-gradient(135deg, var(--color-primary-3) 0%, var(--color-accent) 100%);
+  --input-gradient: linear-gradient(135deg, var(--color-primary), var(--color-accent), var(--color-primary-3));
+  --loadbar-gradient: linear-gradient(
+    90deg, 
+    transparent 0%,       /* Start Navy */
+    var(--color-primary-3) 10%,    /* Quick transition to Light Blue */
+    var(--color-accent) 20%,       /* Start Red early... */
+    var(--color-accent) 80%,       /* ...and keep it Red until 80% */
+    var(--color-primary-3) 90%,    /* Transition back to Light Blue */
+    transparent 100%      /* End Navy */
+  );
+
+
+  /* Status Border Variables */
+  --color-border-row: #3a4efc;
+  --color-border-success: #22c55e;
+  --color-border-warning: #f59e42;
+  --color-border-info: #3a4efc;
+  --color-border-danger: #ef4444;
+
+
+  /* Status Background Variables */
+  --color-bg-success: #e6fbe8;
+  --color-bg-warning: #fff7e6;
+  --color-bg-info: #e0f7fa;
+  --color-bg-danger: #fff1f2;
+
+  /* TRIP PROGRESS COLORS */
+  --progress-newtrip: #ff00d9;   /* Vibrant Magenta */
+  --progress-assigned: #092162;    /* Navy (Primary) */
+  --progress-source: var(--color-yellow);      /* Gold */
+  --progress-destination: var(--color-orange); /* Orange */
+  --progress-done: var(--color-green);        /* Professional Green (Success) */
+
+  --color-input-disabled-bg: #e4f0f8;
+
+
+    /* TYPOGRAPHY */
+    --font-family-primary: 'Lato', sans-serif;
+    --font-family-secondary: 'Inter', sans-serif;
+
+    --font-size-base: 0.875rem;   /* 14px */
+    --font-size-vsm: 0.50rem;      /* 12px */
+    --font-size-sm: 0.75rem;      /* 12px */
+    --font-size-lg: 1rem;         /* 16px */
+    --font-size-vlg: 2rem;
+    --font-size-title: 2rem;      /* Main page titles */
+    --font-size-subtitle: 1.25rem;/* Section/subtitles */
+    --font-size-label: 0.95rem;   /* Form labels, small headings */
+    --font-size-span: 0.92rem;    /* Inline text, spans */
+    --font-size-caption: 0.8rem;  /* Captions, helper text */
+    font-size: var(--font-size-base);
+}
+
+.content-inner-box, .main-content-container {
+  border-radius: 0px !important;
+  padding: 0px !important;
+}
+
+
+/* =========================
+   LIGHT THEME OVERRIDES
+   Applied when the OrderManagement wrapper has [data-om-theme="light"].
+   Only overrides variables that need to change — all others inherit from :root.
+========================= */
+/* [data-om-theme="dark"] {
+  --color-primary-hover: color-mix(in srgb, var(--color-primary) 80%, black 20%);
+  --color-primary-light: #c7d2fe;
+
+  --color-bg: #f8fafc;
+  --color-bg-dark: #ffffff;
+  --color-bg-blue: #eff6ff;
+  --color-text: #111827;
+  --color-text-2: #374151;
+  --color-muted: #64748b;
+  --color-border: #e2e8f0;
+
+  --color-bg-hover: #f1f5f9;
+  --color-mix-hover: #111827;
+
+  --color-orange: #ea580c;
+  --color-green: #16a34a;
+  --color-darkslategray: #475569;
+
+  --color-input-disabled-bg: #e4f0f8;
+
+  /* Status backgrounds — solid pastels for light mode */
+  /* --color-bg-success: #e6fbe8;
+  --color-bg-warning: #fff7e6;
+  --color-bg-info: #e0f7fa;
+  --color-bg-danger: #fff1f2;
+} */ 
+
+
+/*html, 
+body, 
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+
+  body {
+    font-family: var(--font-family-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: var(--font-size-base);
+  }
+}*/
+
+/* =========================
+   GLOBAL RESET
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =========================
+   BODY
+========================= */
+/*body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+/* =========================
+   TYPOGRAPHY
+========================= */
+/*h1, h2, h3 {
+  color: var(--color-primary);
+}
+
+p {
+  color: var(--color-muted);
+}*/
+
+/* =========================
+   BUTTONS
+========================= */
+.btn {
+  padding: 10px 18px;
+  border-radius: var(--radius);
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+/* Primary Button (Blue) */
+.btn-primary {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+/* Accent Button (Red) */
+.btn-accent {
+  background-color: var(--color-accent);
+  color: #fff;
+}
+
+.btn-accent:hover {
+  opacity: 0.9;
+}
+
+/* Outline Button */
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+}
+
+.btn-outline:hover {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+/* =========================
+   INPUTS
+========================= */
+.input {
+  width: 100%;
+  padding: 10px;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  outline: none;
+  transition: var(--transition);
+}
+
+.gradient-input-wrapper input, 
+.gradient-input-wrapper textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  outline: none;
+  transition: var(--transition);
+  background-color: var(--color-bg);
+}
+
+.gradient-input-wrapper input:focus {
+  border-color: var(--color-primary);
+}

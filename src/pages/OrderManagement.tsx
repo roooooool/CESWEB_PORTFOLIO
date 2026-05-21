@@ -13,12 +13,12 @@ import {
     frStatuses,
     GSDC_NAVIGATE_TO_TRIP_key,
 } from '../truth.config';
-import { RefreshCcw, Download, Maximize2, X, Menu } from 'lucide-react';
+import { RefreshCcw, Download, Maximize2, X, Menu, Sun, Moon } from 'lucide-react';
 
 
 // CSS
 import './css/OrderManagement.css';
-//import '../theme.css';
+import './css/gsdc.theme.css';
 
 // Power apps services
 // import { NewTripsView_CEM_unfilteredService} from '../generated/services/NewTripsView_CEM_unfilteredService';
@@ -89,6 +89,15 @@ interface lastOdometerResult {
 }
 
 const OrderManagement: React.FC = () => {
+
+    const [omTheme, setOmTheme] = useState<'dark' | 'light'>(
+        () => (localStorage.getItem('om_theme') as 'dark' | 'light') ?? 'light'
+    );
+    const toggleOmTheme = () => setOmTheme(prev => {
+        const next = prev === 'dark' ? 'light' : 'dark';
+        localStorage.setItem('om_theme', next);
+        return next;
+    });
 
     const { user } = useUser();
     const { addTask } = useTaskWorker();
@@ -910,6 +919,13 @@ const OrderManagement: React.FC = () => {
                 <RefreshCcw size={16} />
                 <span>Refresh</span>
             </button>
+            <button
+                className="header-btn secondary"
+                onClick={toggleOmTheme}
+                title={`Switch to ${omTheme === 'dark' ? 'light' : 'dark'} mode`}
+            >
+                {omTheme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+            </button>
         </>
     );
 
@@ -1294,8 +1310,8 @@ const OrderManagement: React.FC = () => {
     return [previewTrip, ...trips.filter(t => t.OE !== previewTrip.OE)];
     }, [trips, previewTrip]);
     
-
     return (
+        <div data-om-theme={omTheme === 'light' ? 'light' : undefined} style={{ display: 'contents' }}>
         <PageTemplate 
             title="Trip Dispatch" 
             actions={actions} 
@@ -1755,6 +1771,7 @@ const OrderManagement: React.FC = () => {
         
         </div>
     </PageTemplate>
+    </div>
     );
 };
 

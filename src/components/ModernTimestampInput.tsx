@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Calendar } from 'lucide-react';
 import './comp_css/ModernTimestampInput.css';
+import '../pages/css/gsdc.theme.css';
 
 const CustomDateTimePicker = ({ value, onChange, label, disabled, alreadyLocal}: any) => {
   const [isOpen, setIsOpen] = useState(false);

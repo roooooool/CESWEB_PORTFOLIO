@@ -11,6 +11,9 @@ function AsciiBackground() {
     const hostWindow = window as Window;
     const hostDocument = document.documentElement;
     const prefersReducedMotion = hostWindow.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isMobileViewport = hostWindow.matchMedia('(max-width: 720px)').matches;
+    const isCoarsePointer = hostWindow.matchMedia('(pointer: coarse)').matches;
+    const shouldDisableParallax = prefersReducedMotion || isMobileViewport || isCoarsePointer;
     const parallaxStrength = 0.12;
 
     const { destroy } = asciiBackground(element, {
@@ -35,7 +38,9 @@ function AsciiBackground() {
 
     updateCoverage();
 
-    if (prefersReducedMotion) {
+    if (shouldDisableParallax) {
+      element.style.transform = 'translate3d(0, 0, 0)';
+
       const onResizeReduced = () => updateCoverage();
       hostWindow.addEventListener('resize', onResizeReduced);
 

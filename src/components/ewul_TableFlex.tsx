@@ -31,7 +31,7 @@ import { config } from 'maplibre-gl';
 import AutoDismissBanner from './ewul_Banner';
 
 //theme
-import '../theme.css';
+import '../pages/css/gsdc.theme.css';
 
 //UTILS
 import { increaseContrast, getHexFromCssVar } from '../utils/colorUtils';

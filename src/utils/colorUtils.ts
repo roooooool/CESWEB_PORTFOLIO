@@ -1,4 +1,4 @@
-import '../theme.css';
+import '../pages/css/gsdc.theme.css';
 
 /**
  * Increases the contrast of a hex color by boosting the dominant channel.

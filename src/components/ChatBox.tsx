@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Draggable from 'react-draggable';
 import './comp_css/ChatBox.css';
 import { X, Minus, MessageSquare, Maximize2, Minimize2  } from 'lucide-react';
+import '../pages/css/gsdc.theme.css';
 
 // SQL + GATEWAY services
 // import { UserChannelReadStatusService } from '../generated/services/UserChannelReadStatusService';
@@ -453,7 +454,7 @@ const ChatBox = forwardRef<ChatBoxHandle, ChatBoxProps>(({ isOpen, onClose, onOp
 
   if (isOpen) {
         return ReactDOM.createPortal(
-            <div className={isMaximized ? "chatbox-maximized-wrapper" : ""}>
+            <div className={isMaximized ? "chatbox-maximized-wrapper" : ""} style={{background: 'var(--color-bg)'}}>{/** Extra wrapper to handle z-index and centering when maximized */}
             <Draggable handle=".chatbox-header" nodeRef={nodeRef} disabled={isMaximized}>
             <div 
                 ref={nodeRef} 

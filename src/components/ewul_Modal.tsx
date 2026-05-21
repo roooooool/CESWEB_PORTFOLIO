@@ -1,6 +1,7 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
 import './comp_css/ewul_Modal.css';
+import '../pages/css/gsdc.theme.css';
 
 interface ModalProps {
   onClose: () => void;

@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useImperativeHandle, forwardRef } from 'react';
 import { ClipboardList, ChevronDown, ChevronRight, CheckCircle2, Circle, RotateCw, Search, X, XCircle } from 'lucide-react';
 import './comp_css/ewul_TripTaskTracker.css';
+import '../pages/css/gsdc.theme.css';
 import { ewulFetchAll as _, ewul_canFetch as canFetch, formatDate } from '../utils/Ewul_GSDC_Utils';
 import Modal from './ewul_Modal';
 // import { TripTaskTrackerService } from '../generated/services/TripTaskTrackerService';
