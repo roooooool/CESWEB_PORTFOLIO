@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, type ReactNode } from 'react'
+import { useEffect, useMemo, useState, type MouseEvent, type ReactNode } from 'react'
 import './App.css'
 import PortfolioPage from './pages/portfolio'
 import TripDispatchDemo from './pages/demos/TripDispatch'
@@ -29,6 +29,16 @@ const routeMap: Record<string, ReactNode> = {
 }
 
 const internalAnchors = new Set(['portfolio', 'projects', 'skills', 'architecture', 'contact', 'resume'])
+const demoRouteLabels: Record<string, string> = {
+  'trip-dispatch': 'Trip Dispatch',
+  'sales-forecast-dashboard': 'Sales Forecast Dashboard',
+  'live-gps-monitoring': 'Live GPS Monitoring',
+  'web-scraping': 'Web Scraping',
+  'microsoft-graph-api': 'Microsoft Graph API',
+  'sharepoint-rest-api': 'SharePoint REST API',
+  'power-automate': 'Power Automate',
+  'microsoft-lakehouse': 'Microsoft Lakehouse',
+}
 
 function getCurrentRoute(): string {
   const route = window.location.hash.replace('#', '')
@@ -74,15 +84,73 @@ function App() {
     )
   }, [route])
 
+  const breadcrumbParts = useMemo(() => {
+    if (!route || route === 'portfolio') {
+      return [
+        { label: 'Portfolio', href: undefined as string | undefined },
+      ]
+    }
+
+    if (route.startsWith('demo/')) {
+      const demoSlug = route.slice('demo/'.length)
+      const demoLabel = demoRouteLabels[demoSlug] ?? demoSlug.split('-').map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
+      return [
+        { label: 'Portfolio', href: '#portfolio' },
+        { label: 'Demo', href: '#projects' },
+        { label: demoLabel, href: undefined as string | undefined },
+      ]
+    }
+
+    if (internalAnchors.has(route)) {
+      const sectionLabel = route.charAt(0).toUpperCase() + route.slice(1)
+      return [
+        { label: 'Portfolio', href: '#portfolio' },
+        { label: sectionLabel, href: undefined as string | undefined },
+      ]
+    }
+
+    const fallbackLabel = route.split('/').map((part) => part.charAt(0).toUpperCase() + part.slice(1)).join(' / ')
+    return [
+      { label: fallbackLabel, href: undefined as string | undefined },
+    ]
+  }, [route])
+
+  const handleBreadcrumbClick = (event: MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href !== '#projects' || !route.startsWith('demo/')) {
+      return
+    }
+
+    event.preventDefault()
+    window.location.hash = '#portfolio'
+
+    // Wait for portfolio to render, then jump to the section anchor.
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
+        const projectsSection = document.getElementById('projects')
+        if (projectsSection) {
+          projectsSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+          window.location.hash = '#projects'
+          return
+        }
+
+        window.location.hash = '#projects'
+      })
+    })
+  }
+
   return (
     <BrowserRouter>
       <NotificationProvider>
         <TaskWorkerProvider setNotifications={setNotifications}>
           <div className="app-shell">
             <header className="app-header">
-              <nav className="app-nav">
-                <a href="#portfolio">Portfolio</a>
-                <a href="#portfolio">Projects / Demos</a>
+              <nav className="app-nav" aria-label="Current tab">
+                {breadcrumbParts.map((part, index) => (
+                  <span key={`${part.label}-${index}`}>
+                    {part.href ? <a href={part.href} onClick={(event) => handleBreadcrumbClick(event, part.href!)}>{part.label}</a> : <span>{part.label}</span>}
+                    {index < breadcrumbParts.length - 1 && <span aria-hidden="true"> / </span>}
+                  </span>
+                ))}
               </nav>
               <button
                 type="button"

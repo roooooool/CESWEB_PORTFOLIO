@@ -82,6 +82,8 @@
   --dot-border-size: 4px;
   --dot-border-neon: #22d3ee;
   --dot-border-neon-alt: #f4b9b0;
+  --dot-border-neon-yellow: #e1ff00;
+  --dot-border-neon-green: #0dff00;
   --dot-border-soft: rgba(248, 250, 252, 0.45);
   --dot-border-glow: 0 0 0 1px rgba(34, 211, 238, 0.25), 0 0 18px rgba(34, 211, 238, 0.22);
 

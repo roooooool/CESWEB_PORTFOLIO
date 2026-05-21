@@ -245,8 +245,11 @@ function PortfolioPage() {
     <>
     <AsciiBackground />
     <nav className={`top-nav top-nav--sticky ${showStickyNav ? 'top-nav--visible' : ''}`} aria-hidden={!showStickyNav}>
-      {navLinks.map((link) => (
-        <a key={`sticky-${link.href}`} href={link.href}>{link.label}</a>
+      {navLinks.map((link, index) => (
+        <span key={link.href}>
+          <a href={link.href}>{link.label}</a>
+          {index < navLinks.length - 1 && <span> | </span>}
+        </span>
       ))}
     </nav>
     <div className="portfolio-page-main-container">
