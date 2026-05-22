@@ -2,12 +2,12 @@
 
 /* ===== RESUME PAGE ===== */
 .resume-page {
-  background: var(--bg);
+  background: color-mix(in srgb, var(--bg), transparent 50%);
   min-height: 100vh;
   padding: 40px 20px;
 }
 
-.resume-container {
+.resume-container { 
   max-width: 1200px;
   margin: 0 auto;
 }

@@ -20,19 +20,20 @@ const PersonalInfoPage = () => {
             <article className="resume-block">
               <h3 className="resume-label">Work Experience</h3>
               
-              <div className="resume-item">
-                <div className="resume-date">2024 — Present</div>
+              <div className="resume-item highlight-role">
+                <div className="resume-date">2023 — Present</div>
                 <div className="resume-content">
                   <h4>Full-Stack Developer & Systems Engineer</h4>
                   <p className="resume-org">Great Sierra Development Corporation (GSDC) - Logistics & Trucking</p>
-                  <p style={{ fontSize: '0.9rem', fontStyle: 'italic', marginBottom: '12px' }}>
-                    Leading software development for a cement and Rebisco goods distribution company managing fleet logistics and delivery operations.
+                  <p className="resume-role-summary">
+                    Leading digital transformation for logistics and delivery operations, with a focus on automation, data integration, and AI-driven solutions.
                   </p>
-                  <ul>
-                    <li>Developing enterprise logistics software, including "DISPATCH_APP_DMS" for real-time fleet management and delivery tracking.</li>
-                    <li>Designing optimized SQL Server views and stored procedures to handle complex driver attendance, fuel tracking, and cargo management.</li>
-                    <li>Implementing custom React table components with GPS mapping integrations for live monitoring of cement and goods deliveries.</li>
-                    <li>Building data-driven dashboards for logistics optimization, route planning, and performance metrics.</li>
+                  <ul className="resume-bullet-list">
+                    <li>Developed enterprise logistics software, including <strong>DISPATCH_APP_DMS</strong> for real-time fleet management and delivery tracking.</li>
+                    <li>Designed Power Platform proof-of-concepts: Power Apps for driver management, Power Automate flows for notifications, and Dataverse for unified data.</li>
+                    <li>Integrated AI/ML features for predictive analytics and automated reporting using Microsoft and Azure tools.</li>
+                    <li>Built custom React components with GPS mapping and live dashboards for logistics optimization.</li>
+                    <li>Created technical documentation, flow diagrams, and contributed to solution governance and CI/CD practices.</li>
                   </ul>
                 </div>
               </div>

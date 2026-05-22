@@ -318,18 +318,19 @@ function PortfolioPage() {
       >
         <div className="carousel-header-wrapper">
           <div className="section-header">
-            <h2>Projects I have created</h2>
+            <h2>3+ Years of Hands-On Experience!</h2>
             <div className="header-description">
               <p>
                 Over the course of my career, I have specialized in bridging the gap between 
-                complex industrial operations and digital efficiency. My work focuses on 
-                <strong> Efficient logistics, real-time fleet management, and enterprise data modeling</strong>. 
-                I'm also available for <strong> project-based development </strong> and offer free and low-tech alternatives for startups and small businesses.
+                complex logistical operations and data integration. My platform of experties includes 
+                <strong> Power Apps (Canvas Apps & Code Apps)</strong>, <strong>Power Automate</strong>, and <strong>Sharepoint/Datavers/Microsoft Graph API</strong>. 
+                I'm also available for <strong> project-based development </strong> and offer free and low-tech alternatives for startups and small businesses, such as <strong>Custom Python Connectors</strong> and <strong>Google API</strong>.
               </p>
             </div>
           </div>
+          
         </div>
-
+        <div className='carousel-title'><h2>View a Demo of Projects I made:</h2></div>
         <div 
           className="carousel-track" 
           ref={scrollRef}
@@ -388,14 +389,13 @@ function PortfolioPage() {
           <a href="#" className="showcase-card reveal reveal-up animation-delay-2000">
             <div className="showcase-bg" style={{ backgroundColor: '#1a1a1a', backgroundImage: 'linear-gradient(45deg, #071624, #3a4efc)' }}></div>
             <div className="showcase-content">
-              <p className="demo-tag">Upcoming</p>
-              <h4>Inventory Management Pro</h4>
+              <p className="demo-tag">Bots & AI Agent</p>
+              <h4>Digital Web Assistant</h4>
               <p className="showcase-desc">
-                Automated stock tracking system featuring barcode integration and low-stock 
-                predictive alerts using custom Dataverse logic and Power Automate.
+                AI-powered assistant for reminding daily tasks, providing reports on live trip statuses and trucks maintenance schedule. Used to quickly retrieve information and automate routine queries, improving operational efficiency and response times.
               </p>
               <div className="showcase-footer">
-                <span className="button primary">Coming Soon ›</span>
+                <span className="button primary">View Demo</span>
               </div>
             </div>
           </a>
@@ -404,14 +404,13 @@ function PortfolioPage() {
           <a href="#" className="showcase-card reveal reveal-up animation-delay-4000">
             <div className="showcase-bg" style={{ backgroundColor: '#1a1a1a', backgroundImage: 'linear-gradient(45deg, #071624, #ff0000)' }}></div>
             <div className="showcase-content">
-              <p className="demo-tag">System Architecture</p>
-              <h4>Enterprise Data Bridge</h4>
+              <p className="demo-tag">Data Integration & API</p>
+              <h4>Custom Microsoft Connector</h4>
               <p className="showcase-desc">
-                High-speed data ingestion pipeline bridging on-premise SQL databases with 
-                Azure Lakehouse via secure gateways and custom REST API endpoints.
+                Reusable Python connector for seamless integration with Microsoft services and APIs. Easily available through Pip and Github. For connectiong multi-platform data sources to Microsoft Power Platform, enabling custom workflows and data sync across services without needing to build a full custom connector from scratch.
               </p>
               <div className="showcase-footer">
-                <span className="button primary">Under Development ›</span>
+                <span className="button primary">View Documentation</span>
               </div>
             </div>
           </a>
