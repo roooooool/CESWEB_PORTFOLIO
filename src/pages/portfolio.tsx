@@ -324,7 +324,7 @@ function PortfolioPage() {
                 Over the course of my career, I have specialized in bridging the gap between 
                 complex logistical operations and data integration. My platform of experties includes 
                 <strong> Power Apps (Canvas Apps & Code Apps)</strong>, <strong>Power Automate</strong>, and <strong>Sharepoint/Datavers/Microsoft Graph API</strong>. 
-                I'm also available for <strong> project-based development </strong> and offer free and low-tech alternatives for startups and small businesses, such as <strong>Custom Python Connectors</strong> and <strong>Google API</strong>.
+                I'm also available for <strong> project-based development </strong> and offer free and low-tech alternatives for startups and small businesses, such as <strong>Custom API Connectors</strong> and open-source <strong>Google API</strong>.
               </p>
             </div>
           </div>
