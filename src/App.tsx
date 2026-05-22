@@ -1,4 +1,33 @@
 import { useEffect, useMemo, useState, type MouseEvent, type ReactNode } from 'react'
+
+// Floating Scroll-to-Top Button
+function ScrollToTopButton() {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      setVisible(window.scrollY > 200);
+    };
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  const handleClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  return (
+    <button
+      className={`app-scroll-to-top-btn ${!visible ? 'hidden' : ''}`}
+      aria-label="Scroll to top"
+      onClick={handleClick}
+      tabIndex={visible ? 0 : -1}
+    >
+      ↑
+    </button>
+  );
+}
+
 import './App.css'
 import PortfolioPage from './pages/portfolio'
 import TripDispatchDemo from './pages/demos/TripDispatch'
@@ -161,6 +190,7 @@ function App() {
               </button>
             </header>
             <main>{page}</main>
+            <ScrollToTopButton />
           </div>
         </TaskWorkerProvider>
       </NotificationProvider>
