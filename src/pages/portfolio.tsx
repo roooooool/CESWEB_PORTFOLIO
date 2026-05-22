@@ -240,7 +240,7 @@ function PortfolioPage() {
         }
         setPatternSeed((seed) => seed + 1);
       }
-    }, 20);
+    }, 40);
 
     return () => hostWindow.clearInterval(typingInterval);
   }, [fullHeroCodePattern, heroCodeBuffer]);
