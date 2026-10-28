@@ -20,7 +20,8 @@ function AsciiBackground() {
       type: 'morph',
       opacity: 1,
       colorScheme: 'auto',
-      fontSize: 44,
+      fontSize: isMobileViewport ? 58 : 44,
+      speed: isMobileViewport ? 0.35 : 0.5,
       accentColor: '#d4ff00',
     });
 

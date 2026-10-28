@@ -5,6 +5,7 @@ import christianImg from '../assets/ChristianIDpicTransparent.png';
 
 //components
 import AsciiBackground from '../components/AsciiBackground';
+import HeroCodePattern from '../components/HeroCodePattern';
 import BrandChromeIcon from '../components/ui/brand-chrome-icon';
 import Cloud3Icon from '../components/ui/cloud-3-icon';
 import Stack3Icon from '../components/ui/stack-3-icon';
@@ -20,57 +21,18 @@ import CpuIcon from '../components/ui/cpu-icon';
 import LinkIcon from '../components/ui/link-icon';
 import type { AnimatedIconHandle } from '../components/ui/types';
 
-
 import ResumePDF from '../assets/RESUME - Sinag.pdf';
 
 import { Network, Database, Warehouse, Server, ChevronRight, ChevronLeft, Plus, Minus, ThumbsUp } from 'lucide-react';
-import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
-
-const CODE_PATTERN_TOKENS = [
-  // --- Code Keywords ---
-  'DEVELOPMENT', 'API', './ENV', 'RETURN', 'HOST', 'LOCAL', 'SERVER', 
-  'REACT', 'NODE', 'SQL', 'JSON', 'FETCH()', 'COMMIT', 'MERGE', 
-  'DEPLOY', 'PIPELINE', 'STACK', 'ASYNC', 'PROMISE', 'HOOK', 
-  'COMPONENT', 'CLOUD', 'BUILD', 'DEBUG', 'SCRIPT', 'ENDPOINT', 
-  'CACHE', 'GIT', 'TYPES', 'INTERFACE', 'CLASS', 'FUNCTION', 'MODULE', 'PACKAGE',
-];
-
-const EXTENDED_CODE_PATTERN_TOKENS =  [
-  // --- Structural Syntax (The "Mimicry" glue) ---
-  '=>', '{', '}', '=> {', '();', '[]', '<>', '</>', '===', 'const', 
-  'export', 'import', 'async', 'await', '??', '&&', '||', '?.', 
-  'interface', 'type', '.map(() =>', 'private', 'readonly', 'static',
-  ': string', ': number', 'as', 'from', '...props', '0x1A4F', '0o755' , '(count: number) =>', 'function*', 'yield', 'try {', 'catch (error)', 'finally {',
-];
-
-const buildHeroCodePattern = (count: number) =>
-  Array.from({ length: count }, (_, index) => {
-    const source = index % 2 === 0 ? CODE_PATTERN_TOKENS : EXTENDED_CODE_PATTERN_TOKENS;
-    const token = source[Math.floor(Math.random() * source.length)];
-    return token;
-  }).join(' ');
-
-const getHeroPatternTokenCounts = (width: number, height: number) => {
-  const BASE_WIDTH = 1366;
-  const BASE_HEIGHT = 768;
-  const BASE_BUFFER = 15;
-  const BASE_MAIN = 50;
-
-  const areaScale = Math.sqrt((width * height) / (BASE_WIDTH * BASE_HEIGHT));
-  const scale = Math.min(1.55, Math.max(0.65, areaScale));
-
-  return {
-    buffer: Math.max(12, Math.min(36, Math.round(BASE_BUFFER * scale))),
-    main: Math.max(28, Math.min(90, Math.round(BASE_MAIN * scale))),
-  };
-};
+import { useEffect, useRef, useState, type CSSProperties } from 'react';
 
 function PortfolioPage() {
 
   // const initialization
   const scrollRef = useRef<HTMLDivElement>(null);
+  const scrollbarFillRef = useRef<HTMLDivElement>(null);
+  const rafIdRef = useRef<number | null>(null);
   const topNavRef = useRef<HTMLElement>(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [showStickyNav, setShowStickyNav] = useState(false);
@@ -87,20 +49,7 @@ function PortfolioPage() {
   const arduinoIconRef = useRef<AnimatedIconHandle | null>(null);
   const cppIconRef = useRef<AnimatedIconHandle | null>(null);
   const dotnetIconRef = useRef<AnimatedIconHandle | null>(null);
-  const hasUsedStartupBufferRef = useRef(false);
-  const [patternSeed, setPatternSeed] = useState(0);
-  const [heroPatternCounts, setHeroPatternCounts] = useState(() =>
-    getHeroPatternTokenCounts(window.innerWidth, window.innerHeight)
-  );
-  const heroCodeBuffer = useMemo(
-    () => buildHeroCodePattern(heroPatternCounts.buffer),
-    [heroPatternCounts.buffer]
-  );
-  const fullHeroCodePattern = useMemo(
-    () => `${heroCodeBuffer} ${buildHeroCodePattern(heroPatternCounts.main)}`,
-    [heroCodeBuffer, heroPatternCounts.main, patternSeed]
-  );
-  const [heroCodePattern, setHeroCodePattern] = useState(heroCodeBuffer);
+
   const totalCards = 5;
   const navLinks = [
     { href: '#projects', label: 'Projects' },
@@ -128,22 +77,27 @@ function PortfolioPage() {
   };
 
   const handleScroll = () => {
-    if (scrollRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-      const totalScrollable = scrollWidth - clientWidth;
-      const progress = (scrollLeft / totalScrollable) * 100;
-      setScrollProgress(progress);
-      
-      // Calculate current page based on scroll progress
-      const page = Math.max(1, Math.ceil((progress / 100) * totalCards));
-      setCurrentPage(page);
-    }
+    if (rafIdRef.current !== null) return;
+
+    rafIdRef.current = requestAnimationFrame(() => {
+      rafIdRef.current = null;
+      const node = scrollRef.current;
+      if (!node) return;
+
+      const totalScrollable = node.scrollWidth - node.clientWidth;
+      if (totalScrollable <= 0) return;
+
+      const progress = Math.max(10, Math.min(100, (node.scrollLeft / totalScrollable) * 100));
+
+      if (scrollbarFillRef.current) {
+        scrollbarFillRef.current.style.width = `${progress}%`;
+      }
+
+      // Calculate current page and only update state if integer page actually changed
+      const page = Math.max(1, Math.min(totalCards, Math.ceil((node.scrollLeft / totalScrollable) * totalCards) || 1));
+      setCurrentPage((prev) => (prev !== page ? page : prev));
+    });
   };
-
-
-
-
-  //All use effects
 
   useEffect(() => {
     if (isPaused) return;
@@ -158,8 +112,14 @@ function PortfolioPage() {
   useEffect(() => {
     const node = scrollRef.current;
     if (node) {
-      node.addEventListener('scroll', handleScroll);
-      return () => node.removeEventListener('scroll', handleScroll);
+      node.addEventListener('scroll', handleScroll, { passive: true });
+      return () => {
+        node.removeEventListener('scroll', handleScroll);
+        if (rafIdRef.current !== null) {
+          cancelAnimationFrame(rafIdRef.current);
+          rafIdRef.current = null;
+        }
+      };
     }
   }, []);
 
@@ -189,62 +149,6 @@ function PortfolioPage() {
     return () => hostWindow.removeEventListener('scroll', updateStickyVisibility);
   }, []);
 
-  useEffect(() => {
-    const hostWindow = window as Window;
-
-    const updatePatternCounts = () => {
-      setHeroPatternCounts(
-        getHeroPatternTokenCounts(hostWindow.innerWidth, hostWindow.innerHeight)
-      );
-    };
-
-    updatePatternCounts();
-    hostWindow.addEventListener('resize', updatePatternCounts);
-    return () => hostWindow.removeEventListener('resize', updatePatternCounts);
-  }, []);
-
-  useEffect(() => {
-    const hostWindow = window as Window;
-    const prefersReducedMotion = hostWindow.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const minVisibleChars = hasUsedStartupBufferRef.current ? 0 : heroCodeBuffer.length;
-
-    if (prefersReducedMotion) {
-      setHeroCodePattern(fullHeroCodePattern);
-      return;
-    }
-
-    let charIndex = minVisibleChars;
-    let isDeleting = false;
-
-    setHeroCodePattern(fullHeroCodePattern.slice(0, minVisibleChars));
-
-    const typingInterval = hostWindow.setInterval(() => {
-      if (isDeleting) {
-        const deleteStep = Math.floor(Math.random() * 4) + 2;
-        charIndex = Math.max(charIndex - deleteStep, minVisibleChars);
-      } else {
-        const typeStep = Math.floor(Math.random() * 3) + 1;
-        charIndex = Math.min(charIndex + typeStep, fullHeroCodePattern.length);
-      }
-
-      setHeroCodePattern(fullHeroCodePattern.slice(0, charIndex));
-
-      if (!isDeleting && charIndex >= fullHeroCodePattern.length) {
-        isDeleting = true;
-      }
-
-      if (isDeleting && charIndex <= minVisibleChars) {
-        isDeleting = false;
-        if (!hasUsedStartupBufferRef.current) {
-          hasUsedStartupBufferRef.current = true;
-        }
-        setPatternSeed((seed) => seed + 1);
-      }
-    }, 40);
-
-    return () => hostWindow.clearInterval(typingInterval);
-  }, [fullHeroCodePattern, heroCodeBuffer]);
-
 
 
 
@@ -271,7 +175,7 @@ function PortfolioPage() {
           className="hero hero-layout glass-panel neon-shadow reveal reveal-up"
           style={{ '--hero-photo': `url(${christianImg})` } as CSSProperties}
         >
-          <div className="hero-code-pattern" aria-hidden="true">{heroCodePattern}</div>
+          <HeroCodePattern />
           <div className="hero-main reveal reveal-up animation-delay-200">
             <div className="hero-intro">
               <p className="eyebrow">Senior Power Apps Developer</p>
@@ -318,6 +222,8 @@ function PortfolioPage() {
         className="showcase-carousel-container"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
+        onTouchStart={() => setIsPaused(true)}
+        onTouchEnd={() => setIsPaused(false)}
       >
         <div className="carousel-header-wrapper">
           <div className="section-header">
@@ -339,6 +245,8 @@ function PortfolioPage() {
           ref={scrollRef}
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
+          onTouchStart={() => setIsPaused(true)}
+          onTouchEnd={() => setIsPaused(false)}
         >
           {/* Project 1: Trip Dispatch */}
           <a href="#demo/trip-dispatch" className="showcase-card reveal reveal-up animation-delay-200">
@@ -421,10 +329,9 @@ function PortfolioPage() {
 
         <div className="custom-scrollbar-container">
           <div 
+            ref={scrollbarFillRef}
             className="custom-scrollbar-fill" 
-            style={{ 
-              width: `${Math.max(scrollProgress, 10)}%` 
-            }}
+            style={{ width: '10%' }}
           ></div>
         </div>
 

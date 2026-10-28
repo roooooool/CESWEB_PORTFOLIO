@@ -1250,6 +1250,12 @@
 }
 
 @media (max-width: 720px) {
+  .glass-panel {
+    background: rgba(18, 26, 42, 0.88);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+
   .hero-stage {
     min-height: 100svh;
     padding: 1.25rem 1rem;
@@ -1565,6 +1571,8 @@
   gap: 2rem;
   overflow-x: auto;
   scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
   padding: 1rem 0 0rem;
   scrollbar-width: none; 
   -ms-overflow-style: none;
