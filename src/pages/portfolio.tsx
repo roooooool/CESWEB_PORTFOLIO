@@ -249,7 +249,12 @@ function PortfolioPage() {
             onTouchEnd={() => setIsPaused(false)}
           >
             {/* Project 1: Trip Dispatch */}
-            <a href="https://roooooool.github.io/DISPATCH_APP_DEMO/#/fleet" className="showcase-card reveal reveal-up animation-delay-200">
+            <a
+              href="https://roooooool.github.io/DISPATCH_APP_DEMO/#/fleet"
+              className="showcase-card reveal reveal-up animation-delay-200"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <div className="showcase-bg" style={{ backgroundImage: `url(${tripDispatchImg})` }}></div>
               <div className="showcase-content">
                 <p className="demo-tag">Featured Project</p>
@@ -264,14 +269,18 @@ function PortfolioPage() {
               </div>
             </a>
 
-            {/* Project 2: Sales Forecast */}
-            <a href="https://roooooool.github.io/DISPATCH_APP_DEMO/#/fleet" className="showcase-card reveal reveal-up animation-delay-400">
-              <div className="showcase-bg" style={{ backgroundImage: `url(${dashboardImg})` }}></div>
+            {/* Project 2: Sales Forecast wew */}
+            <a
+              href="https://roooooool.github.io/DISPATCH_APP_DEMO/#/fleet"
+              className="showcase-card reveal reveal-up animation-delay-400"
+              target="_blank"
+              rel="noopener noreferrer"
+            >              <div className="showcase-bg" style={{ backgroundImage: `url(${dashboardImg})` }}></div>
               <div className="showcase-content">
                 <p className="demo-tag">Analytics Hub</p>
                 <h4>Sales Analytics & Dashboard</h4>
                 <p className="showcase-desc">
-                  Interactive data visualization platform converting raw sales data into actionable trends
+                  Interactive data visualization platform converting raw sales data into actionable trendss
                   using advanced Power BI integration and automated data refresh cycles.
                 </p>
                 <div className="showcase-footer">
@@ -281,8 +290,12 @@ function PortfolioPage() {
             </a>
 
             {/* Project 3: Live GPS */}
-            <a href="https://roooooool.github.io/DISPATCH_APP_DEMO/#/fleet" className="showcase-card reveal reveal-up animation-delay-600">
-              <div className="showcase-bg" style={{ backgroundImage: `url(${liveGpsImg})` }}></div>
+            <a
+              href="https://roooooool.github.io/DISPATCH_APP_DEMO/#/fleet"
+              className="showcase-card reveal reveal-up animation-delay-600"
+              target="_blank"
+              rel="noopener noreferrer"
+            >              <div className="showcase-bg" style={{ backgroundImage: `url(${liveGpsImg})` }}></div>
               <div className="showcase-content">
                 <p className="demo-tag">Fleet Monitoring</p>
                 <h4>Live Fleet GPS Tracking</h4>
