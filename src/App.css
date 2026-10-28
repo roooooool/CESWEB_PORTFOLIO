@@ -1736,4 +1736,307 @@
   transition: background 0.3s ease, box-shadow 0.3s, transform 0.1s;
 }
 
+/* ==========================================================================
+   TECH STACK & ARCHITECTURE SECTION
+   ========================================================================== */
+.tech-stack-section {
+  margin-bottom: 3.5rem;
+}
+
+.tech-stack-filter-bar {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin: 1.25rem 0 1.5rem;
+}
+
+.tech-filter-btn {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(248, 250, 252, 0.18);
+  color: var(--text-muted);
+  border-radius: 999px;
+  padding: 0.45rem 0.95rem;
+  font-size: 0.82rem;
+  font-family: var(--font-family);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.tech-filter-btn:hover {
+  background: rgba(42, 63, 229, 0.2);
+  border-color: var(--dot-border-neon);
+  color: var(--text);
+  transform: translateY(-1px);
+}
+
+.tech-filter-btn.active {
+  background: linear-gradient(135deg, rgba(34, 211, 238, 0.2), rgba(42, 63, 229, 0.35));
+  border-color: var(--dot-border-neon);
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(34, 211, 238, 0.25);
+}
+
+.tech-filter-count {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  padding: 0.1rem 0.45rem;
+  font-size: 0.7rem;
+}
+
+.tech-stack-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.4rem;
+}
+
+.tech-stack-card {
+  background: rgba(10, 15, 30, 0.88);
+  border: 1.5px solid rgba(248, 250, 252, 0.12);
+  border-radius: 14px;
+  padding: 1.2rem 1.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  position: relative;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  backdrop-filter: blur(8px);
+}
+
+.tech-stack-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.45);
+}
+
+/* Card layout column spans */
+.tech-card--frontend {
+  grid-column: span 6;
+  border-top: 3px solid #22d3ee;
+}
+.tech-card--frontend:hover {
+  border-color: #22d3ee;
+  box-shadow: 0 14px 34px rgba(34, 211, 238, 0.15);
+}
+
+.tech-card--backend {
+  grid-column: span 6;
+  border-top: 3px solid #818cf8;
+}
+.tech-card--backend:hover {
+  border-color: #818cf8;
+  box-shadow: 0 14px 34px rgba(129, 140, 248, 0.15);
+}
+
+.tech-card--db {
+  grid-column: span 4;
+  border-top: 3px solid #fbbf24;
+}
+.tech-card--db:hover {
+  border-color: #fbbf24;
+  box-shadow: 0 14px 34px rgba(251, 191, 36, 0.15);
+}
+
+.tech-card--cicd {
+  grid-column: span 4;
+  border-top: 3px solid #f43f5e;
+}
+.tech-card--cicd:hover {
+  border-color: #f43f5e;
+  box-shadow: 0 14px 34px rgba(244, 63, 94, 0.15);
+}
+
+.tech-card--tools {
+  grid-column: span 4;
+  border-top: 3px solid #10b981;
+}
+.tech-card--tools:hover {
+  border-color: #10b981;
+  box-shadow: 0 14px 34px rgba(16, 185, 129, 0.15);
+}
+
+/* Header inside card */
+.tech-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.tech-card-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.tech-card-icon-wrap {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+}
+
+.tech-card--frontend .tech-card-icon-wrap {
+  background: rgba(34, 211, 238, 0.12);
+  border-color: rgba(34, 211, 238, 0.35);
+  color: #22d3ee;
+}
+
+.tech-card--backend .tech-card-icon-wrap {
+  background: rgba(129, 140, 248, 0.12);
+  border-color: rgba(129, 140, 248, 0.35);
+  color: #818cf8;
+}
+
+.tech-card--db .tech-card-icon-wrap {
+  background: rgba(251, 191, 36, 0.12);
+  border-color: rgba(251, 191, 36, 0.35);
+  color: #fbbf24;
+}
+
+.tech-card--cicd .tech-card-icon-wrap {
+  background: rgba(244, 63, 94, 0.12);
+  border-color: rgba(244, 63, 94, 0.35);
+  color: #f43f5e;
+}
+
+.tech-card--tools .tech-card-icon-wrap {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.35);
+  color: #10b981;
+}
+
+.tech-card-titles h3 {
+  margin: 0;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  color: var(--text);
+}
+
+.tech-card-layer-tag {
+  display: block;
+  font-size: 0.68rem;
+  font-family: var(--font-family);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 0.15rem;
+}
+
+.tech-card-count {
+  font-size: 0.7rem;
+  font-family: var(--font-family);
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.tech-card-desc {
+  margin: 0;
+  font-size: 0.83rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+/* Intentful Tech Badges */
+.tech-chips-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 0.25rem;
+}
+
+.tech-card--backend .tech-chips-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.tech-chip {
+  background: rgba(2, 6, 23, 0.82);
+  border: 1px solid rgba(248, 250, 252, 0.14);
+  border-radius: 9px;
+  padding: 0.5rem 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: default;
+  user-select: none;
+}
+
+.tech-chip:hover {
+  background: rgba(15, 23, 42, 0.98);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.tech-card--frontend .tech-chip:hover {
+  border-color: #22d3ee;
+  box-shadow: 0 4px 14px rgba(34, 211, 238, 0.22);
+}
+
+.tech-card--backend .tech-chip:hover {
+  border-color: #818cf8;
+  box-shadow: 0 4px 14px rgba(129, 140, 248, 0.22);
+}
+
+.tech-card--db .tech-chip:hover {
+  border-color: #fbbf24;
+  box-shadow: 0 4px 14px rgba(251, 191, 36, 0.22);
+}
+
+.tech-card--cicd .tech-chip:hover {
+  border-color: #f43f5e;
+  box-shadow: 0 4px 14px rgba(244, 63, 94, 0.22);
+}
+
+.tech-card--tools .tech-chip:hover {
+  border-color: #10b981;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.22);
+}
+
+.tech-chip-name {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text);
+  font-family: var(--font-family);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1080px) {
+  .tech-card--frontend,
+  .tech-card--backend {
+    grid-column: span 12;
+  }
+  .tech-card--db,
+  .tech-card--cicd {
+    grid-column: span 6;
+  }
+  .tech-card--tools {
+    grid-column: span 12;
+  }
+}
+
+@media (max-width: 720px) {
+  .tech-card--frontend,
+  .tech-card--backend,
+  .tech-card--db,
+  .tech-card--cicd,
+  .tech-card--tools {
+    grid-column: span 12;
+  }
+}
+
 

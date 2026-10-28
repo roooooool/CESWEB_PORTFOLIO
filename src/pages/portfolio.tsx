@@ -6,12 +6,6 @@ import christianImg from '../assets/ChristianIDpicTransparent.png';
 //components
 import AsciiBackground from '../components/AsciiBackground';
 import HeroCodePattern from '../components/HeroCodePattern';
-import BrandChromeIcon from '../components/ui/brand-chrome-icon';
-import Cloud3Icon from '../components/ui/cloud-3-icon';
-import Stack3Icon from '../components/ui/stack-3-icon';
-import PlugConnectedIcon from '../components/ui/plug-connected-icon';
-import GithubIcon from '../components/ui/github-icon';
-import CodeXmlIcon from '../components/ui/code-xml-icon';
 import PythonIcon from '../components/ui/python-icon';
 import BrandReactIcon from '../components/ui/brand-react-icon';
 import NodejsIcon from '../components/ui/nodejs-icon';
@@ -23,7 +17,7 @@ import type { AnimatedIconHandle } from '../components/ui/types';
 
 import ResumePDF from '../assets/RESUME - Sinag.pdf';
 
-import { Network, Database, Warehouse, Server, ChevronRight, ChevronLeft, Plus, Minus, ThumbsUp } from 'lucide-react';
+import { Database, Server, ChevronRight, ChevronLeft, Plus, Minus, ThumbsUp, Layers, Workflow, Terminal, Sparkles } from 'lucide-react';
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 
 function PortfolioPage() {
@@ -36,12 +30,7 @@ function PortfolioPage() {
   const [isPaused, setIsPaused] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [showStickyNav, setShowStickyNav] = useState(false);
-  const webScrapingIconRef = useRef<AnimatedIconHandle | null>(null);
-  const sharePointIconRef = useRef<AnimatedIconHandle | null>(null);
-  const dataverseIconRef = useRef<AnimatedIconHandle | null>(null);
-  const powerAutomateIconRef = useRef<AnimatedIconHandle | null>(null);
-  const githubIconRef = useRef<AnimatedIconHandle | null>(null);
-  const renderIconRef = useRef<AnimatedIconHandle | null>(null);
+  const [techFilter, setTechFilter] = useState<'all' | 'frontend' | 'backend' | 'db' | 'cicd' | 'tools'>('all');
   const pythonIconRef = useRef<AnimatedIconHandle | null>(null);
   const restApiIconRef = useRef<AnimatedIconHandle | null>(null);
   const reactIconRef = useRef<AnimatedIconHandle | null>(null);
@@ -368,115 +357,282 @@ function PortfolioPage() {
 
         <div className="portfolio-page">
           <main>
-            <section id="tech-stack" className="section card-group">
+            <section id="tech-stack" className="section tech-stack-section card-group">
               <div className="section-header">
-                <h2>Tools &amp; Tech I utilize</h2>
-                <p>Hands-on experience building Power Apps and scalable data solutions.</p>
+                <h2>Tech Stack &amp; Architecture</h2>
+                <p>
+                  A structured breakdown of modern frontend engineering, backend runtimes,
+                  Microsoft Power Platform ecosystems, enterprise relational databases, and automated pipelines.
+                </p>
               </div>
 
-              <article className="card">
-                <h3>Data Pipeline &amp; Ingestions</h3>
-                <div className="skill-grid">
-                  <div
-                    className="skill-item"
-                    onMouseEnter={() => webScrapingIconRef.current?.startAnimation()}
-                    onMouseLeave={() => webScrapingIconRef.current?.stopAnimation()}
-                  >
-                    <div className="skill-icon-box">
-                      <BrandChromeIcon ref={webScrapingIconRef} size={32} />
+              {/* Category Filter Bar */}
+              <div className="tech-stack-filter-bar" role="tablist" aria-label="Filter tech stack categories">
+                <button
+                  type="button"
+                  className={`tech-filter-btn ${techFilter === 'all' ? 'active' : ''}`}
+                  onClick={() => setTechFilter('all')}
+                >
+                  <Sparkles size={14} />
+                  <span>All Layers</span>
+                  <span className="tech-filter-count">31</span>
+                </button>
+                <button
+                  type="button"
+                  className={`tech-filter-btn ${techFilter === 'frontend' ? 'active' : ''}`}
+                  onClick={() => setTechFilter('frontend')}
+                >
+                  <Layers size={14} />
+                  <span>Frontend</span>
+                  <span className="tech-filter-count">6</span>
+                </button>
+                <button
+                  type="button"
+                  className={`tech-filter-btn ${techFilter === 'backend' ? 'active' : ''}`}
+                  onClick={() => setTechFilter('backend')}
+                >
+                  <Server size={14} />
+                  <span>Backend &amp; APIs</span>
+                  <span className="tech-filter-count">10</span>
+                </button>
+                <button
+                  type="button"
+                  className={`tech-filter-btn ${techFilter === 'db' ? 'active' : ''}`}
+                  onClick={() => setTechFilter('db')}
+                >
+                  <Database size={14} />
+                  <span>Databases</span>
+                  <span className="tech-filter-count">6</span>
+                </button>
+                <button
+                  type="button"
+                  className={`tech-filter-btn ${techFilter === 'cicd' ? 'active' : ''}`}
+                  onClick={() => setTechFilter('cicd')}
+                >
+                  <Workflow size={14} />
+                  <span>CI/CD &amp; Cloud</span>
+                  <span className="tech-filter-count">4</span>
+                </button>
+                <button
+                  type="button"
+                  className={`tech-filter-btn ${techFilter === 'tools' ? 'active' : ''}`}
+                  onClick={() => setTechFilter('tools')}
+                >
+                  <Terminal size={14} />
+                  <span>Dev Tools</span>
+                  <span className="tech-filter-count">5</span>
+                </button>
+              </div>
+
+              <div className="tech-stack-grid">
+                {/* 1. FRONTEND */}
+                {(techFilter === 'all' || techFilter === 'frontend') && (
+                  <article className="tech-stack-card tech-card--frontend" style={{ gridColumn: techFilter === 'frontend' ? 'span 12' : undefined }}>
+                    <div className="tech-card-header">
+                      <div className="tech-card-header-left">
+                        <div className="tech-card-icon-wrap">
+                          <Layers size={22} />
+                        </div>
+                        <div className="tech-card-titles">
+                          <h3>Frontend Engineering</h3>
+                          <span className="tech-card-layer-tag">Client Tier &amp; UI Architecture</span>
+                        </div>
+                      </div>
+                      <span className="tech-card-count">6 Technologies</span>
                     </div>
-                    <h4>Web Scraping</h4>
-                    <p>Extract and transform web data into actionable insights using Python and Selenium.</p>
-                  </div>
-                  <div className="skill-item">
-                    <div className="skill-icon-box">
-                      <Network size={32} className="lucide-skill-icon icon-twist" />
-                    </div>
-                    <h4>Microsoft Graph API</h4>
-                    <p>Integrate Microsoft 365 services to build connected applications and dashboards.</p>
-                  </div>
-                  <div
-                    className="skill-item"
-                    onMouseEnter={() => sharePointIconRef.current?.startAnimation()}
-                    onMouseLeave={() => sharePointIconRef.current?.stopAnimation()}
-                  >
-                    <div className="skill-icon-box">
-                      <Cloud3Icon ref={sharePointIconRef} size={32} />
-                    </div>
-                    <h4>SharePoint REST API</h4>
-                    <p>Connect to SharePoint data sources and sync information across enterprise systems.</p>
-                  </div>
-                  <div
-                    className="skill-item"
-                    onMouseEnter={() => dataverseIconRef.current?.startAnimation()}
-                    onMouseLeave={() => dataverseIconRef.current?.stopAnimation()}
-                  >
-                    <div className="skill-icon-box">
-                      <Stack3Icon ref={dataverseIconRef} size={32} />
-                    </div>
-                    <h4>Microsoft Dataverse</h4>
-                    <p>
-                      Unified enterprise data across applications using a scalable cloud service,
-                      automating complex business logic and ensuring consistency through a centralized
-                      API-first infrastructure
+                    <p className="tech-card-desc">
+                      Reactive single-page web applications, component-driven design systems, and enterprise low-code client interfaces.
                     </p>
-                  </div>
-                  <div
-                    className="skill-item"
-                    onMouseEnter={() => powerAutomateIconRef.current?.startAnimation()}
-                    onMouseLeave={() => powerAutomateIconRef.current?.stopAnimation()}
-                  >
-                    <div className="skill-icon-box">
-                      <PlugConnectedIcon ref={powerAutomateIconRef} size={32} />
+                    <div className="tech-chips-grid">
+                      <div className="tech-chip">
+                        <span className="tech-chip-name">React</span>
+                      </div>
+                      <div className="tech-chip">
+                        <span className="tech-chip-name">TypeScript</span>
+                      </div>
+                      <div className="tech-chip">
+                        <span className="tech-chip-name">Vite</span>
+                      </div>
+                      <div className="tech-chip">
+                        <span className="tech-chip-name">Power Apps</span>
+                      </div>
+                      <div className="tech-chip">
+                        <span className="tech-chip-name">Tailwind CSS</span>
+                      </div>
+                      <div className="tech-chip">
+                        <span className="tech-chip-name">HTML5 / CSS3</span>
+                      </div>
                     </div>
-                    <h4>Power Automate</h4>
-                    <p>Build intelligent workflows that automate business processes end-to-end.</p>
-                  </div>
-                  <div className="skill-item">
-                    <div className="skill-icon-box">
-                      <Warehouse size={32} className="lucide-skill-icon icon-spin" />
+                  </article>
+                )}
+
+                {/* 2. BACKEND & AUTOMATION */}
+                {(techFilter === 'all' || techFilter === 'backend') && (
+                  <article className="tech-stack-card tech-card--backend" style={{ gridColumn: techFilter === 'backend' ? 'span 12' : undefined }}>
+                    <div className="tech-card-header">
+                      <div className="tech-card-header-left">
+                        <div className="tech-card-icon-wrap">
+                          <Server size={22} />
+                        </div>
+                        <div className="tech-card-titles">
+                          <h3>Backend &amp; Automation</h3>
+                          <span className="tech-card-layer-tag">Services, APIs &amp; Workflows</span>
+                        </div>
+                      </div>
+                      <span className="tech-card-count">10 Technologies</span>
                     </div>
-                    <h4>Microsoft Lakehouse</h4>
-                    <p>Design scalable data architectures combining analytics with data lake capabilities.</p>
-                  </div>
-                  <div className="skill-item">
-                    <div className="skill-icon-box">
-                      <Server size={32} className="lucide-skill-icon icon-enlarge" />
+                    <p className="tech-card-desc">
+                      Server runtimes, REST microservices, enterprise connector APIs, and cloud automated process flows.
+                    </p>
+                    <div className="tech-chips-grid">
+                      <div className="tech-chip">
+                        <span className="tech-chip-name">Python</span>
+                      </div>
+                      <div className="tech-chip">
+                        <span className="tech-chip-name">Flask</span>
+                      </div>
+                      <div className="tech-chip">
+                        <span className="tech-chip-name">.NET 10</span>
+                      </div>
+                      <div className="tech-chip">
+                        <span className="tech-chip-name">Node.js / JS</span>
+                      </div>
+                      <div className="tech-chip">
+                        <span className="tech-chip-name">Power Automate</span>
+                      </div>
+                      <div className="tech-chip">
+                        <span className="tech-chip-name">MS Graph API</span>
+                      </div>
+                      <div className="tech-chip">
+                        <span className="tech-chip-name">SharePoint API</span>
+                      </div>
+                      <div className="tech-chip">
+                        <span className="tech-chip-name">Google APIs</span>
+                      </div>
+                      <div className="tech-chip">
+                        <span className="tech-chip-name">RESTful APIs</span>
+                      </div>
+                      <div className="tech-chip">
+                        <span className="tech-chip-name">Web Scraping</span>
+                      </div>
                     </div>
-                    <h4>On Premise Data Gateway</h4>
-                    <p>Securely connect on-premise systems to cloud services with enterprise-grade data bridges and hybrid integration.</p>
-                  </div>
-                  <div
-                    className="skill-item"
-                    onMouseEnter={() => githubIconRef.current?.startAnimation()}
-                    onMouseLeave={() => githubIconRef.current?.stopAnimation()}
-                  >
-                    <div className="skill-icon-box">
-                      <GithubIcon ref={githubIconRef} size={32} />
+                  </article>
+                )}
+
+                {/* 3. DATABASES */}
+                {(techFilter === 'all' || techFilter === 'db') && (
+                  <article className="tech-stack-card tech-card--db" style={{ gridColumn: techFilter === 'db' ? 'span 12' : undefined }}>
+                    <div className="tech-card-header">
+                      <div className="tech-card-header-left">
+                        <div className="tech-card-icon-wrap">
+                          <Database size={22} />
+                        </div>
+                        <div className="tech-card-titles">
+                          <h3>Databases &amp; Storage</h3>
+                          <span className="tech-card-layer-tag">Storage, Relational &amp; Hybrid</span>
+                        </div>
+                      </div>
+                      <span className="tech-card-count">6 Technologies</span>
                     </div>
-                    <h4>Github</h4>
-                    <p>Manage code repositories, version control, and collaborative development workflows using Git and GitHub.</p>
-                  </div>
-                  <div
-                    className="skill-item"
-                    onMouseEnter={() => renderIconRef.current?.startAnimation()}
-                    onMouseLeave={() => renderIconRef.current?.stopAnimation()}
-                  >
-                    <div className="skill-icon-box">
-                      <CodeXmlIcon ref={renderIconRef} size={32} />
+                    <p className="tech-card-desc">
+                      Relational schemas, cloud dataverse tables, and enterprise hybrid data gateway relays.
+                    </p>
+                    <div className="tech-chips-grid">
+                      <div className="tech-chip">
+                        <span className="tech-chip-name">SQL Server (T-SQL)</span>
+                      </div>
+                      <div className="tech-chip">
+                        <span className="tech-chip-name">MS Dataverse</span>
+                      </div>
+                      <div className="tech-chip">
+                        <span className="tech-chip-name">On-Prem Gateway</span>
+                      </div>
+                      <div className="tech-chip">
+                        <span className="tech-chip-name">SSMS</span>
+                      </div>
+                      <div className="tech-chip">
+                        <span className="tech-chip-name">MS Lakehouse</span>
+                      </div>
+                      <div className="tech-chip">
+                        <span className="tech-chip-name">Query Tuning</span>
+                      </div>
                     </div>
-                    <h4>Render</h4>
-                    <p>Deploy and host modern web applications with automatic scaling, continuous deployment, and managed infrastructure.</p>
-                  </div>
-                  <div className="skill-item">
-                    <div className="skill-icon-box">
-                      <Database size={32} className="lucide-skill-icon icon-bounce" />
+                  </article>
+                )}
+
+                {/* 4. CI/CD & CLOUD */}
+                {(techFilter === 'all' || techFilter === 'cicd') && (
+                  <article className="tech-stack-card tech-card--cicd" style={{ gridColumn: techFilter === 'cicd' ? 'span 12' : undefined }}>
+                    <div className="tech-card-header">
+                      <div className="tech-card-header-left">
+                        <div className="tech-card-icon-wrap">
+                          <Workflow size={22} />
+                        </div>
+                        <div className="tech-card-titles">
+                          <h3>CI/CD &amp; Deployment</h3>
+                          <span className="tech-card-layer-tag">Pipelines &amp; Cloud Hosting</span>
+                        </div>
+                      </div>
+                      <span className="tech-card-count">4 Technologies</span>
                     </div>
-                    <h4>T-SQL</h4>
-                    <p>Write and optimize SQL Server queries that can balance between time complexity, storage, and speed for managing data traffic.</p>
-                  </div>
-                </div>
-              </article>
+                    <p className="tech-card-desc">
+                      Collaborative version control, automated deployment pipelines, and modern cloud hosting platforms.
+                    </p>
+                    <div className="tech-chips-grid">
+                      <div className="tech-chip">
+                        <span className="tech-chip-name">GitHub</span>
+                      </div>
+                      <div className="tech-chip">
+                        <span className="tech-chip-name">GitHub Actions</span>
+                      </div>
+                      <div className="tech-chip">
+                        <span className="tech-chip-name">GitHub Pages</span>
+                      </div>
+                      <div className="tech-chip">
+                        <span className="tech-chip-name">Render</span>
+                      </div>
+                    </div>
+                  </article>
+                )}
+
+                {/* 5. DEVELOPMENT TOOLS & IDE */}
+                {(techFilter === 'all' || techFilter === 'tools') && (
+                  <article className="tech-stack-card tech-card--tools" style={{ gridColumn: techFilter === 'tools' ? 'span 12' : undefined }}>
+                    <div className="tech-card-header">
+                      <div className="tech-card-header-left">
+                        <div className="tech-card-icon-wrap">
+                          <Terminal size={22} />
+                        </div>
+                        <div className="tech-card-titles">
+                          <h3>Dev Tools &amp; Environment</h3>
+                          <span className="tech-card-layer-tag">Workspace &amp; Package Tools</span>
+                        </div>
+                      </div>
+                      <span className="tech-card-count">5 Technologies</span>
+                    </div>
+                    <p className="tech-card-desc">
+                      Developer workspaces, CLI toolchains, and package managers configured for rapid delivery.
+                    </p>
+                    <div className="tech-chips-grid">
+                      <div className="tech-chip">
+                        <span className="tech-chip-name">VS Code</span>
+                      </div>
+                      <div className="tech-chip">
+                        <span className="tech-chip-name">Power Apps CLI</span>
+                      </div>
+                      <div className="tech-chip">
+                        <span className="tech-chip-name">Git</span>
+                      </div>
+                      <div className="tech-chip">
+                        <span className="tech-chip-name">npm</span>
+                      </div>
+                      <div className="tech-chip">
+                        <span className="tech-chip-name">Postman</span>
+                      </div>
+                    </div>
+                  </article>
+                )}
+              </div>
             </section>
 
             <section id="skills" className="section stats-grid">
