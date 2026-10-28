@@ -61,10 +61,10 @@ function PortfolioPage() {
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
-      const scrollAmount = 600; 
+      const scrollAmount = 600;
       // If we reach the end, wrap back to the beginning
       const isEnd = scrollRef.current.scrollLeft + scrollRef.current.offsetWidth >= scrollRef.current.scrollWidth;
-      
+
       if (direction === 'right' && isEnd) {
         scrollRef.current.scrollTo({ left: 0, behavior: 'smooth' });
       } else {
@@ -154,188 +154,188 @@ function PortfolioPage() {
 
   return (
     <>
-    <AsciiBackground />
-    <nav className={`top-nav top-nav--sticky ${showStickyNav ? 'top-nav--visible' : ''}`} aria-hidden={!showStickyNav}>
-      {navLinks.map((link, index) => (
-        <span key={link.href}>
-          <a href={link.href}>{link.label}</a>
-          {index < navLinks.length - 1 && <span> | </span>}
-        </span>
-      ))}
-    </nav>
-    <div className="portfolio-page-main-container">
-      <section className="hero-stage">
-        <nav ref={topNavRef} className="top-nav top-nav--inline">
-          {navLinks.map((link) => (
-            <a key={link.href} href={link.href}>{link.label}</a>
-          ))}
-        </nav>
+      <AsciiBackground />
+      <nav className={`top-nav top-nav--sticky ${showStickyNav ? 'top-nav--visible' : ''}`} aria-hidden={!showStickyNav}>
+        {navLinks.map((link, index) => (
+          <span key={link.href}>
+            <a href={link.href}>{link.label}</a>
+            {index < navLinks.length - 1 && <span> | </span>}
+          </span>
+        ))}
+      </nav>
+      <div className="portfolio-page-main-container">
+        <section className="hero-stage">
+          <nav ref={topNavRef} className="top-nav top-nav--inline">
+            {navLinks.map((link) => (
+              <a key={link.href} href={link.href}>{link.label}</a>
+            ))}
+          </nav>
 
-        <header
-          className="hero hero-layout glass-panel neon-shadow reveal reveal-up"
-          style={{ '--hero-photo': `url(${christianImg})` } as CSSProperties}
-        >
-          <HeroCodePattern />
-          <div className="hero-main reveal reveal-up animation-delay-200">
-            <div className="hero-intro">
-              <p className="eyebrow">Senior Power Apps Developer</p>
-              <h1 className="text-gradient">Christian Errol A. Sinag</h1>
-              <p className="hero-copy">
-                I design cloud-first business applications, intelligent data pipelines,
-                and low-tech-friendly solutions that help teams move faster and build
-                dashboards with Microsoft Power Apps and open-source tools.
-              </p>
+          <header
+            className="hero hero-layout glass-panel neon-shadow reveal reveal-up"
+            style={{ '--hero-photo': `url(${christianImg})` } as CSSProperties}
+          >
+            <HeroCodePattern />
+            <div className="hero-main reveal reveal-up animation-delay-200">
+              <div className="hero-intro">
+                <p className="eyebrow">Senior Power Apps Developer</p>
+                <h1 className="text-gradient">Christian Errol A. Sinag</h1>
+                <p className="hero-copy">
+                  I design cloud-first business applications, intelligent data pipelines,
+                  and low-tech-friendly solutions that help teams move faster and build
+                  dashboards with Microsoft Power Apps and open-source tools.
+                </p>
+              </div>
+              <div className="hero-actions">
+                <a href="#projects" className="button primary">View projects</a>
+                <a href="#contact" className="button secondary">Contact me</a>
+              </div>
             </div>
-            <div className="hero-actions">
-              <a href="#projects" className="button primary">View projects</a>
-              <a href="#contact" className="button secondary">Contact me</a>
+
+            <div className="hero-meta-row reveal reveal-fade animation-delay-600">
+              <div className="hero-badges">
+                {['Microsoft Power Apps', 'SICM (Education)', 'TESDA NC2', 'RCMDE (Capstone)', 'AWS EC2', 'Github Contributor'].map((badge, index) => (
+                  <span
+                    key={badge}
+                    className="hero-badge glass-panel reveal reveal-fade"
+                    style={{ animationDelay: `${300 + (index * 80)}ms` }}
+                  >
+                    {badge}
+                  </span>
+                ))}
+              </div>
+              <a href="#resume" className="hero-about-me glass-panel">
+                Learn More About Me
+                <ChevronRight size={20} />
+              </a>
             </div>
-          </div>
-          
-          <div className="hero-meta-row reveal reveal-fade animation-delay-600">
-            <div className="hero-badges">
-              {['Microsoft Power Apps', 'SICM (Education)', 'TESDA NC2', 'RCMDE (Capstone)', 'AWS EC2', 'Github Contributor'].map((badge, index) => (
-                <span
-                  key={badge}
-                  className="hero-badge glass-panel reveal reveal-fade"
-                  style={{ animationDelay: `${300 + (index * 80)}ms` }}
-                >
-                  {badge}
-                </span>
-              ))}
-            </div>
-            <a href="#resume" className="hero-about-me glass-panel">
-              Learn More About Me
-              <ChevronRight size={20} />
-            </a>
-          </div>
 
-          <div className="hero-mobile-photo-spacer" aria-hidden="true" />
+            <div className="hero-mobile-photo-spacer" aria-hidden="true" />
 
-          <div className="hero-back-pattern" aria-hidden="true" />
+            <div className="hero-back-pattern" aria-hidden="true" />
 
-        </header>
-      </section>
+          </header>
+        </section>
 
-      <section 
-        id="projects" 
-        className="showcase-carousel-container"
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
-        onTouchStart={() => setIsPaused(true)}
-        onTouchEnd={() => setIsPaused(false)}
-      >
-        <div className="carousel-header-wrapper">
-          <div className="section-header">
-            <h2>3+ Years of Hands-On Experience!</h2>
-            <div className="header-description">
-              <p>
-                Over the course of my career, I have specialized in bridging the gap between 
-                complex logistical operations and data integration. My platform of experties includes 
-                <strong> Power Apps (Canvas Apps & Code Apps)</strong>, <strong>Power Automate</strong>, and <strong>Sharepoint/Datavers/Microsoft Graph API</strong>. 
-                I'm also available for <strong> project-based development </strong> and offer free and low-tech alternatives for startups and small businesses, such as <strong>Custom API Connectors</strong> and open-source <strong>Google API</strong>.
-              </p>
-            </div>
-          </div>
-          
-        </div>
-        <div className='carousel-title'><h2>View a Demo of Projects I made:</h2></div>
-        <div 
-          className="carousel-track" 
-          ref={scrollRef}
+        <section
+          id="projects"
+          className="showcase-carousel-container"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
           onTouchStart={() => setIsPaused(true)}
           onTouchEnd={() => setIsPaused(false)}
         >
-          {/* Project 1: Trip Dispatch */}
-          <a href="#demo/trip-dispatch" className="showcase-card reveal reveal-up animation-delay-200">
-            <div className="showcase-bg" style={{ backgroundImage: `url(${tripDispatchImg})` }}></div>
-            <div className="showcase-content">
-              <p className="demo-tag">Featured Project</p>
-              <h4>Trip Dispatch System</h4>
-              <p className="showcase-desc">
-                A real-time logistics hub managing driver assignments, fuel requests, and attendance logs. 
-                Built to handle complex fleet operations with automated validation logic.
-              </p>
-              <div className="showcase-footer">
-                <span className="button primary">View Demo ›</span>
+          <div className="carousel-header-wrapper">
+            <div className="section-header">
+              <h2>3+ Years of Hands-On Experience!</h2>
+              <div className="header-description">
+                <p>
+                  Over the course of my career, I have specialized in bridging the gap between
+                  complex logistical operations and data integration. My platform of experties includes
+                  <strong> Power Apps (Canvas Apps & Code Apps)</strong>, <strong>Power Automate</strong>, and <strong>Sharepoint/Datavers/Microsoft Graph API</strong>.
+                  I'm also available for <strong> project-based development </strong> and offer free and low-tech alternatives for startups and small businesses, such as <strong>Custom API Connectors</strong> and open-source <strong>Google API</strong>.
+                </p>
               </div>
             </div>
-          </a>
 
-          {/* Project 2: Sales Forecast */}
-          <a href="#demo/sales-forecast-dashboard" className="showcase-card reveal reveal-up animation-delay-400">
-            <div className="showcase-bg" style={{ backgroundImage: `url(${dashboardImg})` }}></div>
-            <div className="showcase-content">
-              <p className="demo-tag">Analytics Hub</p>
-              <h4>Sales Analytics & Dashboard</h4>
-              <p className="showcase-desc">
-                Interactive data visualization platform converting raw sales data into actionable trends 
-                using advanced Power BI integration and automated data refresh cycles.
-              </p>
-              <div className="showcase-footer">
-                <span className="button primary">View Demo ›</span>
+          </div>
+          <div className='carousel-title'><h2>View a Demo of Projects I made:</h2></div>
+          <div
+            className="carousel-track"
+            ref={scrollRef}
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+            onTouchStart={() => setIsPaused(true)}
+            onTouchEnd={() => setIsPaused(false)}
+          >
+            {/* Project 1: Trip Dispatch */}
+            <a href="https://roooooool.github.io/DISPATCH_APP_DEMO/#/fleet" className="showcase-card reveal reveal-up animation-delay-200">
+              <div className="showcase-bg" style={{ backgroundImage: `url(${tripDispatchImg})` }}></div>
+              <div className="showcase-content">
+                <p className="demo-tag">Featured Project</p>
+                <h4>Trip Dispatch System</h4>
+                <p className="showcase-desc">
+                  A real-time logistics hub managing driver assignments, fuel requests, and attendance logs.
+                  Built to handle complex fleet operations with automated validation logic.
+                </p>
+                <div className="showcase-footer">
+                  <span className="button primary">View Demo ›</span>
+                </div>
               </div>
-            </div>
-          </a>
+            </a>
 
-          {/* Project 3: Live GPS */}
-          <a href="#demo/live-gps-monitoring" className="showcase-card reveal reveal-up animation-delay-600">
-            <div className="showcase-bg" style={{ backgroundImage: `url(${liveGpsImg})` }}></div>
-            <div className="showcase-content">
-              <p className="demo-tag">Fleet Monitoring</p>
-              <h4>Live Fleet GPS Tracking</h4>
-              <p className="showcase-desc">
-                High-performance monitoring tool utilizing React-based map overlays and SQL-optimized 
-                location data to provide real-time visibility across the entire fleet.
-              </p>
-              <div className="showcase-footer">
-                <span className="button primary">View Demo ›</span>
+            {/* Project 2: Sales Forecast */}
+            <a href="https://roooooool.github.io/DISPATCH_APP_DEMO/#/fleet" className="showcase-card reveal reveal-up animation-delay-400">
+              <div className="showcase-bg" style={{ backgroundImage: `url(${dashboardImg})` }}></div>
+              <div className="showcase-content">
+                <p className="demo-tag">Analytics Hub</p>
+                <h4>Sales Analytics & Dashboard</h4>
+                <p className="showcase-desc">
+                  Interactive data visualization platform converting raw sales data into actionable trends
+                  using advanced Power BI integration and automated data refresh cycles.
+                </p>
+                <div className="showcase-footer">
+                  <span className="button primary">View Demo ›</span>
+                </div>
               </div>
-            </div>
-          </a>
+            </a>
 
-          {/* Project 4: Dummy / Future Project A */}
-          <a href="#" className="showcase-card reveal reveal-up animation-delay-2000">
-            <div className="showcase-bg" style={{ backgroundColor: '#1a1a1a', backgroundImage: 'linear-gradient(45deg, #071624, #3a4efc)' }}></div>
-            <div className="showcase-content">
-              <p className="demo-tag">Bots & AI Agent</p>
-              <h4>Digital Web Assistant</h4>
-              <p className="showcase-desc">
-                AI-powered assistant for reminding daily tasks, providing reports on live trip statuses and trucks maintenance schedule. Used to quickly retrieve information and automate routine queries, improving operational efficiency and response times.
-              </p>
-              <div className="showcase-footer">
-                <span className="button primary">View Demo</span>
+            {/* Project 3: Live GPS */}
+            <a href="https://roooooool.github.io/DISPATCH_APP_DEMO/#/fleet" className="showcase-card reveal reveal-up animation-delay-600">
+              <div className="showcase-bg" style={{ backgroundImage: `url(${liveGpsImg})` }}></div>
+              <div className="showcase-content">
+                <p className="demo-tag">Fleet Monitoring</p>
+                <h4>Live Fleet GPS Tracking</h4>
+                <p className="showcase-desc">
+                  High-performance monitoring tool utilizing React-based map overlays and SQL-optimized
+                  location data to provide real-time visibility across the entire fleet.
+                </p>
+                <div className="showcase-footer">
+                  <span className="button primary">View Demo ›</span>
+                </div>
               </div>
-            </div>
-          </a>
+            </a>
 
-          {/* Project 5: Dummy / Future Project B */}
-          <a href="#" className="showcase-card reveal reveal-up animation-delay-4000">
-            <div className="showcase-bg" style={{ backgroundColor: '#1a1a1a', backgroundImage: 'linear-gradient(45deg, #071624, #ff0000)' }}></div>
-            <div className="showcase-content">
-              <p className="demo-tag">Data Integration & API</p>
-              <h4>Custom Microsoft Connector</h4>
-              <p className="showcase-desc">
-                Reusable Python connector for seamless integration with Microsoft services and APIs. Easily available through Pip and Github. For connectiong multi-platform data sources to Microsoft Power Platform, enabling custom workflows and data sync across services without needing to build a full custom connector from scratch.
-              </p>
-              <div className="showcase-footer">
-                <span className="button primary">View Documentation</span>
+            {/* Project 4: Dummy / Future Project A */}
+            <a href="#" className="showcase-card reveal reveal-up animation-delay-2000">
+              <div className="showcase-bg" style={{ backgroundColor: '#1a1a1a', backgroundImage: 'linear-gradient(45deg, #071624, #3a4efc)' }}></div>
+              <div className="showcase-content">
+                <p className="demo-tag">Bots & AI Agent</p>
+                <h4>Digital Web Assistant</h4>
+                <p className="showcase-desc">
+                  AI-powered assistant for reminding daily tasks, providing reports on live trip statuses and trucks maintenance schedule. Used to quickly retrieve information and automate routine queries, improving operational efficiency and response times.
+                </p>
+                <div className="showcase-footer">
+                  <span className="button primary">View Demo</span>
+                </div>
               </div>
-            </div>
-          </a>
-        </div>
+            </a>
 
-        <div className="custom-scrollbar-container">
-          <div 
-            ref={scrollbarFillRef}
-            className="custom-scrollbar-fill" 
-            style={{ width: '10%' }}
-          ></div>
-        </div>
+            {/* Project 5: Dummy / Future Project B */}
+            <a href="#" className="showcase-card reveal reveal-up animation-delay-4000">
+              <div className="showcase-bg" style={{ backgroundColor: '#1a1a1a', backgroundImage: 'linear-gradient(45deg, #071624, #ff0000)' }}></div>
+              <div className="showcase-content">
+                <p className="demo-tag">Data Integration & API</p>
+                <h4>Custom Microsoft Connector</h4>
+                <p className="showcase-desc">
+                  Reusable Python connector for seamless integration with Microsoft services and APIs. Easily available through Pip and Github. For connectiong multi-platform data sources to Microsoft Power Platform, enabling custom workflows and data sync across services without needing to build a full custom connector from scratch.
+                </p>
+                <div className="showcase-footer">
+                  <span className="button primary">View Documentation</span>
+                </div>
+              </div>
+            </a>
+          </div>
 
-        <div className="carousel-controls">
+          <div className="custom-scrollbar-container">
+            <div
+              ref={scrollbarFillRef}
+              className="custom-scrollbar-fill"
+              style={{ width: '10%' }}
+            ></div>
+          </div>
+
+          <div className="carousel-controls">
             <button onClick={() => scroll('left')} className="nav-btn left" aria-label="Scroll Left">
               <ChevronLeft size={24} />
             </button>
@@ -343,404 +343,404 @@ function PortfolioPage() {
             <button onClick={() => scroll('right')} className="nav-btn right" aria-label="Scroll Right">
               <ChevronRight size={24} />
             </button>
-        </div>
-
-
-      </section>
-
-
-
-
-
-  <div className="portfolio-page">
-    <main>
-        <section id="tech-stack" className="section card-group">
-          <div className="section-header">
-            <h2>Tools &amp; Tech I utilize</h2>
-            <p>Hands-on experience building Power Apps and scalable data solutions.</p>
           </div>
 
-          <article className="card">
-            <h3>Data Pipeline &amp; Ingestions</h3>
-            <div className="skill-grid">
-              <div
-                className="skill-item"
-                onMouseEnter={() => webScrapingIconRef.current?.startAnimation()}
-                onMouseLeave={() => webScrapingIconRef.current?.stopAnimation()}
-              >
-                <div className="skill-icon-box">
-                  <BrandChromeIcon ref={webScrapingIconRef} size={32} />
-                </div>
-                <h4>Web Scraping</h4>
-                <p>Extract and transform web data into actionable insights using Python and Selenium.</p>
+
+        </section>
+
+
+
+
+
+        <div className="portfolio-page">
+          <main>
+            <section id="tech-stack" className="section card-group">
+              <div className="section-header">
+                <h2>Tools &amp; Tech I utilize</h2>
+                <p>Hands-on experience building Power Apps and scalable data solutions.</p>
               </div>
-              <div className="skill-item">
-                <div className="skill-icon-box">
-                  <Network size={32} className="lucide-skill-icon icon-twist" />
+
+              <article className="card">
+                <h3>Data Pipeline &amp; Ingestions</h3>
+                <div className="skill-grid">
+                  <div
+                    className="skill-item"
+                    onMouseEnter={() => webScrapingIconRef.current?.startAnimation()}
+                    onMouseLeave={() => webScrapingIconRef.current?.stopAnimation()}
+                  >
+                    <div className="skill-icon-box">
+                      <BrandChromeIcon ref={webScrapingIconRef} size={32} />
+                    </div>
+                    <h4>Web Scraping</h4>
+                    <p>Extract and transform web data into actionable insights using Python and Selenium.</p>
+                  </div>
+                  <div className="skill-item">
+                    <div className="skill-icon-box">
+                      <Network size={32} className="lucide-skill-icon icon-twist" />
+                    </div>
+                    <h4>Microsoft Graph API</h4>
+                    <p>Integrate Microsoft 365 services to build connected applications and dashboards.</p>
+                  </div>
+                  <div
+                    className="skill-item"
+                    onMouseEnter={() => sharePointIconRef.current?.startAnimation()}
+                    onMouseLeave={() => sharePointIconRef.current?.stopAnimation()}
+                  >
+                    <div className="skill-icon-box">
+                      <Cloud3Icon ref={sharePointIconRef} size={32} />
+                    </div>
+                    <h4>SharePoint REST API</h4>
+                    <p>Connect to SharePoint data sources and sync information across enterprise systems.</p>
+                  </div>
+                  <div
+                    className="skill-item"
+                    onMouseEnter={() => dataverseIconRef.current?.startAnimation()}
+                    onMouseLeave={() => dataverseIconRef.current?.stopAnimation()}
+                  >
+                    <div className="skill-icon-box">
+                      <Stack3Icon ref={dataverseIconRef} size={32} />
+                    </div>
+                    <h4>Microsoft Dataverse</h4>
+                    <p>
+                      Unified enterprise data across applications using a scalable cloud service,
+                      automating complex business logic and ensuring consistency through a centralized
+                      API-first infrastructure
+                    </p>
+                  </div>
+                  <div
+                    className="skill-item"
+                    onMouseEnter={() => powerAutomateIconRef.current?.startAnimation()}
+                    onMouseLeave={() => powerAutomateIconRef.current?.stopAnimation()}
+                  >
+                    <div className="skill-icon-box">
+                      <PlugConnectedIcon ref={powerAutomateIconRef} size={32} />
+                    </div>
+                    <h4>Power Automate</h4>
+                    <p>Build intelligent workflows that automate business processes end-to-end.</p>
+                  </div>
+                  <div className="skill-item">
+                    <div className="skill-icon-box">
+                      <Warehouse size={32} className="lucide-skill-icon icon-spin" />
+                    </div>
+                    <h4>Microsoft Lakehouse</h4>
+                    <p>Design scalable data architectures combining analytics with data lake capabilities.</p>
+                  </div>
+                  <div className="skill-item">
+                    <div className="skill-icon-box">
+                      <Server size={32} className="lucide-skill-icon icon-enlarge" />
+                    </div>
+                    <h4>On Premise Data Gateway</h4>
+                    <p>Securely connect on-premise systems to cloud services with enterprise-grade data bridges and hybrid integration.</p>
+                  </div>
+                  <div
+                    className="skill-item"
+                    onMouseEnter={() => githubIconRef.current?.startAnimation()}
+                    onMouseLeave={() => githubIconRef.current?.stopAnimation()}
+                  >
+                    <div className="skill-icon-box">
+                      <GithubIcon ref={githubIconRef} size={32} />
+                    </div>
+                    <h4>Github</h4>
+                    <p>Manage code repositories, version control, and collaborative development workflows using Git and GitHub.</p>
+                  </div>
+                  <div
+                    className="skill-item"
+                    onMouseEnter={() => renderIconRef.current?.startAnimation()}
+                    onMouseLeave={() => renderIconRef.current?.stopAnimation()}
+                  >
+                    <div className="skill-icon-box">
+                      <CodeXmlIcon ref={renderIconRef} size={32} />
+                    </div>
+                    <h4>Render</h4>
+                    <p>Deploy and host modern web applications with automatic scaling, continuous deployment, and managed infrastructure.</p>
+                  </div>
+                  <div className="skill-item">
+                    <div className="skill-icon-box">
+                      <Database size={32} className="lucide-skill-icon icon-bounce" />
+                    </div>
+                    <h4>T-SQL</h4>
+                    <p>Write and optimize SQL Server queries that can balance between time complexity, storage, and speed for managing data traffic.</p>
+                  </div>
                 </div>
-                <h4>Microsoft Graph API</h4>
-                <p>Integrate Microsoft 365 services to build connected applications and dashboards.</p>
+              </article>
+            </section>
+
+            <section id="skills" className="section stats-grid">
+              <div className="section-header">
+                <h2>Languages I use</h2>
+                <p>A blend of Microsoft platforms, modern web, and data engineering skills.</p>
               </div>
+
               <div
-                className="skill-item"
-                onMouseEnter={() => sharePointIconRef.current?.startAnimation()}
-                onMouseLeave={() => sharePointIconRef.current?.stopAnimation()}
+                className="skill-card"
+                onMouseEnter={() => pythonIconRef.current?.startAnimation()}
+                onMouseLeave={() => pythonIconRef.current?.stopAnimation()}
               >
-                <div className="skill-icon-box">
-                  <Cloud3Icon ref={sharePointIconRef} size={32} />
+                <div className="language-icon-box">
+                  <PythonIcon ref={pythonIconRef} size={28} className="language-icon" />
                 </div>
-                <h4>SharePoint REST API</h4>
-                <p>Connect to SharePoint data sources and sync information across enterprise systems.</p>
+                <h3>Python</h3>
+                <div className="skill-meter">
+                  <span className="meter-fill fill-100" />
+                </div>
+                <p>10/10</p>
               </div>
+
               <div
-                className="skill-item"
-                onMouseEnter={() => dataverseIconRef.current?.startAnimation()}
-                onMouseLeave={() => dataverseIconRef.current?.stopAnimation()}
+                className="skill-card"
+                onMouseEnter={() => restApiIconRef.current?.startAnimation()}
+                onMouseLeave={() => restApiIconRef.current?.stopAnimation()}
               >
-                <div className="skill-icon-box">
-                  <Stack3Icon ref={dataverseIconRef} size={32} />
+                <div className="language-icon-box">
+                  <LinkIcon ref={restApiIconRef} size={28} className="language-icon" />
                 </div>
-                <h4>Microsoft Dataverse</h4>
+                <h3>REST Api</h3>
+                <div className="skill-meter">
+                  <span className="meter-fill fill-100" />
+                </div>
+                <p>10/10</p>
+              </div>
+
+              <div
+                className="skill-card"
+                onMouseEnter={() => reactIconRef.current?.startAnimation()}
+                onMouseLeave={() => reactIconRef.current?.stopAnimation()}
+              >
+                <div className="language-icon-box">
+                  <BrandReactIcon ref={reactIconRef} size={28} className="language-icon" />
+                </div>
+                <h3>React.js</h3>
+                <div className="skill-meter">
+                  <span className="meter-fill fill-80" />
+                </div>
+                <p>8/10</p>
+              </div>
+
+              <div
+                className="skill-card"
+                onMouseEnter={() => nodeIconRef.current?.startAnimation()}
+                onMouseLeave={() => nodeIconRef.current?.stopAnimation()}
+              >
+                <div className="language-icon-box">
+                  <NodejsIcon ref={nodeIconRef} size={28} className="language-icon" />
+                </div>
+                <h3>Node.js</h3>
+                <div className="skill-meter">
+                  <span className="meter-fill fill-80" />
+                </div>
+                <p>8/10</p>
+              </div>
+
+              <div
+                className="skill-card"
+                onMouseEnter={() => arduinoIconRef.current?.startAnimation()}
+                onMouseLeave={() => arduinoIconRef.current?.stopAnimation()}
+              >
+                <div className="language-icon-box">
+                  <CpuIcon ref={arduinoIconRef} size={28} className="language-icon" />
+                </div>
+                <h3>Arduino</h3>
+                <div className="skill-meter">
+                  <span className="meter-fill fill-80" />
+                </div>
+                <p>5/10</p>
+              </div>
+
+              <div
+                className="skill-card"
+                onMouseEnter={() => cppIconRef.current?.startAnimation()}
+                onMouseLeave={() => cppIconRef.current?.stopAnimation()}
+              >
+                <div className="language-icon-box">
+                  <TerminalIcon ref={cppIconRef} size={28} className="language-icon" />
+                </div>
+                <h3>C++</h3>
+                <div className="skill-meter">
+                  <span className="meter-fill fill-50" />
+                </div>
+                <p>5/10</p>
+              </div>
+
+              <div
+                className="skill-card"
+                onMouseEnter={() => dotnetIconRef.current?.startAnimation()}
+                onMouseLeave={() => dotnetIconRef.current?.stopAnimation()}
+              >
+                <div className="language-icon-box">
+                  <LibraryIcon ref={dotnetIconRef} size={28} className="language-icon" />
+                </div>
+                <h3>.NET SDK</h3>
+                <div className="skill-meter">
+                  <span className="meter-fill fill-50" />
+                </div>
+                <p>5/10</p>
+              </div>
+
+
+            </section>
+
+            <section id="architecture" className="section architecture">
+              <div className="section-header">
+                <h2>Workspace Architecture I'm familiar with</h2>
                 <p>
-                    Unified enterprise data across applications using a scalable cloud service, 
-                    automating complex business logic and ensuring consistency through a centralized 
-                    API-first infrastructure
+                  Building solutions across low-code, web, and automation platforms with end-to-end architecture in mind.
                 </p>
               </div>
-              <div
-                className="skill-item"
-                onMouseEnter={() => powerAutomateIconRef.current?.startAnimation()}
-                onMouseLeave={() => powerAutomateIconRef.current?.stopAnimation()}
-              >
-                <div className="skill-icon-box">
-                  <PlugConnectedIcon ref={powerAutomateIconRef} size={32} />
-                </div>
-                <h4>Power Automate</h4>
-                <p>Build intelligent workflows that automate business processes end-to-end.</p>
-              </div>
-              <div className="skill-item">
-                <div className="skill-icon-box">
-                  <Warehouse size={32} className="lucide-skill-icon icon-spin" />
-                </div>
-                <h4>Microsoft Lakehouse</h4>
-                <p>Design scalable data architectures combining analytics with data lake capabilities.</p>
-              </div>
-              <div className="skill-item">
-                <div className="skill-icon-box">
-                  <Server size={32} className="lucide-skill-icon icon-enlarge" />
-                </div>
-                <h4>On Premise Data Gateway</h4>
-                <p>Securely connect on-premise systems to cloud services with enterprise-grade data bridges and hybrid integration.</p>
-              </div>
-              <div
-                className="skill-item"
-                onMouseEnter={() => githubIconRef.current?.startAnimation()}
-                onMouseLeave={() => githubIconRef.current?.stopAnimation()}
-              >
-                <div className="skill-icon-box">
-                  <GithubIcon ref={githubIconRef} size={32} />
-                </div>
-                <h4>Github</h4>
-                <p>Manage code repositories, version control, and collaborative development workflows using Git and GitHub.</p>
-              </div>
-              <div
-                className="skill-item"
-                onMouseEnter={() => renderIconRef.current?.startAnimation()}
-                onMouseLeave={() => renderIconRef.current?.stopAnimation()}
-              >
-                <div className="skill-icon-box">
-                  <CodeXmlIcon ref={renderIconRef} size={32} />
-                </div>
-                <h4>Render</h4>
-                <p>Deploy and host modern web applications with automatic scaling, continuous deployment, and managed infrastructure.</p>
-              </div>
-              <div className="skill-item">
-                <div className="skill-icon-box">
-                  <Database size={32} className="lucide-skill-icon icon-bounce" />
-                </div>
-                <h4>T-SQL</h4>
-                <p>Write and optimize SQL Server queries that can balance between time complexity, storage, and speed for managing data traffic.</p>
-              </div>
-            </div>
-          </article>
-        </section>
-
-        <section id="skills" className="section stats-grid">
-          <div className="section-header">
-            <h2>Languages I use</h2>
-            <p>A blend of Microsoft platforms, modern web, and data engineering skills.</p>
-          </div>
-
-          <div
-            className="skill-card"
-            onMouseEnter={() => pythonIconRef.current?.startAnimation()}
-            onMouseLeave={() => pythonIconRef.current?.stopAnimation()}
-          >
-            <div className="language-icon-box">
-              <PythonIcon ref={pythonIconRef} size={28} className="language-icon" />
-            </div>
-            <h3>Python</h3>
-            <div className="skill-meter">
-              <span className="meter-fill fill-100" />
-            </div>
-            <p>10/10</p>
-          </div>
-
-          <div
-            className="skill-card"
-            onMouseEnter={() => restApiIconRef.current?.startAnimation()}
-            onMouseLeave={() => restApiIconRef.current?.stopAnimation()}
-          >
-            <div className="language-icon-box">
-              <LinkIcon ref={restApiIconRef} size={28} className="language-icon" />
-            </div>
-            <h3>REST Api</h3>
-            <div className="skill-meter">
-              <span className="meter-fill fill-100" />
-            </div>
-            <p>10/10</p>
-          </div>
-
-          <div
-            className="skill-card"
-            onMouseEnter={() => reactIconRef.current?.startAnimation()}
-            onMouseLeave={() => reactIconRef.current?.stopAnimation()}
-          >
-            <div className="language-icon-box">
-              <BrandReactIcon ref={reactIconRef} size={28} className="language-icon" />
-            </div>
-            <h3>React.js</h3>
-            <div className="skill-meter">
-              <span className="meter-fill fill-80" />
-            </div>
-            <p>8/10</p>
-          </div>
-
-          <div
-            className="skill-card"
-            onMouseEnter={() => nodeIconRef.current?.startAnimation()}
-            onMouseLeave={() => nodeIconRef.current?.stopAnimation()}
-          >
-            <div className="language-icon-box">
-              <NodejsIcon ref={nodeIconRef} size={28} className="language-icon" />
-            </div>
-            <h3>Node.js</h3>
-            <div className="skill-meter">
-              <span className="meter-fill fill-80" />
-            </div>
-            <p>8/10</p>
-          </div>
-
-          <div
-            className="skill-card"
-            onMouseEnter={() => arduinoIconRef.current?.startAnimation()}
-            onMouseLeave={() => arduinoIconRef.current?.stopAnimation()}
-          >
-            <div className="language-icon-box">
-              <CpuIcon ref={arduinoIconRef} size={28} className="language-icon" />
-            </div>
-            <h3>Arduino</h3>
-            <div className="skill-meter">
-              <span className="meter-fill fill-80" />
-            </div>
-            <p>5/10</p>
-          </div>
-
-          <div
-            className="skill-card"
-            onMouseEnter={() => cppIconRef.current?.startAnimation()}
-            onMouseLeave={() => cppIconRef.current?.stopAnimation()}
-          >
-            <div className="language-icon-box">
-              <TerminalIcon ref={cppIconRef} size={28} className="language-icon" />
-            </div>
-            <h3>C++</h3>
-            <div className="skill-meter">
-              <span className="meter-fill fill-50" />
-            </div>
-            <p>5/10</p>
-          </div>
-
-          <div
-            className="skill-card"
-            onMouseEnter={() => dotnetIconRef.current?.startAnimation()}
-            onMouseLeave={() => dotnetIconRef.current?.stopAnimation()}
-          >
-            <div className="language-icon-box">
-              <LibraryIcon ref={dotnetIconRef} size={28} className="language-icon" />
-            </div>
-            <h3>.NET SDK</h3>
-            <div className="skill-meter">
-              <span className="meter-fill fill-50" />
-            </div>
-            <p>5/10</p>
-          </div>
-
-
-        </section>
-
-        <section id="architecture" className="section architecture">
-          <div className="section-header">
-            <h2>Workspace Architecture I'm familiar with</h2>
-            <p>
-              Building solutions across low-code, web, and automation platforms with end-to-end architecture in mind.
-            </p>
-          </div>
-          <div className="architecture-list">
-            <article className="architecture-card architecture-card--featured">
-              <span className="architecture-recommended-badge">
-                <ThumbsUp size={18} aria-hidden="true" className="architecture-recommended-icon" />
-                <span className="architecture-recommended-text">PROFICIENT!</span>
-              </span>
-              <div className="architecture-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="3" y="3" width="7" height="7" rx="1.5" />
-                  <rect x="14" y="3" width="7" height="7" rx="1.5" />
-                  <rect x="3" y="14" width="7" height="7" rx="1.5" />
-                  <rect x="14" y="14" width="7" height="7" rx="1.5" />
-                </svg>
-              </div>
-              <div className="architecture-content">
-                <h4>Power App Code Apps + React + Vite</h4>
-                <p>Combine Power Platform with modern React tooling for polished, hybrid enterprise apps.</p>
-                <div className="architecture-detail-grid">
-                  <div className="architecture-panel">
-                    <h5>Strengths</h5>
-                    <ul>
-                      <li className="architecture-bullet-item architecture-bullet-item--strength"><Plus size={14} aria-hidden="true" />Fast delivery through reusable Power Platform components and custom React modules.</li>
-                      <li className="architecture-bullet-item architecture-bullet-item--strength"><Plus size={14} aria-hidden="true" />Clean UI layer with Vite build speed and modern TypeScript developer experience.</li>
-                      <li className="architecture-bullet-item architecture-bullet-item--strength"><Plus size={14} aria-hidden="true" />Great for internal business apps needing both low-code agility and advanced UX.</li>
-                    </ul>
+              <div className="architecture-list">
+                <article className="architecture-card architecture-card--featured">
+                  <span className="architecture-recommended-badge">
+                    <ThumbsUp size={18} aria-hidden="true" className="architecture-recommended-icon" />
+                    <span className="architecture-recommended-text">PROFICIENT!</span>
+                  </span>
+                  <div className="architecture-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="3" y="3" width="7" height="7" rx="1.5" />
+                      <rect x="14" y="3" width="7" height="7" rx="1.5" />
+                      <rect x="3" y="14" width="7" height="7" rx="1.5" />
+                      <rect x="14" y="14" width="7" height="7" rx="1.5" />
+                    </svg>
                   </div>
-                  <div className="architecture-panel architecture-panel--caution">
-                    <h5>Tradeoffs</h5>
-                    <ul>
-                      <li className="architecture-bullet-item architecture-bullet-item--tradeoff"><Minus size={14} aria-hidden="true" />Governance is needed to avoid logic split between low-code and frontend codebases.</li>
-                      <li className="architecture-bullet-item architecture-bullet-item--tradeoff"><Minus size={14} aria-hidden="true" />Requires clear deployment flow for environment variables, connectors, and app bundles.</li>
-                    </ul>
+                  <div className="architecture-content">
+                    <h4>Power App Code Apps + React + Vite</h4>
+                    <p>Combine Power Platform with modern React tooling for polished, hybrid enterprise apps.</p>
+                    <div className="architecture-detail-grid">
+                      <div className="architecture-panel">
+                        <h5>Strengths</h5>
+                        <ul>
+                          <li className="architecture-bullet-item architecture-bullet-item--strength"><Plus size={14} aria-hidden="true" />Fast delivery through reusable Power Platform components and custom React modules.</li>
+                          <li className="architecture-bullet-item architecture-bullet-item--strength"><Plus size={14} aria-hidden="true" />Clean UI layer with Vite build speed and modern TypeScript developer experience.</li>
+                          <li className="architecture-bullet-item architecture-bullet-item--strength"><Plus size={14} aria-hidden="true" />Great for internal business apps needing both low-code agility and advanced UX.</li>
+                        </ul>
+                      </div>
+                      <div className="architecture-panel architecture-panel--caution">
+                        <h5>Tradeoffs</h5>
+                        <ul>
+                          <li className="architecture-bullet-item architecture-bullet-item--tradeoff"><Minus size={14} aria-hidden="true" />Governance is needed to avoid logic split between low-code and frontend codebases.</li>
+                          <li className="architecture-bullet-item architecture-bullet-item--tradeoff"><Minus size={14} aria-hidden="true" />Requires clear deployment flow for environment variables, connectors, and app bundles.</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <p className="architecture-note"><strong>Best fit:</strong> Enterprise teams that need quick iteration without sacrificing maintainable frontend quality.</p>
                   </div>
-                </div>
-                <p className="architecture-note"><strong>Best fit:</strong> Enterprise teams that need quick iteration without sacrificing maintainable frontend quality.</p>
-              </div>
-            </article>
-            <article className="architecture-card">
-              <div className="architecture-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                  <ellipse cx="12" cy="6" rx="8" ry="3" />
-                  <path d="M4 6v6c0 1.657 3.582 3 8 3s8-1.343 8-3V6" />
-                  <path d="M4 12c0 1.657 3.582 3 8 3s8-1.343 8-3" />
-                </svg>
-              </div>
-              <div className="architecture-content">
-                <h4>T-SQL + Microsoft On-premise Gateway</h4>
-                <p>Design data pipelines and gateways that keep enterprise systems connected and secure.</p>
-                <div className="architecture-detail-grid">
-                  <div className="architecture-panel">
-                    <h5>Strengths</h5>
-                    <ul>
-                      <li className="architecture-bullet-item architecture-bullet-item--strength"><Plus size={14} aria-hidden="true" />Reliable bridge for legacy SQL Server workloads that cannot move fully to cloud yet.</li>
-                      <li className="architecture-bullet-item architecture-bullet-item--strength"><Plus size={14} aria-hidden="true" />Fine-grained query control with T-SQL optimization for speed and reporting stability.</li>
-                      <li className="architecture-bullet-item architecture-bullet-item--strength"><Plus size={14} aria-hidden="true" />Supports secure hybrid architecture across cloud dashboards and on-prem infrastructure.</li>
-                    </ul>
+                </article>
+                <article className="architecture-card">
+                  <div className="architecture-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                      <ellipse cx="12" cy="6" rx="8" ry="3" />
+                      <path d="M4 6v6c0 1.657 3.582 3 8 3s8-1.343 8-3V6" />
+                      <path d="M4 12c0 1.657 3.582 3 8 3s8-1.343 8-3" />
+                    </svg>
                   </div>
-                  <div className="architecture-panel architecture-panel--caution">
-                    <h5>Tradeoffs</h5>
-                    <ul>
-                      <li className="architecture-bullet-item architecture-bullet-item--tradeoff"><Minus size={14} aria-hidden="true" />Gateway uptime, patching, and firewall rules must be actively maintained.</li>
-                      <li className="architecture-bullet-item architecture-bullet-item--tradeoff"><Minus size={14} aria-hidden="true" />Heavy workloads need query tuning and indexing discipline to avoid bottlenecks.</li>
-                    </ul>
+                  <div className="architecture-content">
+                    <h4>T-SQL + Microsoft On-premise Gateway</h4>
+                    <p>Design data pipelines and gateways that keep enterprise systems connected and secure.</p>
+                    <div className="architecture-detail-grid">
+                      <div className="architecture-panel">
+                        <h5>Strengths</h5>
+                        <ul>
+                          <li className="architecture-bullet-item architecture-bullet-item--strength"><Plus size={14} aria-hidden="true" />Reliable bridge for legacy SQL Server workloads that cannot move fully to cloud yet.</li>
+                          <li className="architecture-bullet-item architecture-bullet-item--strength"><Plus size={14} aria-hidden="true" />Fine-grained query control with T-SQL optimization for speed and reporting stability.</li>
+                          <li className="architecture-bullet-item architecture-bullet-item--strength"><Plus size={14} aria-hidden="true" />Supports secure hybrid architecture across cloud dashboards and on-prem infrastructure.</li>
+                        </ul>
+                      </div>
+                      <div className="architecture-panel architecture-panel--caution">
+                        <h5>Tradeoffs</h5>
+                        <ul>
+                          <li className="architecture-bullet-item architecture-bullet-item--tradeoff"><Minus size={14} aria-hidden="true" />Gateway uptime, patching, and firewall rules must be actively maintained.</li>
+                          <li className="architecture-bullet-item architecture-bullet-item--tradeoff"><Minus size={14} aria-hidden="true" />Heavy workloads need query tuning and indexing discipline to avoid bottlenecks.</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <p className="architecture-note"><strong>Best fit:</strong> Organizations running critical on-prem databases that still need modern cloud reporting and automation.</p>
                   </div>
-                </div>
-                <p className="architecture-note"><strong>Best fit:</strong> Organizations running critical on-prem databases that still need modern cloud reporting and automation.</p>
-              </div>
-            </article>
-            <article className="architecture-card">
-              <div className="architecture-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M8 7l-3 5 3 5" />
-                  <path d="M16 7l3 5-3 5" />
-                  <line x1="12" y1="4" x2="12" y2="20" />
-                </svg>
-              </div>
-              <div className="architecture-content">
-                <h4>Python + Selenium + PyQT + pyodbc</h4>
-                <p>Automate browser workflows, build desktop UIs, and connect to data sources with Python tooling.</p>
-                <div className="architecture-detail-grid">
-                  <div className="architecture-panel">
-                    <h5>Strengths</h5>
-                    <ul>
-                      <li className="architecture-bullet-item architecture-bullet-item--strength"><Plus size={14} aria-hidden="true" />Powerful for end-to-end automation from web data collection to local processing tools.</li>
-                      <li className="architecture-bullet-item architecture-bullet-item--strength"><Plus size={14} aria-hidden="true" />PyQT desktop layer helps deliver internal operator apps with custom workflow controls.</li>
-                      <li className="architecture-bullet-item architecture-bullet-item--strength"><Plus size={14} aria-hidden="true" />pyodbc integration supports direct data exchange with enterprise SQL environments.</li>
-                    </ul>
+                </article>
+                <article className="architecture-card">
+                  <div className="architecture-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M8 7l-3 5 3 5" />
+                      <path d="M16 7l3 5-3 5" />
+                      <line x1="12" y1="4" x2="12" y2="20" />
+                    </svg>
                   </div>
-                  <div className="architecture-panel architecture-panel--caution">
-                    <h5>Tradeoffs</h5>
-                    <ul>
-                      <li className="architecture-bullet-item architecture-bullet-item--tradeoff"><Minus size={14} aria-hidden="true" />UI testing and browser automation can be brittle if target websites change often.</li>
-                      <li className="architecture-bullet-item architecture-bullet-item--tradeoff"><Minus size={14} aria-hidden="true" />Desktop distribution needs packaging strategy for versioning and dependency updates.</li>
-                    </ul>
+                  <div className="architecture-content">
+                    <h4>Python + Selenium + PyQT + pyodbc</h4>
+                    <p>Automate browser workflows, build desktop UIs, and connect to data sources with Python tooling.</p>
+                    <div className="architecture-detail-grid">
+                      <div className="architecture-panel">
+                        <h5>Strengths</h5>
+                        <ul>
+                          <li className="architecture-bullet-item architecture-bullet-item--strength"><Plus size={14} aria-hidden="true" />Powerful for end-to-end automation from web data collection to local processing tools.</li>
+                          <li className="architecture-bullet-item architecture-bullet-item--strength"><Plus size={14} aria-hidden="true" />PyQT desktop layer helps deliver internal operator apps with custom workflow controls.</li>
+                          <li className="architecture-bullet-item architecture-bullet-item--strength"><Plus size={14} aria-hidden="true" />pyodbc integration supports direct data exchange with enterprise SQL environments.</li>
+                        </ul>
+                      </div>
+                      <div className="architecture-panel architecture-panel--caution">
+                        <h5>Tradeoffs</h5>
+                        <ul>
+                          <li className="architecture-bullet-item architecture-bullet-item--tradeoff"><Minus size={14} aria-hidden="true" />UI testing and browser automation can be brittle if target websites change often.</li>
+                          <li className="architecture-bullet-item architecture-bullet-item--tradeoff"><Minus size={14} aria-hidden="true" />Desktop distribution needs packaging strategy for versioning and dependency updates.</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <p className="architecture-note"><strong>Best fit:</strong> Teams needing practical automation and desktop-assisted operations connected to existing enterprise data.</p>
                   </div>
-                </div>
-                <p className="architecture-note"><strong>Best fit:</strong> Teams needing practical automation and desktop-assisted operations connected to existing enterprise data.</p>
+                </article>
               </div>
-            </article>
-          </div>
-        </section>
+            </section>
 
-        <section className="section low-tech card-group">
-          <div className="section-header">
-            <h2>Start Up Company? No problem!</h2>
-            <p>I offer low tech solutions using free and practical alternatives that still scalable and flexible in future developments.</p>
-          </div>
-          <article className="card">
-            <ul>
-              <li>Design systems & dashboards using Google Spreadsheets & Excel with Google APIs</li>
-              <li>Microsoft Power BI data visualization</li>
-              <li>Alternative solutions for expensive APIs through web scraping</li>
-            </ul>
-          </article>
-        </section>
+            <section className="section low-tech card-group">
+              <div className="section-header">
+                <h2>Start Up Company? No problem!</h2>
+                <p>I offer low tech solutions using free and practical alternatives that still scalable and flexible in future developments.</p>
+              </div>
+              <article className="card">
+                <ul>
+                  <li>Design systems & dashboards using Google Spreadsheets & Excel with Google APIs</li>
+                  <li>Microsoft Power BI data visualization</li>
+                  <li>Alternative solutions for expensive APIs through web scraping</li>
+                </ul>
+              </article>
+            </section>
 
-        <section id="contact" className="section contact-section">
-          <div className="card contact-card">
-            <div>
-              <p className="eyebrow">Ready to start?</p>
-              <h2>Let's build your next Power App or data pipeline.</h2>
-              <p>
-                I offer in-depth system development for Microsoft Power Platform, data
-                engineering, automation, and low-code dashboard solutions.
-              </p>
-            </div>
-            <div className="contact-actions">
-              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=christianerrolapolinariosinag@example.com&su=Let%27s%20work%20together&body=Hi%20Christian%2C%0A%0AI%27m%20interested%20in%20your%20Power%20Apps%20and%20data%20pipeline%20expertise.%20I%27d%20like%20to%20discuss%20how%20you%20can%20help%20transform%20our%20business%20with%20innovative%20solutions." className="button primary" target="_blank" rel="noopener noreferrer">Email me</a>
-              <a
-                href={ResumePDF}
-                className="button secondary"
-                download="RESUME - Christian Sinag.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Download resume
-              </a>
-            </div>
-          </div>
-        </section>
+            <section id="contact" className="section contact-section">
+              <div className="card contact-card">
+                <div>
+                  <p className="eyebrow">Ready to start?</p>
+                  <h2>Let's build your next Power App or data pipeline.</h2>
+                  <p>
+                    I offer in-depth system development for Microsoft Power Platform, data
+                    engineering, automation, and low-code dashboard solutions.
+                  </p>
+                </div>
+                <div className="contact-actions">
+                  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=christianerrolapolinariosinag@example.com&su=Let%27s%20work%20together&body=Hi%20Christian%2C%0A%0AI%27m%20interested%20in%20your%20Power%20Apps%20and%20data%20pipeline%20expertise.%20I%27d%20like%20to%20discuss%20how%20you%20can%20help%20transform%20our%20business%20with%20innovative%20solutions." className="button primary" target="_blank" rel="noopener noreferrer">Email me</a>
+                  <a
+                    href={ResumePDF}
+                    className="button secondary"
+                    download="RESUME - Christian Sinag.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Download resume
+                  </a>
+                </div>
+              </div>
+            </section>
 
-        <section className="section cta">
-          <div className="card cta-card">
-            <h2>Project based opportunities are welcome!</h2>
-            <p>
-              I am available for project-based work and ready to turn your business
-              process challenges into efficient low-code and data-driven solutions.
-            </p>
-            <a href="https://nxtwavestudioco.github.io/nextwave-studio/" className="button primary" target="_blank" rel="noopener noreferrer">Consult pricing</a>
-          </div>
-        </section>
-      </main>
-    </div>
-  </div>
-  </>
+            <section className="section cta">
+              <div className="card cta-card">
+                <h2>Project based opportunities are welcome!</h2>
+                <p>
+                  I am available for project-based work and ready to turn your business
+                  process challenges into efficient low-code and data-driven solutions.
+                </p>
+                <a href="https://nxtwavestudioco.github.io/nextwave-studio/" className="button primary" target="_blank" rel="noopener noreferrer">Consult pricing</a>
+              </div>
+            </section>
+          </main>
+        </div>
+      </div>
+    </>
   )
 }
 
