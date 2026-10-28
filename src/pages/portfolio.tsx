@@ -243,6 +243,7 @@ function PortfolioPage() {
           <div
             className="carousel-track"
             ref={scrollRef}
+            data-lenis-prevent
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
             onTouchStart={() => setIsPaused(true)}

@@ -1,4 +1,6 @@
 import { useEffect, useMemo, useState, type MouseEvent, type ReactNode } from 'react'
+import Lenis from 'lenis'
+import 'lenis/dist/lenis.css'
 
 // Floating Scroll-to-Top Button
 function ScrollToTopButton() {
@@ -13,7 +15,11 @@ function ScrollToTopButton() {
   }, []);
 
   const handleClick = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if ((window as any).lenis) {
+      (window as any).lenis.scrollTo(0, { duration: 1.2 });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   return (
@@ -92,6 +98,51 @@ function App() {
     window.localStorage.setItem('theme', theme)
   }, [theme])
 
+  useEffect(() => {
+    const lenis = new Lenis({
+      autoRaf: true,
+      duration: 1.1,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+    });
+
+    (window as any).lenis = lenis;
+
+    const handleAnchorClick = (e: globalThis.MouseEvent) => {
+      const target = e.target as HTMLElement | null;
+      const anchor = target?.closest('a');
+      if (!anchor) return;
+
+      const href = anchor.getAttribute('href');
+      if (!href || !href.startsWith('#') || href.length <= 1) return;
+
+      // Skip routes that should switch views rather than scrolling
+      if (href === '#resume' || href.startsWith('#demo/')) return;
+
+      if (href === '#portfolio') {
+        e.preventDefault();
+        window.history.pushState(null, '', '#portfolio');
+        lenis.scrollTo(0, { duration: 1.1 });
+        return;
+      }
+
+      const targetEl = document.querySelector(href);
+      if (targetEl) {
+        e.preventDefault();
+        window.history.pushState(null, '', href);
+        lenis.scrollTo(targetEl as HTMLElement, { offset: -75, duration: 1.1 });
+      }
+    };
+
+    document.addEventListener('click', handleAnchorClick);
+
+    return () => {
+      document.removeEventListener('click', handleAnchorClick);
+      lenis.destroy();
+      delete (window as any).lenis;
+    };
+  }, [])
+
   const page = useMemo(() => {
     if (routeMap[route]) {
       return routeMap[route]
@@ -157,7 +208,11 @@ function App() {
       window.requestAnimationFrame(() => {
         const projectsSection = document.getElementById('projects')
         if (projectsSection) {
-          projectsSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+          if ((window as any).lenis) {
+            (window as any).lenis.scrollTo(projectsSection, { offset: -75, duration: 1.1 });
+          } else {
+            projectsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
           window.location.hash = '#projects'
           return
         }

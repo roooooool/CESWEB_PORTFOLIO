@@ -205,6 +205,15 @@ body {
   scroll-behavior: smooth;
 }
 
+html {
+  scroll-padding-top: 80px;
+}
+
+/* Ensure section titles are not obscured by the sticky nav when jumped to */
+[id] {
+  scroll-margin-top: 80px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html,
   body {
