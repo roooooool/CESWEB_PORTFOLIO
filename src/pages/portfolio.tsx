@@ -269,7 +269,7 @@ function PortfolioPage() {
               </div>
             </a>
 
-            {/* Project 2: Sales Forecast wew */}
+            {/* Project 2: Sales Forecast wew2 */}
             <a
               href="https://roooooool.github.io/DISPATCH_APP_DEMO/#/fleet"
               className="showcase-card reveal reveal-up animation-delay-400"
