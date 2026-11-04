@@ -122,6 +122,7 @@ function App() {
       if (href === '#portfolio') {
         e.preventDefault();
         window.history.pushState(null, '', '#portfolio');
+        setRoute('portfolio');
         lenis.scrollTo(0, { duration: 1.1 });
         return;
       }

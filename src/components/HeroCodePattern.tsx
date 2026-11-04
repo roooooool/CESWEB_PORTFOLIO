@@ -2,17 +2,17 @@ import { memo, useEffect, useMemo, useRef, useState } from 'react';
 
 const CODE_PATTERN_TOKENS = [
   // --- Code Keywords ---
-  'DEVELOPMENT', 'API', './ENV', 'RETURN', 'HOST', 'LOCAL', 'SERVER', 
-  'REACT', 'NODE', 'SQL', 'JSON', 'FETCH()', 'COMMIT', 'MERGE', 
-  'DEPLOY', 'PIPELINE', 'STACK', 'ASYNC', 'PROMISE', 'HOOK', 
-  'COMPONENT', 'CLOUD', 'BUILD', 'DEBUG', 'SCRIPT', 'ENDPOINT', 
+  'DEVELOPMENT', 'API', './ENV', 'RETURN', 'HOST', 'LOCAL', 'SERVER',
+  'REACT', 'NODE', 'SQL', 'JSON', 'FETCH()', 'COMMIT', 'MERGE',
+  'DEPLOY', 'PIPELINE', 'STACK', 'ASYNC', 'PROMISE', 'HOOK',
+  'COMPONENT', 'CLOUD', 'BUILD', 'DEBUG', 'SCRIPT', 'ENDPOINT',
   'CACHE', 'GIT', 'TYPES', 'INTERFACE', 'CLASS', 'FUNCTION', 'MODULE', 'PACKAGE',
 ];
 
 const EXTENDED_CODE_PATTERN_TOKENS = [
   // --- Structural Syntax (The "Mimicry" glue) ---
-  '=>', '{', '}', '=> {', '();', '[]', '<>', '</>', '===', 'const', 
-  'export', 'import', 'async', 'await', '??', '&&', '||', '?.', 
+  '=>', '{', '}', '=> {', '();', '[]', '<>', '</>', '===', 'const',
+  'export', 'import', 'async', 'await', '??', '&&', '||', '?.',
   'interface', 'type', '.map(() =>', 'private', 'readonly', 'static',
   ': string', ': number', 'as', 'from', '...props', '0x1A4F', '0o755', '(count: number) =>', 'function*', 'yield', 'try {', 'catch (error)', 'finally {',
 ];
@@ -92,10 +92,10 @@ export const HeroCodePattern = memo(function HeroCodePattern() {
 
     const typingInterval = window.setInterval(() => {
       if (isDeleting) {
-        const deleteStep = Math.floor(Math.random() * 4) + 2;
+        const deleteStep = Math.floor(Math.random() * 8) + 4;
         charIndex = Math.max(charIndex - deleteStep, minVisibleChars);
       } else {
-        const typeStep = Math.floor(Math.random() * 3) + 1;
+        const typeStep = Math.floor(Math.random() * 6) + 2;
         charIndex = Math.min(charIndex + typeStep, fullHeroCodePattern.length);
       }
 
@@ -112,7 +112,7 @@ export const HeroCodePattern = memo(function HeroCodePattern() {
         }
         setPatternSeed((seed) => seed + 1);
       }
-    }, isSmallScreen ? 140 : 45);
+    }, isSmallScreen ? 80 : 45);
 
     return () => window.clearInterval(typingInterval);
   }, [fullHeroCodePattern, heroCodeBuffer]);

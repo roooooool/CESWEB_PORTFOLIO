@@ -15,7 +15,7 @@ import CpuIcon from '../components/ui/cpu-icon';
 import LinkIcon from '../components/ui/link-icon';
 import type { AnimatedIconHandle } from '../components/ui/types';
 
-import ResumePDF from '../assets/RESUME - Sinag.pdf';
+import ResumePDF from '../assets/RESUME 2026 - Christian Errol A. Sinag.pdf';
 
 import { Database, Server, ChevronRight, ChevronLeft, Plus, Minus, ThumbsUp, Layers, Workflow, Terminal, Sparkles } from 'lucide-react';
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
@@ -50,7 +50,7 @@ function PortfolioPage() {
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
-      const scrollAmount = 600;
+      const scrollAmount = scrollRef.current.clientWidth;
       // If we reach the end, wrap back to the beginning
       const isEnd = scrollRef.current.scrollLeft + scrollRef.current.offsetWidth >= scrollRef.current.scrollWidth;
 
@@ -219,10 +219,8 @@ function PortfolioPage() {
               <h2>3+ Years of Hands-On Experience!</h2>
               <div className="header-description">
                 <p>
-                  Over the course of my career, I have specialized in bridging the gap between
-                  complex logistical operations and data integration. My platform of experties includes
-                  <strong> Power Apps (Canvas Apps & Code Apps)</strong>, <strong>Power Automate</strong>, and <strong>Sharepoint/Datavers/Microsoft Graph API</strong>.
-                  I'm also available for <strong> project-based development </strong> and offer free and low-tech alternatives for startups and small businesses, such as <strong>Custom API Connectors</strong> and open-source <strong>Google API</strong>.
+                  Full-Stack Developer &amp; Data Analyst — 3+ years building end-to-end logistics apps, data automation, and analytics dashboards with <strong>Power Apps (Canvas &amp; Model Driven)</strong>.
+                  Skilled in <strong>React, Python, Node.js, SQL, and APIs</strong>; transforming operational data into actionable insights for fleet tracking, warehouse, and trip dispatch.
                 </p>
               </div>
             </div>
@@ -232,7 +230,6 @@ function PortfolioPage() {
           <div
             className="carousel-track"
             ref={scrollRef}
-            data-lenis-prevent
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
             onTouchStart={() => setIsPaused(true)}
@@ -270,7 +267,7 @@ function PortfolioPage() {
                 <p className="demo-tag">Analytics Hub</p>
                 <h4>Sales Analytics & Dashboard</h4>
                 <p className="showcase-desc">
-                  Interactive data visualization platform converting raw sales data into actionable trendss
+                  Interactive data visualization platform converting raw sales data into actionable trends
                   using advanced Power BI integration and automated data refresh cycles.
                 </p>
                 <div className="showcase-footer">
@@ -321,7 +318,7 @@ function PortfolioPage() {
                 <p className="demo-tag">Data Integration & API</p>
                 <h4>Custom Microsoft Connector</h4>
                 <p className="showcase-desc">
-                  Reusable Python connector for seamless integration with Microsoft services and APIs. Easily available through Pip and Github. For connectiong multi-platform data sources to Microsoft Power Platform, enabling custom workflows and data sync across services without needing to build a full custom connector from scratch.
+                  Reusable Python connector for seamless integration with Microsoft services and APIs. Easily available through Pip and Github. For connecting multi-platform data sources to Microsoft Power Platform, enabling custom workflows and data sync across services without needing to build a full custom connector from scratch.
                 </p>
                 <div className="showcase-footer">
                   <span className="button primary">View Documentation</span>
@@ -454,7 +451,7 @@ function PortfolioPage() {
                         <span className="tech-chip-name">Vite</span>
                       </div>
                       <div className="tech-chip">
-                        <span className="tech-chip-name">Power Apps</span>
+                        <span className="tech-chip-name">Power Apps (Canvas & Model Driven)</span>
                       </div>
                       <div className="tech-chip">
                         <span className="tech-chip-name">Tailwind CSS</span>
@@ -883,7 +880,7 @@ function PortfolioPage() {
                   </p>
                 </div>
                 <div className="contact-actions">
-                  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=christianerrolapolinariosinag@example.com&su=Let%27s%20work%20together&body=Hi%20Christian%2C%0A%0AI%27m%20interested%20in%20your%20Power%20Apps%20and%20data%20pipeline%20expertise.%20I%27d%20like%20to%20discuss%20how%20you%20can%20help%20transform%20our%20business%20with%20innovative%20solutions." className="button primary" target="_blank" rel="noopener noreferrer">Email me</a>
+                  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=christianerrolapolinariosinag@gmail.com&su=Let%27s%20work%20together&body=Hi%20Christian%2C%0A%0AI%27m%20interested%20in%20your%20Power%20Apps%20and%20data%20pipeline%20expertise.%20I%27d%20like%20to%20discuss%20how%20you%20can%20help%20transform%20our%20business%20with%20innovative%20solutions." className="button primary" target="_blank" rel="noopener noreferrer">Email me</a>
                   <a
                     href={ResumePDF}
                     className="button secondary"
