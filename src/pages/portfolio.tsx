@@ -9,9 +9,8 @@ import HeroCodePattern from '../components/HeroCodePattern';
 import PythonIcon from '../components/ui/python-icon';
 import BrandReactIcon from '../components/ui/brand-react-icon';
 import NodejsIcon from '../components/ui/nodejs-icon';
+import CodeXmlIcon from '../components/ui/code-xml-icon';
 import TerminalIcon from '../components/ui/terminal-icon';
-import LibraryIcon from '../components/ui/library-icon';
-import CpuIcon from '../components/ui/cpu-icon';
 import LinkIcon from '../components/ui/link-icon';
 import type { AnimatedIconHandle } from '../components/ui/types';
 
@@ -35,9 +34,9 @@ function PortfolioPage() {
   const restApiIconRef = useRef<AnimatedIconHandle | null>(null);
   const reactIconRef = useRef<AnimatedIconHandle | null>(null);
   const nodeIconRef = useRef<AnimatedIconHandle | null>(null);
-  const arduinoIconRef = useRef<AnimatedIconHandle | null>(null);
-  const cppIconRef = useRef<AnimatedIconHandle | null>(null);
-  const dotnetIconRef = useRef<AnimatedIconHandle | null>(null);
+  const tsIconRef = useRef<AnimatedIconHandle | null>(null);
+  const jsIconRef = useRef<AnimatedIconHandle | null>(null);
+  const htmlIconRef = useRef<AnimatedIconHandle | null>(null);
 
   const totalCards = 5;
   const navLinks = [
@@ -50,18 +49,28 @@ function PortfolioPage() {
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
-      const scrollAmount = scrollRef.current.clientWidth;
-      // If we reach the end, wrap back to the beginning
-      const isEnd = scrollRef.current.scrollLeft + scrollRef.current.offsetWidth >= scrollRef.current.scrollWidth;
+      const node = scrollRef.current;
+      const cards = Array.from(node.children) as HTMLElement[];
+      if (cards.length === 0) return;
 
-      if (direction === 'right' && isEnd) {
-        scrollRef.current.scrollTo({ left: 0, behavior: 'smooth' });
-      } else {
-        scrollRef.current.scrollBy({
-          left: direction === 'left' ? -scrollAmount : scrollAmount,
-          behavior: 'smooth'
-        });
-      }
+      const step = cards.length > 1
+        ? cards[1].offsetLeft - cards[0].offsetLeft
+        : node.clientWidth;
+
+      // Determine current snapped index
+      const currentIndex = Math.round(node.scrollLeft / step);
+
+      let targetIndex = direction === 'left' ? currentIndex - 1 : currentIndex + 1;
+
+      // Wrap around
+      if (targetIndex < 0) targetIndex = cards.length - 1;
+      if (targetIndex >= cards.length) targetIndex = 0;
+
+      // Clamp so two cards remain visible at the end (avoid trailing empty space)
+      const maxIndex = Math.max(0, cards.length - 2);
+      if (targetIndex > maxIndex) targetIndex = 0;
+
+      node.scrollTo({ left: targetIndex * step, behavior: 'smooth' });
     }
   };
 
@@ -183,7 +192,7 @@ function PortfolioPage() {
 
             <div className="hero-meta-row reveal reveal-fade animation-delay-600">
               <div className="hero-badges">
-                {['Microsoft Power Apps', 'SICM (Education)', 'TESDA NC2', 'RCMDE (Capstone)', 'AWS EC2', 'Github Contributor'].map((badge, index) => (
+                {['Microsoft Power Apps', 'SICM (Education)', 'RCMDE (Capstone)', 'Github Contributor'].map((badge, index) => (
                   <span
                     key={badge}
                     className="hero-badge glass-panel reveal reveal-fade"
@@ -700,47 +709,47 @@ function PortfolioPage() {
 
               <div
                 className="skill-card"
-                onMouseEnter={() => arduinoIconRef.current?.startAnimation()}
-                onMouseLeave={() => arduinoIconRef.current?.stopAnimation()}
+                onMouseEnter={() => tsIconRef.current?.startAnimation()}
+                onMouseLeave={() => tsIconRef.current?.stopAnimation()}
               >
                 <div className="language-icon-box">
-                  <CpuIcon ref={arduinoIconRef} size={28} className="language-icon" />
+                  <CodeXmlIcon ref={tsIconRef} size={28} className="language-icon" />
                 </div>
-                <h3>Arduino</h3>
+                <h3>TypeScript / JavaScript</h3>
                 <div className="skill-meter">
                   <span className="meter-fill fill-80" />
                 </div>
-                <p>5/10</p>
+                <p>8/10</p>
               </div>
 
               <div
                 className="skill-card"
-                onMouseEnter={() => cppIconRef.current?.startAnimation()}
-                onMouseLeave={() => cppIconRef.current?.stopAnimation()}
+                onMouseEnter={() => jsIconRef.current?.startAnimation()}
+                onMouseLeave={() => jsIconRef.current?.stopAnimation()}
               >
                 <div className="language-icon-box">
-                  <TerminalIcon ref={cppIconRef} size={28} className="language-icon" />
+                  <TerminalIcon ref={jsIconRef} size={28} className="language-icon" />
                 </div>
-                <h3>C++</h3>
+                <h3>T-SQL</h3>
                 <div className="skill-meter">
-                  <span className="meter-fill fill-50" />
+                  <span className="meter-fill fill-80" />
                 </div>
-                <p>5/10</p>
+                <p>8/10</p>
               </div>
 
               <div
                 className="skill-card"
-                onMouseEnter={() => dotnetIconRef.current?.startAnimation()}
-                onMouseLeave={() => dotnetIconRef.current?.stopAnimation()}
+                onMouseEnter={() => htmlIconRef.current?.startAnimation()}
+                onMouseLeave={() => htmlIconRef.current?.stopAnimation()}
               >
                 <div className="language-icon-box">
-                  <LibraryIcon ref={dotnetIconRef} size={28} className="language-icon" />
+                  <CodeXmlIcon ref={htmlIconRef} size={28} className="language-icon" />
                 </div>
-                <h3>.NET SDK</h3>
+                <h3>HTML5 / CSS3</h3>
                 <div className="skill-meter">
-                  <span className="meter-fill fill-50" />
+                  <span className="meter-fill fill-80" />
                 </div>
-                <p>5/10</p>
+                <p>8/10</p>
               </div>
 
 
