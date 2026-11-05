@@ -1447,7 +1447,7 @@
 .showcase-card {
   flex: 0 0 calc(50% - 1rem);
   scroll-snap-align: start;
-  height: clamp(400px, 80vh, 720px);
+  height: clamp(320px, 60vh, 560px);
   position: relative;
   display: flex;
   align-items: flex-end; /* Pushes content to the bottom */
@@ -2038,6 +2038,14 @@
 }
 
 @media (max-width: 720px) {
+  .showcase-card {
+    flex: 0 0 100%;
+    height: clamp(260px, 50vh, 420px);
+  }
+  .carousel-track {
+    gap: 1rem;
+    padding: 0.75rem 1rem 0rem;
+  }
   .tech-card--frontend,
   .tech-card--backend,
   .tech-card--db,
